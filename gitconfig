@@ -1,0 +1,21 @@
+[user]
+	name = Mathias Lafeldt
+	email = misfire@debugon.org
+[color]
+	ui = true
+[alias]
+	co = checkout
+	ci = commit
+	di = diff
+	st = status
+	br = branch
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk &
+	distclean = clean -fdx
+[merge]
+	tool = vimdiff
+[core]
+	whitespace = trailing-space,space-before-tab,indent-with-non-tab
+[log]
+	decorate = true
