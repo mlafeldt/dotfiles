@@ -4,17 +4,20 @@
 [color]
 	ui = true
 [alias]
-	co = checkout
-	ci = commit
-	di = diff
-	st = status
 	br = branch
-	unstage = reset HEAD --
-	last = log -1 HEAD
-	visual = !gitk &
+	ci = commit
+	co = checkout
+	di = diff
+	dic = diff --cached
 	distclean = clean -fdx
+	fixup = commit --amend -C HEAD
+	last = log -1 HEAD
+	pi = cherry-pick
+	st = status
+	unstage = reset HEAD --
+	visual = !gitk &
 [merge]
-	tool = vimdiff
+	tool = gvimdiff
 [core]
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 [log]
