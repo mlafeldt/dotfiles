@@ -12,13 +12,15 @@
 	distclean = clean -fdx
 	fixup = commit --amend -C HEAD
 	last = log -1 HEAD
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	pi = cherry-pick
 	st = status
 	unstage = reset HEAD --
 	visual = !gitk &
-[merge]
-	tool = gvimdiff
 [core]
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
+	autocrlf = input
 [log]
 	decorate = true
+[merge]
+	tool = gvimdiff
