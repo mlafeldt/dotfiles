@@ -1,10 +1,11 @@
 [user]
 	name = Mathias Lafeldt
-	email = misfire@debugon.org
+	email = mathias.lafeldt@gmail.com
 [color]
 	ui = true
 [alias]
 	br = branch
+	brl = branch -vva
 	ci = commit
 	co = checkout
 	di = diff
