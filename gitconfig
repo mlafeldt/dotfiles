@@ -13,9 +13,9 @@
 	distclean = clean -fdx
 	fixup = commit --amend -C HEAD
 	last = log -1 HEAD
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lol = log --graph --decorate --oneline
 	pi = cherry-pick
-	st = status
+	st = status -s
 	unstage = reset HEAD --
 	visual = !gitk &
 [core]
