@@ -12,10 +12,11 @@
 	dic = diff --cached
 	distclean = clean -fdx
 	fixup = commit --amend -C HEAD
+	human = name-rev --name-only --refs=refs/heads/*
 	last = log -1 HEAD
 	lol = log --graph --decorate --oneline
 	pi = cherry-pick
-	st = status -s
+	st = status -sb
 	unstage = reset HEAD --
 	visual = !gitk &
 [core]
