@@ -4,6 +4,7 @@
 [color]
 	ui = true
 [alias]
+	bp = buildpackage
 	br = branch
 	brl = branch -vva
 	ci = commit
