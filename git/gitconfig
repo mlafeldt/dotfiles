@@ -27,3 +27,5 @@
 	decorate = true
 [merge]
 	tool = gvimdiff
+[credential]
+	helper = cache --timeout=3600
