@@ -17,6 +17,7 @@
 	last = log -1 HEAD
 	lol = log --graph --decorate --oneline
 	pi = cherry-pick
+	rh = reset --hard
 	st = status -sb
 	unstage = reset HEAD --
 	visual = !gitk &
