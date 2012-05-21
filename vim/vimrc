@@ -1,18 +1,18 @@
 set nocompatible
 set ruler
 set autochdir
-
-syntax on
-colorscheme desert
 set directory=/tmp
 
+syntax on
+set background=dark
+
 if has('gui_running')
+    colorscheme solarized
+
     set cursorline
 
     " hide toolbar
     :set guioptions-=T
-    map <F11> :set guioptions-=m<CR>
-    map <F12> :set guioptions+=m<CR>
 
     " make ctrl+c and ctrl+v copy and paste
     nmap <C-S-V> "+gP
