@@ -39,7 +39,7 @@ alias l='ls -CF'
 
 # enable bash completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
-if which brew >/dev/null; then
+if command -v brew >/dev/null; then
     [ -f "$(brew --prefix)/etc/bash_completion" ] && . "$(brew --prefix)/etc/bash_completion"
 fi
 
@@ -51,3 +51,10 @@ fi
 
 # set prompt
 PS1="[\W]\$ "
+
+# set git prompt if installed
+if command -v git >/dev/null; then
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1='[\W$(__git_ps1 " (%s)")]\$ '
+    PS1="$GIT_PS1"
+fi
