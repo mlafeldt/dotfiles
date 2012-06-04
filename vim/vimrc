@@ -6,18 +6,26 @@ set directory=/tmp
 syntax on
 set background=dark
 
-if has('gui_running')
+" OSX-specific options
+if has('unix')
+  let s:uname = system('uname')
+  if s:uname == "Darwin\n"
     colorscheme solarized
+  endif
+endif
 
-    set cursorline
+if has('gui_running')
+  colorscheme solarized
 
-    " hide toolbar
-    :set guioptions-=T
+  set cursorline
 
-    " make ctrl+c and ctrl+v copy and paste
-    nmap <C-S-V> "+gP
-    imap <C-S-V> <ESC><C-S-V>i
-    vmap <C-S-C> "+y
+  " hide toolbar
+  :set guioptions-=T
+
+  " make ctrl+c and ctrl+v copy and paste
+  nmap <C-S-V> "+gP
+  imap <C-S-V> <ESC><C-S-V>i
+  vmap <C-S-C> "+y
 endif
 
 autocmd FileType * set tabstop=4|set shiftwidth=4
