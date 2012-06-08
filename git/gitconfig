@@ -6,7 +6,7 @@
 [alias]
 	bp = buildpackage
 	br = branch
-	brl = branch -vva
+	bl = branch -vva
 	ci = commit
 	co = checkout
 	di = diff
@@ -17,6 +17,8 @@
 	last = log -1 HEAD
 	lol = log --graph --decorate --oneline
 	pi = cherry-pick
+	pa = !git push && git push --tags
+	pd = !git push -n && git push -n --tags
 	rh = reset --hard
 	st = status -sb
 	unstage = reset HEAD --
