@@ -31,5 +31,7 @@
 	decorate = true
 [merge]
 	tool = gvimdiff
+[diff]
+	renames = copies
 [credential]
 	helper = cache --timeout=3600
