@@ -7,7 +7,7 @@
 	bp = buildpackage
 	br = branch
 	bl = branch -vva
-	ci = commit
+	ci = commit -v
 	co = checkout
 	di = diff
 	dic = diff --cached
