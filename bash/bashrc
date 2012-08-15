@@ -45,6 +45,7 @@ PS1="[\W]\$ "
 
 # set git prompt if installed
 if command -v git >/dev/null; then
+    [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1='[\W$(__git_ps1 " (%s)")]\$ '
     PS1="$GIT_PS1"
