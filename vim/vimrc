@@ -2,6 +2,7 @@ set nocompatible
 set ruler
 set autochdir
 set directory=/tmp
+set colorcolumn=81
 
 syntax on
 set background=dark
