@@ -33,5 +33,7 @@
 	tool = gvimdiff
 [diff]
 	renames = copies
+[diff "gem"]
+	textconv = gem spec
 [credential]
 	helper = cache --timeout=3600
