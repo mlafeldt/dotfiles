@@ -10,3 +10,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+command -v hub >/dev/null && alias git='hub'
+alias bx='bundle exec'
