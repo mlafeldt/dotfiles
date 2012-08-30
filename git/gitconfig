@@ -29,6 +29,8 @@
 	autocrlf = input
 [log]
 	decorate = true
+[push]
+	default = simple
 [merge]
 	tool = gvimdiff
 [diff]
