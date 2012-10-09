@@ -12,6 +12,7 @@ if has('unix')
   let s:uname = system('uname')
   if s:uname == "Darwin\n"
     colorscheme solarized
+    set guifont=SourceCodePro-Regular:h11
   endif
 endif
 
