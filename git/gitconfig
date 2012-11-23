@@ -11,7 +11,7 @@
 	co = checkout
 	di = diff
 	dic = diff --cached
-	distclean = clean -fdx
+	distclean = clean -ffdx
 	fixup = commit --amend -C HEAD
 	human = name-rev --name-only --refs=refs/heads/*
 	last = log -1 HEAD
