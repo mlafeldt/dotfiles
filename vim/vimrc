@@ -7,17 +7,20 @@ set colorcolumn=81
 syntax on
 set background=dark
 
-" OSX-specific options
 if has('unix')
   let s:uname = system('uname')
   if s:uname == "Darwin\n"
+    " OSX-specific options
     colorscheme solarized
     set guifont=SourceCodePro-Regular:h11
+  else
+    set guifont=SourceCodePro
   endif
 endif
 
 if has('gui_running')
   colorscheme solarized
+
 
   set cursorline
 
