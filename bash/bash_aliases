@@ -13,3 +13,4 @@ alias l='ls -CF'
 
 command -v hub >/dev/null && alias git='hub'
 alias bx='bundle exec'
+alias vag='vagrant'
