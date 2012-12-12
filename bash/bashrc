@@ -27,6 +27,8 @@ export CLICOLOR=1
 
 export EDITOR=vim
 
+export UBUNTU_MENUPROXY=
+
 # include alias definitions
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
