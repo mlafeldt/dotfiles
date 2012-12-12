@@ -25,6 +25,8 @@ fi
 
 export CLICOLOR=1
 
+export EDITOR=vim
+
 # include alias definitions
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
