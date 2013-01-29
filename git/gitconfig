@@ -25,7 +25,6 @@
 	st = status -sb
 	unstage = reset HEAD --
 	visual = !gitk &
-
 [core]
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 	autocrlf = input
