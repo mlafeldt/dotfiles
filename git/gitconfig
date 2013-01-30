@@ -7,6 +7,7 @@
 	bp = buildpackage
 	br = branch
 	bl = branch -vva
+	churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 	ci = commit -v
 	co = checkout
 	di = diff
