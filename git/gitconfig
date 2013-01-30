@@ -4,6 +4,7 @@
 [color]
 	ui = true
 [alias]
+	aa = add --all
 	bp = buildpackage
 	br = branch
 	bl = branch -vva
