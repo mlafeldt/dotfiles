@@ -1,10 +1,62 @@
-set nocompatible
-set ruler
-set autochdir
-set directory=/tmp
-set colorcolumn=81
+" Based on Gary Bernhardt's .vimrc file:
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+" vim: set ts=2 sts=2 sw=2 expandtab:
 
+" enter vim mode
+set nocompatible
+" allow unsaved background buffers and remember marks/undo for them
+set hidden
+" remember more commands and searches
+set history=10000
+" always show status line
+set laststatus=2
+" when a bracket is inserted, briefly jump to the matching one
+set showmatch
+" incremental search
+set incsearch
+" highlight previous search matches
+set hlsearch
+" make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
+" highlight current line
+set cursorline
+" height of command line
+set cmdheight=2
+" jump to the first open window that contains the specified buffer
+set switchbuf=useopen
+" show line numbers
+set number
+" minimal number of columns to use for the line number
+set numberwidth=5
+" always show tab page labels
+set showtabline=2
+" minimal number of columns for current window
+set winwidth=79
+" prevent vim from clobbering the scrollback buffer
+"set t_ti= t_te=
+" keep more context when scrolling off the end of a buffer
+set scrolloff=3
+" store temporary files in a central spot
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+" display incomplete commands
+set showcmd
+" enable syntax highlighting
 syntax on
+" use emacs-style tab completion when selecting files etc.
+set wildmode=longest,list
+" make tab completion for files/buffers act like bash
+set wildmenu
+" set leader key to comma
+let mapleader=","
+" show line and column number of the cursor position
+set ruler
+" highlight screen column
+set colorcolumn=81
+" set solarized background
 set background=dark
 
 if has('unix')
@@ -12,7 +64,7 @@ if has('unix')
   if s:uname == "Darwin\n"
     " OSX-specific options
     colorscheme solarized
-    set guifont=SourceCodePro-Regular:h11
+    set guifont=SourceCodePro-Regular:h12
   else
     set guifont=SourceCodePro
   endif
@@ -21,19 +73,27 @@ endif
 if has('gui_running')
   colorscheme solarized
 
-
-  set cursorline
-
   " hide toolbar
   :set guioptions-=T
 
-  " make ctrl+c and ctrl+v copy and paste
+  " make ctrl+c and ctrl+v to copy and paste
   nmap <C-S-V> "+gP
   imap <C-S-V> <ESC><C-S-V>i
   vmap <C-S-C> "+y
 endif
 
-autocmd FileType * set tabstop=4|set shiftwidth=4
+" enable file type detection and language-dependent indenting
+"filetype plugin indent on
+
+" default indenting
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set smartindent
+
+" language-dependent indenting
 autocmd FileType sh,perl,awk,python set tabstop=4|set shiftwidth=4|set expandtab|set smartindent
 autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set smartindent
 autocmd FileType c,h,cpp set tabstop=8|set shiftwidth=8|set noexpandtab|set cindent
