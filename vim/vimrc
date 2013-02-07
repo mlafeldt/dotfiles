@@ -82,6 +82,11 @@ if has('gui_running')
   vmap <C-S-C> "+y
 endif
 
+" open files in directory of current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
 " tweak command-t settings
 " https://wincent.com/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux
 set ttimeoutlen=50
@@ -90,8 +95,12 @@ if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
 endif
-nnoremap <silent> <C-p> :CommandT<cr>
-nnoremap <silent> <C-b> :CommandTBuffer<cr>
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+map <leader>b :CommandTBuffer<cr>
+
+" toggle files
+nnoremap <leader><leader> <c-^>
 
 " language-dependent indenting
 autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
