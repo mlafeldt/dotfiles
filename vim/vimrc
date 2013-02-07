@@ -82,18 +82,8 @@ if has('gui_running')
   vmap <C-S-C> "+y
 endif
 
-" enable file type detection and language-dependent indenting
-"filetype plugin indent on
-
-" default indenting
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set smartindent
-
 " language-dependent indenting
+autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType sh,perl,awk,python set tabstop=4|set shiftwidth=4|set expandtab|set smartindent
 autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set smartindent
 autocmd FileType c,h,cpp set tabstop=8|set shiftwidth=8|set noexpandtab|set cindent
