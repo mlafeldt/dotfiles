@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# Convert straight Markdown to Jekyll post format
+# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+
+MATCH_TITLE = %r{^# (.+)$}
+
+filename = ARGV.first
+markdown = File.read(filename)
+title = markdown.match(MATCH_TITLE)[1]
+
+output = %Q(---
+layout: post
+title: "#{title}"
+date: #{Time.now}
+comments: true
+categories:
+---)
+
+output << markdown.gsub(MATCH_TITLE, '')
+puts output
+
+#output.lines.each do |line|
+#  if (m = line.match(/^\. (.+)$/))
+#    puts File.read(File.join(File.dirname(filename), 'snippets', m[1]))
+#  else
+#    puts line
+#  end
+#end
