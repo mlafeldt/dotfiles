@@ -42,3 +42,7 @@
 	textconv = gem spec
 [credential]
 	helper = cache --timeout=3600
+[include]
+	path = .gitconfig.local
+
+# vim: set ts=4 sw=4 noet:
