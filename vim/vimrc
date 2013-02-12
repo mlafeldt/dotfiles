@@ -15,6 +15,8 @@ set hidden
 set history=10000
 " always show status line
 set laststatus=2
+" custom status line
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 " when a bracket is inserted, briefly jump to the matching one
 set showmatch
 " incremental search
