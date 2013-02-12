@@ -55,8 +55,6 @@ syntax on
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
 set wildmenu
-" set leader key to comma
-let mapleader=","
 " show line and column number of the cursor position
 set ruler
 " highlight screen column
@@ -91,8 +89,10 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set leader key to comma
+let mapleader=","
+" make ctrl+c and ctrl+v copy and paste
 if has('gui_running')
-  " make ctrl+c and ctrl+v copy and paste
   nmap <C-S-V> "+gP
   imap <C-S-V> <ESC><C-S-V>i
   vmap <C-S-C> "+y
@@ -103,6 +103,8 @@ map <leader>e :edit %%
 map <leader>v :view %%
 " toggle files
 nnoremap <leader><leader> <c-^>
+" insert hash rocket with ctrl+l
+imap <c-l> <space>=><space>
 " show cword matches and offer jump
 map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
 " show number of cword occurrences
