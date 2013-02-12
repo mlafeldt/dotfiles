@@ -56,4 +56,4 @@ if command -v git >/dev/null; then
 fi
 
 # source local settings if present
-test -f "$HOME/.bashrc.local" && source "$HOME/.bashrc.local"
+[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
