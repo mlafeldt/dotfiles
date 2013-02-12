@@ -101,6 +101,15 @@ map <leader>e :edit %%
 map <leader>v :view %%
 " toggle files
 nnoremap <leader><leader> <c-^>
+" show cword matches and offer jump
+map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
+" show number of cword occurrences
+map ,L :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
+" disable arrow keys
+"map <Up> <NOP>
+"map <Down> <NOP>
+"map <Left> <NOP>
+"map <Right> <NOP>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COMMAND-T PLUGIN
