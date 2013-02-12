@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
-# Convert straight Markdown to Jekyll post format
+# Convert Markdown to Jekyll post format
+# Powered by https://github.com/russolsen/md_inc
 # Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+
+require 'md_inc'
 
 MATCH_TITLE = %r{^# (.+)$}
 
@@ -8,7 +11,7 @@ filename = ARGV.first
 markdown = File.read(filename)
 title = markdown.match(MATCH_TITLE)[1]
 
-output = %Q(---
+jekyll_header = %Q(---
 layout: post
 title: "#{title}"
 date: #{Time.now}
@@ -16,13 +19,7 @@ comments: true
 categories:
 ---)
 
-output << markdown.gsub(MATCH_TITLE, '')
-puts output
+jekyll_body = markdown.gsub(MATCH_TITLE, '')
 
-#output.lines.each do |line|
-#  if (m = line.match(/^\. (.+)$/))
-#    puts File.read(File.join(File.dirname(filename), 'snippets', m[1]))
-#  else
-#    puts line
-#  end
-#end
+tp = MdInc::TextProcessor.new
+puts tp.process(jekyll_header + jekyll_body)
