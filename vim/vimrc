@@ -61,7 +61,11 @@ let mapleader=","
 set ruler
 " highlight screen column
 set colorcolumn=81
-" set solarized background
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLORS AND FONTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set background theme
 set background=dark
 
 if has('unix')
@@ -71,22 +75,26 @@ if has('unix')
     colorscheme solarized
     set guifont=SourceCodePro-Regular:h12
   else
+    " Linux-specific options
     set guifont=SourceCodePro
   endif
 endif
 
 if has('gui_running')
   colorscheme solarized
-
   " hide toolbar
-  :set guioptions-=T
+  set guioptions-=T
+endif
 
-  " make ctrl+c and ctrl+v to copy and paste
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('gui_running')
+  " make ctrl+c and ctrl+v copy and paste
   nmap <C-S-V> "+gP
   imap <C-S-V> <ESC><C-S-V>i
   vmap <C-S-C> "+y
 endif
-
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -126,3 +134,10 @@ augroup vimrcEx
   autocmd FileType make set tabstop=8|set shiftwidth=8|set noexpandtab
   autocmd FileType asm set tabstop=8|set shiftwidth=8|set noexpandtab
 augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ADD LOCAL SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("$HOME/.vimrc.local"))
+  source $HOME/.vimrc.local
+endif
