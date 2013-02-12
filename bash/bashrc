@@ -54,3 +54,6 @@ if command -v git >/dev/null; then
     GIT_PS1='[\W$(__git_ps1 " (%s)")]\$ '
     PS1="$GIT_PS1"
 fi
+
+# source local settings if present
+test -f "$HOME/.bashrc.local" && source "$HOME/.bashrc.local"
