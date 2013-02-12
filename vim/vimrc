@@ -61,6 +61,8 @@ let mapleader=","
 set ruler
 " highlight screen column
 set colorcolumn=81
+" better list strings
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS AND FONTS
