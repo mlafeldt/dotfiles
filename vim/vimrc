@@ -7,6 +7,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " enter vim mode
 set nocompatible
 " allow unsaved background buffers and remember marks/undo for them
@@ -67,6 +68,7 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS AND FONTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " set background theme
 set background=dark
 
@@ -91,26 +93,34 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " set leader key to comma
 let mapleader=","
+
 " make ctrl+c and ctrl+v copy and paste
 if has('gui_running')
   nmap <C-S-V> "+gP
   imap <C-S-V> <ESC><C-S-V>i
   vmap <C-S-C> "+y
 endif
+
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
+
 " toggle files
 nnoremap <leader><leader> <c-^>
+
 " insert hash rocket with ctrl+l
 imap <c-l> <space>=><space>
+
 " show cword matches and offer jump
 map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
 " show number of cword occurrences
 map ,L :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
@@ -122,6 +132,7 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+
 " disable arrow keys
 "map <Up> <NOP>
 "map <Down> <NOP>
@@ -132,12 +143,15 @@ inoremap <s-tab> <c-n>
 " COMMAND-T PLUGIN
 " https://wincent.com/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set ttimeoutlen=50
+
 if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
   let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
 endif
+
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>b :CommandTBuffer<cr>
@@ -145,6 +159,7 @@ map <leader>b :CommandTBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 augroup vimrcEx
   " clear all autocmds in this group
   autocmd!
@@ -167,6 +182,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ADD LOCAL SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if filereadable(expand("$HOME/.vimrc.local"))
   source $HOME/.vimrc.local
 endif
