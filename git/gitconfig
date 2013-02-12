@@ -5,9 +5,9 @@
 	ui = true
 [alias]
 	aa = add --all
+	bl = branch -vva
 	bp = buildpackage
 	br = branch
-	bl = branch -vva
 	churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 	ci = commit -v
 	co = checkout
@@ -20,9 +20,9 @@
 	last = log -1 HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = log --graph --decorate --oneline
-	pi = cherry-pick
 	pa = !git push && git push --tags
 	pd = !git push -n && git push -n --tags
+	pi = cherry-pick
 	rh = reset --hard
 	st = status -sb
 	unstage = reset HEAD --
