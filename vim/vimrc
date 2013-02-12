@@ -145,6 +145,16 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
+" promote variable to rspec let
+function! PromoteToLet()
+  normal! dd
+  normal! P
+  .s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  normal ==
+endfunction
+command! PromoteToLet :call PromoteToLet()
+map <leader>p :PromoteToLet<cr>
+
 " disable arrow keys
 "map <Up> <NOP>
 "map <Down> <NOP>
