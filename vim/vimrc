@@ -1,7 +1,12 @@
-" Based on Gary Bernhardt's .vimrc file:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Most of this is based on Gary Bernhardt's .vimrc file:
 " https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 " vim: set ts=2 sts=2 sw=2 expandtab:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BASIC EDITING CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " enter vim mode
 set nocompatible
 " allow unsaved background buffers and remember marks/undo for them
@@ -86,9 +91,13 @@ endif
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
+" toggle files
+nnoremap <leader><leader> <c-^>
 
-" tweak command-t settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COMMAND-T PLUGIN
 " https://wincent.com/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ttimeoutlen=50
 if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
@@ -99,13 +108,21 @@ map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>b :CommandTBuffer<cr>
 
-" toggle files
-nnoremap <leader><leader> <c-^>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM AUTOCMDS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup vimrcEx
+  " clear all autocmds in this group
+  autocmd!
 
-" language-dependent indenting
-autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType sh,perl,awk,python set tabstop=4|set shiftwidth=4|set expandtab|set smartindent
-autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set smartindent
-autocmd FileType c,h,cpp set tabstop=8|set shiftwidth=8|set noexpandtab|set cindent
-autocmd FileType make set tabstop=8|set shiftwidth=8|set noexpandtab
-autocmd FileType asm set tabstop=8|set shiftwidth=8|set noexpandtab
+  " jump to last cursor position
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+  " language-dependent indenting
+  autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
+  autocmd FileType sh,perl,awk,python set tabstop=4|set shiftwidth=4|set expandtab|set smartindent
+  autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set smartindent
+  autocmd FileType c,h,cpp set tabstop=8|set shiftwidth=8|set noexpandtab|set cindent
+  autocmd FileType make set tabstop=8|set shiftwidth=8|set noexpandtab
+  autocmd FileType asm set tabstop=8|set shiftwidth=8|set noexpandtab
+augroup END
