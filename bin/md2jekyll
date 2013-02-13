@@ -9,6 +9,32 @@ rescue LoadError
   abort 'error: you have to install the md_inc gem'
 end
 
+# Add Octopress commands to MdInc
+module MdInc
+  module Commands
+    class << self
+      def octo_tag(name, attrs=[], lines=[])
+        output = []
+        output << "{% #{([name] + attrs).join(" ")} %}"
+        unless lines.empty?
+          output += lines
+          output << "{% end#{name} %}"
+        end
+        output
+      end
+
+      %w(blockquote codeblock pullquote).each do |meth|
+        define_method(meth) { |path, *args| octo_tag(meth, args, inc(path)) }
+      end
+
+      %w(gist img include_code jsfiddle render_partial video).each do |meth|
+        define_method(meth) { |*args| octo_tag(meth, args) }
+      end
+    end
+  end
+end
+
+
 MATCH_TITLE = %r{^# (.+)$}
 
 filename = ARGV.first
