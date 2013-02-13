@@ -3,7 +3,11 @@
 # Powered by https://github.com/russolsen/md_inc
 # Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
 
-require 'md_inc'
+begin
+  require 'md_inc'
+rescue LoadError
+  abort 'error: you have to install the md_inc gem'
+end
 
 MATCH_TITLE = %r{^# (.+)$}
 
