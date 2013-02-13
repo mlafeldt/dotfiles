@@ -9,7 +9,7 @@ rescue LoadError
   abort 'error: you have to install the md_inc gem'
 end
 
-# Add Octopress commands to MdInc
+# Add Octopress commands to MdInc.
 module MdInc
   module Commands
     class << self
@@ -62,22 +62,31 @@ module MdInc
   end
 end
 
+module Md2Jekyll
+  class Application
+    MATCH_TITLE = %r{^# (.+)$}
 
-MATCH_TITLE = %r{^# (.+)$}
+    def initialize(argv)
+      @filename = argv.first
+    end
 
-filename = ARGV.first
-markdown = File.read(filename)
-title = markdown.match(MATCH_TITLE)[1]
-
-jekyll_header = %Q(---
+    def run
+      markdown = File.read(@filename)
+      title = markdown.match(MATCH_TITLE)[1]
+      jekyll_body = markdown.gsub(MATCH_TITLE, '')
+      jekyll_header = %Q(---
 layout: post
 title: "#{title}"
 date: #{Time.now}
 comments: true
 categories:
 ---)
+      tp = MdInc::TextProcessor.new
+      puts tp.process(jekyll_header + jekyll_body)
+    end
+  end
+end
 
-jekyll_body = markdown.gsub(MATCH_TITLE, '')
-
-tp = MdInc::TextProcessor.new
-puts tp.process(jekyll_header + jekyll_body)
+if $0 == __FILE__
+  Md2Jekyll::Application.new(ARGV).run
+end
