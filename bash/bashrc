@@ -44,6 +44,9 @@ if [ -d "$HOME/.rbenv" ]; then
     eval "$(rbenv init -)"
 fi
 
+# pythonbrew setup
+[ -s "$HOME/.pythonbrew/etc/bashrc" ] && . "$HOME/.pythonbrew/etc/bashrc"
+
 # set prompt
 PS1="[\W]\$ "
 
