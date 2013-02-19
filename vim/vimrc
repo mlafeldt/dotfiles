@@ -189,8 +189,8 @@ augroup vimrcEx
   " jump to last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-  " tweak markdown detection
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
+  " disable crappy Markdown syntax highlighting
+  autocmd! FileType markdown setlocal syntax=off
 
   " language-dependent indenting
   autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
