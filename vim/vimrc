@@ -190,6 +190,7 @@ augroup vimrcEx
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
   " disable crappy Markdown syntax highlighting
+  autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd! FileType markdown setlocal syntax=off
 
   " language-dependent indenting
