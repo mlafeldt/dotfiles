@@ -8,7 +8,7 @@
 	bl = branch -vva
 	bp = buildpackage
 	br = branch
-	changelog = "!f() { t=${1:-`git describe --tags --abbrev=0`}; echo Changes since $t; git shortlog --no-merges $t.. | sed -En 's/^ +/* /gp'; }; f"
+	changelog = "!f() { r=${1:-`git describe --tags --abbrev=0`..HEAD}; echo Changelog for $r; git log --reverse --no-merges --format='* %s' $r; }; f"
 	churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 	ci = commit -v
 	co = checkout
