@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+USER=$1
+shift
+PARAMS=${@:-"?per_page=100"}
+
+curl -Ls "https://api.github.com/users/$USER/repos$PARAMS" |
+ruby -e "require 'json'; JSON.parse(STDIN.read).each \
+    {|r| puts '* [%s](%s) - %s' % [r['name'], r['url'], r['description']]}" |
+sort
