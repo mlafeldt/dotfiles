@@ -11,9 +11,16 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# tree
 alias t='tree'
 alias ta='tree -a'
 
+# hub
 command -v hub >/dev/null && alias git='hub'
+
+# bundler
 alias bx='bundle exec'
+alias bi='bundle install'
+
+# vagrant
 alias vag='vagrant'
