@@ -10,6 +10,19 @@
 
 " enter vim mode
 set nocompatible
+
+" set up Vundle (https://github.com/gmarik/vundle)
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" list of plugins installed by Vundle
+Bundle 'gmarik/vundle'
+Bundle 'wincent/Command-T'
+
+" end of Vundle setup
+filetype plugin indent on
+
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
 " remember more commands and searches
