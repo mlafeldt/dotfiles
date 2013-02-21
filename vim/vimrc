@@ -19,6 +19,7 @@ call vundle#rc()
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
 Bundle 'wincent/Command-T'
+Bundle 'tpope/vim-fugitive'
 
 " end of Vundle setup
 filetype plugin indent on
