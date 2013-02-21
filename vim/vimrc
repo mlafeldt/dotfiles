@@ -18,6 +18,7 @@ call vundle#rc()
 
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/neocomplcache'
