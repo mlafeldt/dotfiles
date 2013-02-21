@@ -1,12 +1,14 @@
 #!/bin/sh
+# List all repos of a GitHub user in Markdown format
+# Usage: gh-repos <user> [<api params>]
+# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
 
 set -e
 
-USER=$1
+GH_USER=$1
 shift
-PARAMS=${@:-"?per_page=100"}
+GH_PARAMS=${2:-"?per_page=100"}
 
-curl -Ls "https://api.github.com/users/$USER/repos$PARAMS" |
-ruby -e "require 'json'; JSON.parse(STDIN.read).each \
-    {|r| puts '* [%s](%s) - %s' % [r['name'], r['url'], r['description']]}" |
+curl -Ls "https://api.github.com/users/$GH_USER/repos$GH_PARAMS" |
+ruby -rjson -e "JSON.parse(STDIN.read).each {|r| puts '* [%s](%s) - %s' % [r['name'], r['url'], r['description']]}" |
 sort
