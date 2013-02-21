@@ -35,6 +35,8 @@
 	decorate = true
 [push]
 	default = simple
+[pull]
+	rebase = true
 [merge]
 	tool = vimdiff
 [rebase]
