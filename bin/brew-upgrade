@@ -5,9 +5,11 @@
 
 set -e -x
 
-# Switch to system's Ruby
-trap "rbenv global $(rbenv global)" EXIT
-rbenv global system
+if command -v rbenv >/dev/null 2>/dev/null; then
+    # Switch to system's Ruby
+    trap "rbenv global $(rbenv global)" EXIT
+    rbenv global system
+fi
 
 # Do the upgrade
 brew update -v
