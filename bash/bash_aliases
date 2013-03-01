@@ -24,3 +24,5 @@ alias bi='bundle install'
 
 # vagrant
 alias vag='vagrant'
+
+:

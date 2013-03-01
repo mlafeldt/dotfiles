@@ -60,3 +60,5 @@ fi
 
 # source local settings if present
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
+
+:
