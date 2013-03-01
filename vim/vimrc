@@ -92,6 +92,7 @@ if has('unix')
   let s:uname = system('uname')
   if s:uname == "Darwin\n"
     " OSX-specific options
+    let g:solarized_termtrans = 1
     colorscheme solarized
     set guifont=SourceCodePro-Regular:h12
   else
