@@ -29,9 +29,6 @@ export EDITOR=vim
 
 export UBUNTU_MENUPROXY=
 
-# include alias definitions
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
 # enable bash completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 if command -v brew >/dev/null; then
@@ -57,6 +54,9 @@ if command -v git >/dev/null; then
     GIT_PS1='[\W$(__git_ps1 " (%s)")]\$ '
     PS1="$GIT_PS1"
 fi
+
+# include alias definitions
+[ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
 # source local settings if present
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
