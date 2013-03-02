@@ -11,10 +11,10 @@
 	changelog = "!f() { r=${1:-`git describe --tags --abbrev=0`..HEAD}; echo Changelog for $r; git log --reverse --no-merges --format='* %s' $r; }; f"
 	churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 	ci = commit -v
+	clobber = clean -ffdx
 	co = checkout
 	di = diff
 	dic = diff --cached
-	distclean = clean -ffdx
 	fe = fetch --all --prune
 	fixup = commit --amend -C HEAD
 	human = name-rev --name-only --refs=refs/heads/*
