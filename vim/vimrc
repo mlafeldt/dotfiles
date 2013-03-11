@@ -232,7 +232,9 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:gitgutter_enabled = 1
-highlight clear SignColumn
+let g:gitgutter_highlight_lines = 0
+" set background color of sign column to Solarized background color
+highlight SignColumn ctermbg=8 guibg=#002b36
 map <leader>h :GitGutterNextHunk<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
