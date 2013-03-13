@@ -1,5 +1,5 @@
 #!/bin/sh
-# xcrun replacement required to use the OSX Command Line Tools for Xcode.
+# xcrun replacement required to use the OSX Command Line Tools for Xcode w/o Xcode.
 #
 # Without Xcode, xcode-select and friends are borked. This hack ensures that,
 # for example, `xcrun gcc` simply runs `/usr/bin/gcc` without any path magic.
