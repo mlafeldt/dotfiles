@@ -5,10 +5,10 @@
 
 set -e
 
-install_configs() {
+install_dotfiles() {
     INSTALL_DIRS="bash git ruby vim"
 
-    echo "+ Installing config files"
+    echo "+ Installing dotfiles"
 
     for dir in $INSTALL_DIRS; do
         for file in "$dir"/* ; do
@@ -19,10 +19,10 @@ install_configs() {
     done
 }
 
-install_vundle() {
+install_vim_plugins() {
     VUNDLE_BUNDLE="$HOME/.vim/bundle/vundle"
 
-    echo "+ Installing Vundle for Vim"
+    echo "+ Installing Vim plugins"
 
     test -d "$VUNDLE_BUNDLE" || {
         mkdir -p "$VUNDLE_BUNDLE"
@@ -41,8 +41,8 @@ install_tools() {
     cp -v bin/* "$BIN_DIR"
 }
 
-install_configs
-install_vundle
+install_dotfiles
+install_vim_plugins
 install_tools
 
 :
