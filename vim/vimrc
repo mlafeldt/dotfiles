@@ -23,6 +23,7 @@ Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/neocomplcache'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'rodjek/vim-puppet'
 
 " end of Vundle setup
 filetype plugin indent on
