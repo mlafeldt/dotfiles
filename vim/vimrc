@@ -134,12 +134,6 @@ nnoremap <leader><leader> <c-^>
 " insert hash rocket with ctrl+l
 imap <c-l> <space>=><space>
 
-" show cword matches and offer jump
-map ,l [I:let nr = input("select: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-" show number of cword occurrences
-map ,L :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
-
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
