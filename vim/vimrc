@@ -134,6 +134,9 @@ nnoremap <leader><leader> <c-^>
 " insert hash rocket with ctrl+l
 imap <c-l> <space>=><space>
 
+" spell-check current file
+map <leader>s :w\|:!aspell -c %<cr>
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
