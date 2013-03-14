@@ -21,6 +21,7 @@ command -v hub >/dev/null && alias git='hub'
 # bundler
 alias bx='bundle exec'
 alias bi='bundle install'
+alias bu='bundle update'
 
 # vagrant
 alias vag='vagrant'
