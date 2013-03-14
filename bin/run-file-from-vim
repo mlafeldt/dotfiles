@@ -1,0 +1,32 @@
+#!/bin/sh
+# Helper script to run the current file from Vim
+# Usage: map <leader>r :!run-file-from-vim %<cr>
+# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+
+set -e
+
+file="$1"
+
+# Simple run file if executable
+test -x "$file" && exec "./$file"
+
+# Check if we need Bundler
+bundler=
+test -f Gemfile && bundler="bundle exec"
+
+# Determine runner based on filename
+runner=
+case "$(basename $file)" in
+    *.py)      runner="python" ;;
+    *_spec.rb) runner="$bundler rspec" ;;
+    *.rb)      runner="ruby" ;;
+    *.sh)      runner="bash" ;;
+    Gemfile)   runner="bundle install --gemfile" ;;
+    Makefile)  runner="make -f" ;;
+    Rakefile)  runner="$bundler rake -f" ;;
+    *) echo >&2 "error: don't know how to run $file"; exit 1 ;;
+esac
+
+# Execute file with runner
+set -x
+exec $runner "$file"

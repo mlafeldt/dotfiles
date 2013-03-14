@@ -137,6 +137,9 @@ imap <c-l> <space>=><space>
 " spell-check current file
 map <leader>s :!aspell -c %<cr>
 
+" run current file
+map <leader>r :!run-file-from-vim %<cr>
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
