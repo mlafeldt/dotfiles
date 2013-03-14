@@ -135,7 +135,7 @@ nnoremap <leader><leader> <c-^>
 imap <c-l> <space>=><space>
 
 " spell-check current file
-map <leader>s :w\|:!aspell -c %<cr>
+map <leader>s :!aspell -c %<cr>
 
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
