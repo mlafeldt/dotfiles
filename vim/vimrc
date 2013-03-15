@@ -139,18 +139,6 @@ imap <c-l> <space>=><space>
 " spell-check current file
 map <leader>s :!aspell -c %<cr>
 
-" multipurpose tab key: indent at the beginning of a line; else, do completion
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
 " rename current file
 function! RenameFile()
   let old_name = expand('%')
