@@ -5,25 +5,24 @@
 
 set -e
 
-install_dotfiles() {
-    INSTALL_DIRS="bash git ruby vim"
+DOTFILES="bash git ruby vim"
+BINDIR="$HOME/bin"
 
+install_dotfiles() {
     echo "+ Installing dotfiles"
 
-    for dir in $INSTALL_DIRS; do
+    for dir in $DOTFILES; do
         for file in "$dir"/* ; do
             target="$HOME/.$(basename $file)"
-            rm -f "$target"
-            cp -v "$file" "$target"
+            cp -av "$file" "$target"
         done
     done
 }
 
 install_vim_plugins() {
-    VUNDLE_BUNDLE="$HOME/.vim/bundle/vundle"
-
     echo "+ Installing Vim plugins"
 
+    VUNDLE_BUNDLE="$HOME/.vim/bundle/vundle"
     test -d "$VUNDLE_BUNDLE" || {
         mkdir -p "$VUNDLE_BUNDLE"
         git clone https://github.com/gmarik/vundle.git "$VUNDLE_BUNDLE"
@@ -33,12 +32,9 @@ install_vim_plugins() {
 }
 
 install_tools() {
-    BIN_DIR="$HOME/bin"
-
-    echo "+ Installing tools to $BIN_DIR"
-
-    mkdir -p "$BIN_DIR"
-    cp -v bin/* "$BIN_DIR"
+    echo "+ Installing tools to $BINDIR"
+    mkdir -p "$BINDIR"
+    cp -av bin/* "$BINDIR"
 }
 
 install_dotfiles
