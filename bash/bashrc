@@ -29,16 +29,18 @@ export EDITOR=vim
 
 export UBUNTU_MENUPROXY=
 
+export HOMEBREW_PREFIX=$(brew --prefix)
+
 # enable bash completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 if command -v brew >/dev/null; then
     [ -f "$(brew --prefix)/etc/bash_completion" ] && . "$(brew --prefix)/etc/bash_completion"
 fi
 
-# rbenv setup
-if [ -d "$HOME/.rbenv" ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+# chruby setup
+if [ -d "$HOMEBREW_PREFIX/opt/chruby" ]; then
+    . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
+    . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
 fi
 
 # pythonbrew setup
