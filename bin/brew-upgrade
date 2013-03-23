@@ -3,14 +3,15 @@
 # Usage: brew-upgrade
 # Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
 
-set -e -x
+set -e
 
-if command -v rbenv >/dev/null 2>/dev/null; then
+if [ -f /usr/local/share/chruby/chruby.sh ]; then
     # Switch to system's Ruby
-    trap "rbenv global $(rbenv global)" EXIT
-    rbenv global system
+    . /usr/local/share/chruby/chruby.sh
+    chruby system
+    ruby --version
 fi
 
 # Do the upgrade
-brew update -v
-brew upgrade -v
+brew update
+brew upgrade
