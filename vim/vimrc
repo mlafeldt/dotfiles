@@ -26,6 +26,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'rodjek/vim-puppet'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-bundler'
+Bundle 'jnwhiteh/vim-golang'
 
 " end of Vundle setup
 filetype plugin indent on
