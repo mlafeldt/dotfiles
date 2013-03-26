@@ -41,6 +41,8 @@
 	tool = vimdiff
 [rebase]
 	autosquash = true
+[rerere]
+	enabled = true
 [diff]
 	renames = copies
 [diff "gem"]
