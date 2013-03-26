@@ -15,6 +15,7 @@ fuse4x-kext
 gettext
 git
 glib
+go
 hub
 libffi
 libtool
