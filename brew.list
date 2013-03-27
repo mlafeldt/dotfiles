@@ -6,7 +6,6 @@ aws-cfn-tools
 aws-elasticbeanstalk
 bash
 bash-completion
-boost
 chruby
 dash
 ec2-api-tools
@@ -27,7 +26,6 @@ readline
 ruby-build
 sshfs
 tcl
-thrift
 tree
 vim
 watch
