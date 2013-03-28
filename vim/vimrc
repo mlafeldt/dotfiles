@@ -242,11 +242,12 @@ augroup vimrcEx
   autocmd! FileType markdown setlocal syntax=off
 
   " language-dependent indenting
-  autocmd FileType sh,perl,awk,python set tabstop=4|set shiftwidth=4|set expandtab|set smartindent
-  autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab|set smartindent
-  autocmd FileType c,h,cpp set tabstop=8|set shiftwidth=8|set noexpandtab|set cindent
-  autocmd FileType make set tabstop=8|set shiftwidth=8|set noexpandtab
-  autocmd FileType asm set tabstop=8|set shiftwidth=8|set noexpandtab
+  autocmd FileType text,markdown set ts=4|set sw=4|set et|set si
+  autocmd FileType sh,perl,awk,python set ts=4|set sw=4|set et|set si
+  autocmd FileType ruby set ts=2|set sw=2|set et|set si
+  autocmd FileType c,h,cpp set ts=8|set sw=8|set noet|set cindent
+  autocmd FileType make set ts=8|set sw=8|set noet
+  autocmd FileType asm set ts=8|set sw=8|set noet
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
