@@ -18,14 +18,14 @@ call vundle#rc()
 
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'wincent/Command-T'
-Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'rodjek/vim-puppet'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-bundler'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'rodjek/vim-puppet'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rake'
+Bundle 'wincent/Command-T'
 
 " end of Vundle setup
 filetype plugin indent on
