@@ -166,10 +166,14 @@ map <leader>p :PromoteToLet<cr>
 imap <c-l> <space>=><space>
 
 " disable arrow keys
-"map <Up> <NOP>
-"map <Down> <NOP>
-"map <Left> <NOP>
-"map <Right> <NOP>
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
+
+" move by screen line
+nnoremap j gj
+nnoremap k gk
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCHING & MOVING
