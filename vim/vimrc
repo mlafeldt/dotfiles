@@ -128,6 +128,9 @@ nnoremap <leader><leader> <c-^>
 " spell-check current file
 map <leader>S :!aspell --check --dont-backup %<cr>
 
+" re-hardwrap paragraphs of text
+nnoremap <leader>q gqip
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
