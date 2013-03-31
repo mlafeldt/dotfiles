@@ -38,14 +38,6 @@ set history=10000
 set laststatus=2
 " custom status line
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-" when a bracket is inserted, briefly jump to the matching one
-set showmatch
-" incremental search
-set incsearch
-" highlight previous search matches
-"set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
 " highlight current line
 set cursorline
 " height of command line
@@ -178,6 +170,23 @@ imap <c-l> <space>=><space>
 "map <Down> <NOP>
 "map <Left> <NOP>
 "map <Right> <NOP>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SEARCHING & MOVING
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :nohlsearch<cr>
+nnoremap <tab> %
+vnoremap <tab> %
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COMMAND-T PLUGIN
