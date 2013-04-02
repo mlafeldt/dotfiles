@@ -132,6 +132,10 @@ map <leader>S :!aspell --check --dont-backup %<cr>
 " re-hardwrap paragraphs of text
 nnoremap <leader>q gqip
 
+" create markdown h1 and h2 headings
+nnoremap <leader>1 yypVr=
+nnoremap <leader>2 yypVr-
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
