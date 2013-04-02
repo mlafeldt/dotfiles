@@ -9,12 +9,11 @@ bash-completion
 chruby
 dash
 ec2-api-tools
-fuse4x
-fuse4x-kext
 gettext
 git
 glib
 go
+htop-osx
 hub
 libffi
 libtool
@@ -24,8 +23,6 @@ mercurial
 pkg-config
 readline
 ruby-build
-sshfs
-tcl
 tree
 vim
 watch
