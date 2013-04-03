@@ -24,6 +24,6 @@ alias bi='bundle install'
 alias bu='bundle update'
 
 # vagrant
-alias vag='vagrant'
+alias vag='/usr/bin/vagrant'
 
 :
