@@ -128,7 +128,11 @@ map <leader>v :view %%
 nnoremap <leader><leader> <c-^>
 
 " spell-check current file
-map <leader>S :!aspell --check --dont-backup %<cr>
+nnoremap <leader>S :!aspell --check --dont-backup %<cr>
+
+" git diff for current file and for all files
+nnoremap <leader>d :!git diff %<cr>
+nnoremap <leader>D :!git diff<cr>
 
 " re-hardwrap paragraphs of text
 nnoremap <leader>q gqip
@@ -184,10 +188,8 @@ imap <c-l> <space>=><space>
 nnoremap j gj
 nnoremap k gk
 
-" open new vertical split and switch over to it
+" open new vertical/horizontal split and switch over to it
 nnoremap <leader>w <c-w>v<c-w>l
-
-" open new horizontal split and switch over to it
 nnoremap <leader>W <c-w>s<c-w>l
 
 " move around splits more easily
