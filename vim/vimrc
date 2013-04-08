@@ -135,7 +135,7 @@ nnoremap <leader>d :!git diff %<cr>
 nnoremap <leader>D :!git diff<cr>
 
 " re-hardwrap paragraphs of text
-nnoremap <leader>q gqip
+nnoremap <leader>q gwip
 
 " create markdown h1 and h2 headings
 nnoremap <leader>1 yypVr=
