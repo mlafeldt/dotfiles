@@ -45,6 +45,7 @@
 	enabled = true
 [diff]
 	renames = copies
+	algorithm = patience
 [diff "gem"]
 	textconv = gem spec
 [credential]
