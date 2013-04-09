@@ -25,6 +25,7 @@ Bundle 'rodjek/vim-puppet'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rake'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'wincent/Command-T'
@@ -252,10 +253,6 @@ augroup vimrcEx
 
   " jump to last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-  " disable crappy Markdown syntax highlighting
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
-  autocmd! FileType markdown setlocal syntax=off
 
   " language-dependent indenting
   autocmd FileType text,markdown set ts=4|set sw=4|set et|set si|set tw=80
