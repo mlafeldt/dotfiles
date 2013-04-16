@@ -191,7 +191,7 @@ nnoremap k gk
 
 " open new vertical/horizontal split and switch over to it
 nnoremap <leader>w <c-w>v<c-w>l
-nnoremap <leader>W <c-w>s<c-w>l
+nnoremap <leader>W <c-w>s<c-w>j
 
 " move around splits more easily
 nnoremap <c-h> <c-w>h
