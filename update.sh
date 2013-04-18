@@ -10,7 +10,7 @@ update_vim_plugins() {
     vim +BundleClean +qall
 
     echo "+ Updating Vim plugins"
-    vim +BundleUpdate +qall
+    vim +BundleUpdate
 }
 
 update_homebrew
