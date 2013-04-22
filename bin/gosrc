@@ -1,0 +1,7 @@
+#!/bin/sh
+# godoc wrapper that shows the source code for a Go package (entity) in Vim
+# Usage: gosrc package [name]
+# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+set -e
+output=$(godoc -src "$@")
+test -n "$output" && echo "$output" | view "+set ft=go" -
