@@ -131,9 +131,9 @@ nnoremap <leader><leader> <c-^>
 " spell-check current file
 nnoremap <leader>S :!aspell --check --dont-backup %<cr>
 
-" git diff for current file and for all files
+" git diff for current file (unstaged and staged)
 nnoremap <leader>d :!git diff %<cr>
-nnoremap <leader>D :!git diff<cr>
+nnoremap <leader>D :!git diff --cached %<cr>
 
 " re-hardwrap paragraphs of text
 nnoremap <leader>q gwip
