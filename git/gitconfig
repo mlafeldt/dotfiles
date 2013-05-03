@@ -24,6 +24,7 @@
 	pa = !git push && git push --tags
 	pd = !git push -n && git push -n --tags
 	pi = cherry-pick
+	pr = pull-request
 	rh = reset --hard
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -e $1 -i \"\"' -
 	st = status -sb
