@@ -1,0 +1,37 @@
+#!/bin/sh
+# Update system software
+# Usage: update-system
+# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+
+enable_system_ruby() {
+    if [ -f /usr/local/share/chruby/chruby.sh ]; then
+        echo "+ Switching to system's Ruby"
+        . /usr/local/share/chruby/chruby.sh
+        chruby system
+        ruby --version
+    fi
+}
+
+update_homebrew() {
+    if command -V brew >/dev/null 2>/dev/null; then
+        echo "+ Updating homebrew"
+        brew update
+        brew upgrade
+        brew cleanup
+    fi
+}
+
+update_vim_plugins() {
+    if command -V vim >/dev/null 2>/dev/null; then
+        echo "+ Cleaning up Vim plugins"
+        vim +BundleClean +qall
+        echo "+ Updating Vim plugins"
+        vim +BundleUpdate
+    fi
+}
+
+enable_system_ruby
+update_homebrew
+update_vim_plugins
+
+:
