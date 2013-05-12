@@ -140,6 +140,9 @@ nnoremap <leader>q gwip
 nnoremap <leader>1 yypVr=
 nnoremap <leader>2 yypVr-
 
+" save file with sudo
+cmap w!! %!sudo tee > /dev/null %
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
