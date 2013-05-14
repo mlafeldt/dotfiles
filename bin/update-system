@@ -26,9 +26,9 @@ update_homebrew() {
 update_vim_plugins() {
     if command -V vim >/dev/null 2>/dev/null; then
         echo "+ Cleaning up Vim plugins"
-        vim +BundleClean +qall
+        vim +BundleClean +qa
         echo "+ Updating Vim plugins"
-        vim +BundleUpdate
+        vim +BundleUpdate +qa
     fi
 }
 
