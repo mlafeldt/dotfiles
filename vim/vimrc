@@ -246,6 +246,18 @@ highlight SignColumn ctermbg=8 guibg=#002b36
 map <leader>h :GitGutterNextHunk<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TABULAR
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <leader>a= :Tabularize /=<cr>
+vmap <leader>a= :Tabularize /=<cr>
+nmap <leader>a: :Tabularize /:\zs<cr>
+vmap <leader>a: :Tabularize /:\zs<cr>
+nmap <leader>a> :Tabularize /=><cr>
+vmap <leader>a> :Tabularize /=><cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
