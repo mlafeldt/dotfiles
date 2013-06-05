@@ -16,6 +16,8 @@
 	di = diff
 	dic = diff --cached
 	fe = fetch --all --prune
+	find-ref = "!f() { git log --grep=\"^git-svn-id:.*@$1\" --format='%H'; }; f"
+	find-rev = "!f() { git svn find-rev $1; }; f"
 	fixup = commit --amend -C HEAD
 	human = name-rev --name-only --refs=refs/heads/*
 	last = log -1 HEAD
