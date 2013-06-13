@@ -235,6 +235,8 @@ map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>b :CommandTBuffer<cr>
 
+let g:CommandTMaxHeight = 20
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-GITCUTTER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
