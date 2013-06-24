@@ -14,6 +14,14 @@ enable_system_ruby() {
     fi
 }
 
+enable_system_python() {
+    if command -V pythonbrew >/dev/null 2>/dev/null; then
+        echo "+ Switching to system's Python"
+        pythonbrew off
+        python --version
+    fi
+}
+
 update_homebrew() {
     if command -V brew >/dev/null 2>/dev/null; then
         echo "+ Updating homebrew"
@@ -33,6 +41,7 @@ update_vim_plugins() {
 }
 
 enable_system_ruby
+enable_system_python
 update_homebrew
 update_vim_plugins
 
