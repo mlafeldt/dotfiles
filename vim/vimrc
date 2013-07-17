@@ -144,6 +144,9 @@ nnoremap <leader>2 yypVr-
 " save file with sudo
 cmap w!! %!sudo tee > /dev/null %
 
+" run current file
+map <leader>r :!run-file-from-vim %<cr>
+
 " multipurpose tab key: indent at the beginning of a line; else, do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
