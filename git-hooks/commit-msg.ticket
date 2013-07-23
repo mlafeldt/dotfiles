@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Git hook to check the commit log message for presence
+# of a ticket number.
+#
+# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+#
+
+msg_file="$1"
+
+regex="PRX-[0-9]+" # change to fit ticket numbering scheme
+
+grep -v "^#" "$msg_file" | grep -E -q "$regex" || {
+    echo >&2 "Ticket number missing in commit message ($regex)"
+    exit 1
+}
+
+exit 0
