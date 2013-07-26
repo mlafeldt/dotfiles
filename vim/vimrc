@@ -23,6 +23,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'godlygeek/tabular'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mlafeldt/vim-puppet'
+Bundle "myusuf3/numbers.vim"
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-markdown'
