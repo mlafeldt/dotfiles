@@ -19,7 +19,8 @@
 	find-ref = "!f() { git log --grep=\"^git-svn-id:.*@$1\" --format='%H'; }; f"
 	find-rev = "!f() { git svn find-rev $1; }; f"
 	fixup = commit --amend -C HEAD
-	ghstatus = "!f() { curl -Ls https://status.github.com/api/${1:-status}.json | python -mjson.tool; }; f"
+	ghstatus = "!f() { curl -Ls https://status.github.com/api/${1:-last-message}.json | python -mjson.tool; }; f"
+	ghstatusall = !git ghstatus messages
 	human = name-rev --name-only --refs=refs/heads/*
 	last = log -1 HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
