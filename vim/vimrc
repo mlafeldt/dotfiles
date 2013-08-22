@@ -20,10 +20,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'dgryski/vim-godef'
 Bundle 'godlygeek/tabular'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mlafeldt/vim-puppet'
-Bundle "myusuf3/numbers.vim"
+Bundle 'myusuf3/numbers.vim'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
@@ -263,6 +264,12 @@ nmap <leader>a: :Tabularize /:\zs<cr>
 vmap <leader>a: :Tabularize /:\zs<cr>
 nmap <leader>a> :Tabularize /=><cr>
 vmap <leader>a> :Tabularize /=><cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-GODEF
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:godef_split = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
