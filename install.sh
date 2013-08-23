@@ -22,10 +22,17 @@ install_dotfiles() {
 install_vim_plugins() {
     echo "+ Installing Vim plugins"
 
+    # Install Vundle
     VUNDLE_BUNDLE="$HOME/.vim/bundle/vundle"
     test -d "$VUNDLE_BUNDLE" || {
         mkdir -p "$VUNDLE_BUNDLE"
         git clone https://github.com/gmarik/vundle.git "$VUNDLE_BUNDLE"
+    }
+
+    # Install godef for vim-godef
+    command -v godef >/dev/null 2>/dev/null || {
+        go get -v code.google.com/p/rog-go/exp/cmd/godef
+        go install -v code.google.com/p/rog-go/exp/cmd/godef
     }
 
     vim +BundleInstall +qall
