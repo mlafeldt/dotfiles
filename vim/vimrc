@@ -30,6 +30,7 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rake'
+Bundle 'vim-scripts/TwitVim'
 Bundle 'wincent/Command-T'
 
 " end of Vundle setup
