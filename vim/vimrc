@@ -82,6 +82,8 @@ set ruler
 set colorcolumn=81
 " better list strings
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+" yank and paste with the system clipboard
+set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS AND FONTS
