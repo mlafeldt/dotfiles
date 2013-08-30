@@ -141,6 +141,9 @@ map <leader>v :view %%
 " toggle files
 nnoremap <leader><leader> <c-^>
 
+" toggle folds
+nnoremap <space> za
+
 " spell-check current file
 nnoremap <leader>S :!aspell --check --dont-backup %<cr>
 
