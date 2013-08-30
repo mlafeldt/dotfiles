@@ -36,6 +36,7 @@ Bundle 'wincent/Command-T'
 " end of Vundle setup
 filetype plugin indent on
 
+set encoding=utf-8
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
 " remember more commands and searches
