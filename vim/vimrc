@@ -28,7 +28,6 @@ Bundle 'myusuf3/numbers.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rake'
@@ -188,16 +187,6 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" promote variable to rspec let
-function! PromoteToLet()
-  normal! dd
-  normal! P
-  .s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
-  normal ==
-endfunction
-command! PromoteToLet :call PromoteToLet()
-map <leader>p :PromoteToLet<cr>
-
 " insert hash rocket with ctrl+l
 imap <c-l> <space>=><space>
 
@@ -271,19 +260,6 @@ let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 0
 " set background color of sign column to Solarized background color
 highlight SignColumn ctermbg=8 guibg=#002b36
-map <leader>h :GitGutterNextHunk<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TABULAR
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nmap <leader>a= :Tabularize /=<cr>
-vmap <leader>a= :Tabularize /=<cr>
-nmap <leader>a: :Tabularize /:\zs<cr>
-vmap <leader>a: :Tabularize /:\zs<cr>
-nmap <leader>a> :Tabularize /=><cr>
-vmap <leader>a> :Tabularize /=><cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-GODEF
