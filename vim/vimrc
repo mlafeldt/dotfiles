@@ -63,7 +63,7 @@ set winwidth=79
 " prevent vim from clobbering the scrollback buffer
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
-set scrolloff=3
+set scrolloff=5
 " store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
