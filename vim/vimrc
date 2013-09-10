@@ -93,30 +93,12 @@ if exists('$TMUX') " support resizing in tmux
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COLORS AND FONTS
+" COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" set background theme
 set background=dark
-
-if has('unix')
-  let s:uname = system('uname')
-  if s:uname == "Darwin\n"
-    " OSX-specific options
-    let g:solarized_termtrans = 1
-    colorscheme solarized
-    set guifont=SourceCodePro-Regular:h12
-  else
-    " Linux-specific options
-    set guifont=SourceCodePro
-  endif
-endif
-
-if has('gui_running')
-  colorscheme solarized
-  " hide toolbar
-  set guioptions-=T
-endif
+let g:solarized_termtrans = 1
+colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
@@ -124,13 +106,6 @@ endif
 
 " set leader key to comma
 let mapleader=","
-
-" make ctrl+c and ctrl+v copy and paste
-if has('gui_running')
-  nmap <C-S-V> "+gP
-  imap <C-S-V> <ESC><C-S-V>i
-  vmap <C-S-C> "+y
-endif
 
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
