@@ -86,11 +86,6 @@ set colorcolumn=81
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 " yank and paste with the system clipboard
 set clipboard=unnamed
-" enable basic mouse behavior such as resizing buffers
-set mouse=a
-if exists('$TMUX') " support resizing in tmux
-  set ttymouse=xterm2
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
