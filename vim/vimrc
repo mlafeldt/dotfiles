@@ -192,6 +192,9 @@ nnoremap <c-l> <c-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
+"
+" This is a modified version of Gary Bernhardt's code that allows to run both
+" RSpec and Cucumber tests with the same mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map <leader>t :call RunTestFile()<cr>
@@ -226,19 +229,26 @@ function! SetTestFile()
 endfunction
 
 function! RunTests(filename)
-  " Write the file and run tests for the given filename
+  " Write the file and run tests for the given filename.
   if expand("%") != ""
     :w
   end
-  if match(a:filename, '\.feature$') != -1
-    exec ":!script/features " . a:filename
+
+  if filereadable("Gemfile")
+    let command_prefix = ":!bundle exec "
   else
-    if filereadable("script/test")
-      exec ":!script/test " . a:filename
-    elseif filereadable("Gemfile")
-      exec ":!bundle exec rspec --color " . a:filename
+    let command_prefix = ":!"
+  end
+
+  if match(a:filename, '\.feature') != -1
+    exec command_prefix . "cucumber --color " . a:filename
+  elseif match(a:filename, '_spec.rb') != -1
+    exec command_prefix . "rspec --color " . a:filename
+  elseif match(a:filename, "") != -1
+    if isdirectory("features")
+      exec command_prefix . "cucumber --color"
     else
-      exec ":!rspec --color " . a:filename
+      exec command_prefix . "rspec --color"
     end
   end
 endfunction
