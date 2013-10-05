@@ -21,6 +21,8 @@
 	fixup = commit --amend -C HEAD
 	ghstatus = "!f() { curl -Ls https://status.github.com/api/${1:-last-message}.json | python -mjson.tool; }; f"
 	ghstatusall = !git ghstatus messages
+	gn = goodness
+	gnc = goodness --cached
 	human = name-rev --name-only --refs=refs/heads/*
 	last = log -1 HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
