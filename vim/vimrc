@@ -289,6 +289,8 @@ map <leader>b :CommandTBuffer<cr>
 
 let g:CommandTMaxHeight = 20
 
+let g:CommandTWildIgnore=&wildignore . ",vendor/**"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTREE PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
