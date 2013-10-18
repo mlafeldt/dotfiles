@@ -234,6 +234,12 @@ function! RunTests(filename)
     :w
   end
 
+  " Jimdo Puppet Sondergeloet
+  if filereadable("scripts/spec-runner")
+    exec ":!./scripts/spec-runner " . a:filename
+    return
+  end
+
   if filereadable("Gemfile")
     let command_prefix = ":!bundle exec "
   else
