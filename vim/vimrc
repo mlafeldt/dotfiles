@@ -120,9 +120,6 @@ nnoremap <leader>S :!aspell --check --dont-backup %<cr>
 nnoremap <leader>d :!git diff %<cr>
 nnoremap <leader>D :!git diff<cr>
 
-" open current file with less
-nnoremap <leader>l :!less %<cr>
-
 " re-hardwrap paragraphs of text
 nnoremap <leader>q gwip
 
