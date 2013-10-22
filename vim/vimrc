@@ -104,8 +104,8 @@ let mapleader=","
 
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-nnoremap <leader>e :edit %%
-nnoremap <leader>v :view %%
+nmap <leader>e :edit %%
+nmap <leader>v :view %%
 
 " toggle files
 nnoremap <leader><leader> <c-^>
