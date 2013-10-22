@@ -118,7 +118,7 @@ nnoremap <leader>S :!aspell --check --dont-backup %<cr>
 
 " git diff for current file (unstaged and staged)
 nnoremap <leader>d :!git diff %<cr>
-nnoremap <leader>D :!git diff --cached %<cr>
+nnoremap <leader>D :!git diff<cr>
 
 " open current file with less
 nnoremap <leader>l :!less %<cr>
