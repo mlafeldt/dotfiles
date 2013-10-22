@@ -104,8 +104,8 @@ let mapleader=","
 
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
+nnoremap <leader>e :edit %%
+nnoremap <leader>v :view %%
 
 " toggle files
 nnoremap <leader><leader> <c-^>
@@ -155,7 +155,7 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+nnoremap <leader>n :call RenameFile()<cr>
 
 " promote variable to rspec let
 function! PromoteToLet()
@@ -165,7 +165,7 @@ function! PromoteToLet()
   normal ==
 endfunction
 command! PromoteToLet :call PromoteToLet()
-map <leader>p :PromoteToLet<cr>
+nnoremap <leader>p :PromoteToLet<cr>
 
 " insert hash rocket with ctrl+l
 imap <c-l> <space>=><space>
@@ -197,9 +197,9 @@ nnoremap <c-l> <c-w>l
 " RSpec and Cucumber tests with the same mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
+nnoremap <leader>t :call RunTestFile()<cr>
+nnoremap <leader>T :call RunNearestTest()<cr>
+nnoremap <leader>a :call RunTests('')<cr>
 
 function! RunTestFile(...)
   if a:0
@@ -289,9 +289,9 @@ if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
 endif
 
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-map <leader>b :CommandTBuffer<cr>
+nnoremap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+nnoremap <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+nnoremap <leader>b :CommandTBuffer<cr>
 
 let g:CommandTMaxHeight = 20
 
@@ -301,7 +301,7 @@ let g:CommandTWildIgnore=&wildignore . ",vendor/**"
 " NERDTREE PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <leader>g :NERDTreeToggle<cr>
+nnoremap <leader>g :NERDTreeToggle<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-GITCUTTER
