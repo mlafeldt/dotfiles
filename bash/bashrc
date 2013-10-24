@@ -29,6 +29,9 @@ export UBUNTU_MENUPROXY=
 export HOMEBREW_PREFIX=$(brew --prefix)
 export GITHUB_USER="mlafeldt"
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # enable bash completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 if command -v brew >/dev/null; then
