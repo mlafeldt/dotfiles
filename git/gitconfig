@@ -13,7 +13,6 @@
 	co = checkout
 	di = diff
 	dic = diff --cached
-	div = divergence
 	fe = fetch --all --prune
 	find-ref = "!f() { git log --grep=\"^git-svn-id:.*@$1\" --format='%H'; }; f"
 	find-rev = "!f() { git svn find-rev $1; }; f"
