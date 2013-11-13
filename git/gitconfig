@@ -14,15 +14,9 @@
 	di = diff
 	dic = diff --cached
 	fe = fetch --all --prune
-	find-ref = "!f() { git log --grep=\"^git-svn-id:.*@$1\" --format='%H'; }; f"
-	find-rev = "!f() { git svn find-rev $1; }; f"
 	fixup = commit --amend -C HEAD
-	ghstatus = "!f() { curl -Ls https://status.github.com/api/${1:-last-message}.json | python -mjson.tool; }; f"
-	ghstatusall = !git ghstatus messages
 	gn = goodness
-	gnc = goodness --cached
 	human = name-rev --name-only --refs=refs/heads/*
-	last = log -1 HEAD
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = log --graph --decorate --oneline
 	pa = !git push && git push --tags
@@ -32,7 +26,6 @@
 	rh = reset --hard
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -e $1 -i \"\"' -
 	st = status -sb
-	unstage = reset HEAD --
 	visual = !gitk &
 [core]
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
