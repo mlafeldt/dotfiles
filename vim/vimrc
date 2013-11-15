@@ -218,9 +218,9 @@ if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
 endif
 
-nnoremap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-nnoremap <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-nnoremap <leader>b :CommandTBuffer<cr>
+nmap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+nmap <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+nmap <leader>b :CommandTBuffer<cr>
 
 let g:CommandTMaxHeight = 20
 
