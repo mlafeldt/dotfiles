@@ -15,19 +15,11 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# make less more friendly for non-text input files
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# enable color support
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
-
 export CLICOLOR=1
 export EDITOR=vim
 export UBUNTU_MENUPROXY=
 export HOMEBREW_PREFIX=$(brew --prefix)
-export GITHUB_USER="mlafeldt"
+export GITHUB_USER=mlafeldt
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
