@@ -29,4 +29,6 @@ alias vag='/usr/bin/vagrant'
 # fast fingers
 alias gti=git
 
+alias vi=vim
+
 :
