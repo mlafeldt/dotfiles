@@ -13,6 +13,7 @@
 	co = checkout
 	di = diff
 	dic = diff --cached
+	distclean = clean -ffdx
 	fe = fetch --all --prune
 	fixup = commit --amend -C HEAD
 	gn = goodness
