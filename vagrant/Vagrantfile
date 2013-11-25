@@ -1,0 +1,6 @@
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Enable package caching if vagrant-cachier is installed
+  config.cache.auto_detect = true if Vagrant.has_plugin? "vagrant-cachier"
+end
