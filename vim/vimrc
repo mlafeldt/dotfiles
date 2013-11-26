@@ -87,6 +87,9 @@ set colorcolumn=81
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 " yank and paste with the system clipboard
 set clipboard=unnamed
+" tweak keyword detection for search & completion
+let g:sh_noisk=1
+set iskeyword+=:,-,.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
