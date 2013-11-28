@@ -89,7 +89,7 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set clipboard=unnamed
 " tweak keyword detection for search & completion
 let g:sh_noisk=1
-set iskeyword+=:,-,.
+set iskeyword+=-,.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
