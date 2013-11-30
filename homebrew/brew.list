@@ -1,6 +1,7 @@
 ack
 apple-gcc42
 ascii
+asciidoc
 aspell
 autoconf
 automake
@@ -17,12 +18,16 @@ colordiff
 ctags
 curl-ca-bundle
 dash
+docbook
+docbook-xsl
 ec2-api-tools
 fuse4x-kext
 gawk
+gdbm
 gettext
 git
 glib
+gnu-getopt
 gnutls
 go
 htop
@@ -37,6 +42,7 @@ libgcrypt
 libgpg-error
 libtasn1
 libtool
+libyaml
 md5sha1sum
 mercurial
 nettle
@@ -57,4 +63,6 @@ tree
 vagrant-completion
 vim
 wget
+xmlto
 xz
+zsh
