@@ -92,7 +92,7 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set clipboard=unnamed
 " tweak keyword detection for search & completion
 let g:sh_noisk=1
-set iskeyword+=-,.
+set iskeyword+=-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
@@ -271,6 +271,7 @@ augroup vimrcEx
   autocmd FileType c,h,cpp set ts=8|set sw=8|set noet|set cindent
   autocmd FileType make set ts=8|set sw=8|set noet
   autocmd FileType asm set ts=8|set sw=8|set noet
+  autocmd FileType gitcommit set iskeyword+=.
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
