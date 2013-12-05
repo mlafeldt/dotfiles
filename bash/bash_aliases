@@ -1,24 +1,21 @@
-# some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# tree
 alias t='tree'
 alias ta='tree -a'
 
-# hub
+alias ..='cd .. && pwd'
+alias ...='cd ../.. && pwd'
+
 command -v hub >/dev/null && alias git='hub'
 
-# bundler
 alias bx='bundle exec'
 alias bi='bundle install'
 alias bu='bundle update'
 
-# vagrant
 alias vag='/usr/bin/vagrant'
 
-# fast fingers
 alias gti=git
 
 :
