@@ -245,6 +245,9 @@ augroup vimrcEx
   autocmd FileType make set ts=8|set sw=8|set noet
   autocmd FileType asm set ts=8|set sw=8|set noet
   autocmd FileType gitcommit set iskeyword+=.
+
+  " speed up syntax highlighting
+  autocmd FileType ruby set re=1 nocursorline
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
