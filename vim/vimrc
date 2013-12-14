@@ -18,21 +18,15 @@ call vundle#rc()
 
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
-Bundle 'airblade/vim-gitgutter'
+Bundle 'Jimdo/vim-spec-runner'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'dgryski/vim-godef'
 Bundle 'godlygeek/tabular'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mileszs/ack.vim'
 Bundle 'mlafeldt/vim-puppet'
-Bundle 'mlafeldt/vim-test-runner'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rake'
 " stop system vim from segfaulting
 if v:version >= 704
   Bundle 'wincent/Command-T'
@@ -231,27 +225,6 @@ nmap <leader>b :CommandTBuffer<cr>
 let g:CommandTMaxHeight = 20
 
 let g:CommandTWildIgnore=&wildignore . ",vendor/**"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTREE PLUGIN
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nnoremap <leader>g :NERDTreeToggle<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-GITCUTTER
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:gitgutter_enabled = 1
-let g:gitgutter_highlight_lines = 0
-" set background color of sign column to Solarized background color
-highlight SignColumn ctermbg=8 guibg=#002b36
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-GODEF
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:godef_split = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
