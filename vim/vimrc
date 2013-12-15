@@ -20,6 +20,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Jimdo/vim-spec-runner'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mileszs/ack.vim'
@@ -130,18 +131,6 @@ nnoremap <leader>2 yypVr-
 
 " save file with sudo
 cmap w!! %!sudo tee > /dev/null %
-
-" multipurpose tab key: indent at the beginning of a line; else, do completion
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
 
 " rename current file
 function! RenameFile()
