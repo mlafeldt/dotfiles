@@ -26,6 +26,7 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'mileszs/ack.vim'
 Bundle 'mlafeldt/vim-puppet'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 " stop system vim from segfaulting
