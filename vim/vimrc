@@ -29,6 +29,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rake'
 " stop system vim from segfaulting
 if v:version >= 704
   Bundle 'wincent/Command-T'
