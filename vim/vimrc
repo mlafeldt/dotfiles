@@ -244,7 +244,7 @@ augroup vimrcEx
   autocmd FileType ruby setlocal re=1 nocursorline
 
   " enable spell-checking
-  autocmd FileType text,markdown,gitcommit setlocal spell spelllang=en_us complete+=kspell
+  autocmd FileType text,markdown,gitcommit setlocal spell spelllang=en_us
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
