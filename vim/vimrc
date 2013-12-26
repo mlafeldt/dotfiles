@@ -231,7 +231,7 @@ augroup vimrcEx
 
   " language-dependent indenting
   autocmd FileType text,markdown setlocal ts=4 sw=4 et si tw=80
-  autocmd FileType sh,perl,awk,python setlocal ts= sw=4 et si
+  autocmd FileType sh,perl,awk,python setlocal ts=4 sw=4 et si
   autocmd FileType ruby,cucumber,yaml,vim setlocal ts=2 sw=2 et si
   autocmd FileType c,h,cpp setlocal ts=8 sw=8 noet cindent
   autocmd FileType make setlocal ts=8 sw=8 noet
