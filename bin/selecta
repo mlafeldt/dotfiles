@@ -10,10 +10,6 @@
 # If this seems confusing, don't worry. You can treat it as a normal Ruby file
 # starting with the "!ruby" shebang below.
 
-# Switch to right Ruby version
-source "$(brew --prefix)/opt/chruby/share/chruby/chruby.sh"
-chruby 1.9.3
-
 exec /usr/bin/env ruby --disable-gems -x "$0" $*
 #!ruby
 
@@ -28,11 +24,6 @@ KEY_CTRL_C = ?\C-c
 KEY_CTRL_N = ?\C-n
 KEY_CTRL_P = ?\C-p
 KEY_CTRL_W = ?\C-w
-ESC = 27.chr
-KEY_UP = ESC + "[A"
-KEY_DOWN = ESC + "[B"
-KEY_LEFT = ESC + "[D"
-KEY_RIGHT = ESC + "[C"
 KEY_DELETE = 127.chr # Equivalent to ?\C-?
 
 class Selecta
@@ -77,9 +68,7 @@ class Selecta
     case key
 
     when KEY_CTRL_N then search.down
-    when KEY_DOWN then search.down
     when KEY_CTRL_P then search.up
-    when KEY_UP then search.up
 
     when KEY_CTRL_W then search.delete_word
     when KEY_DELETE then search.backspace
@@ -208,17 +197,85 @@ class Search
   end
 
   def delete_word
-    merge(:query => @query.sub(/[^ ]* *$/, ""))
+    merge(:index => 0,
+          :query => @query.sub(/[^ ]* *$/, ""))
   end
 
   def matches
-    re = query.split(//).map(&Regexp.method(:escape)).join('.*')
-    re = /#{re}/i
-    @choices.select { |s| s =~ re }
+    @choices.map do |choice|
+      [choice, Score.score(choice, query)]
+    end.select do |choice, score|
+      score > 0.0
+    end.sort_by do |choice, score|
+      -score
+    end.map do |choice, score|
+      choice
+    end
   end
 
   def done
     merge(:done => true)
+  end
+end
+
+class Score
+  class << self
+    def score(choice, query)
+      return 1.0 if query.length == 0
+      return 0.0 if choice.length == 0
+
+      choice = choice.downcase
+      query = query.downcase
+
+      match_length = compute_match_length(choice, query.each_char.to_a)
+      return 0.0 unless match_length
+
+      # Penalize longer matches.
+      score = query.length.to_f / match_length.to_f
+
+      # Normalize vs. the length of the choice, penalizing longer strings.
+      score / choice.length
+    end
+
+    # Find the length of the shortest substring matching the given characters.
+    def compute_match_length(string, chars)
+      first_char, *rest = chars
+      first_indexes = find_char_in_string(string, first_char)
+
+      first_indexes.map do |first_index|
+        last_index = find_end_of_match(string, rest, first_index)
+        if last_index
+          last_index - first_index + 1
+        else
+          nil
+        end
+      end.compact.min
+    end
+
+    # Find all occurrences of the character in the string, returning their indexes.
+    def find_char_in_string(string, char)
+      index = 0
+      indexes = []
+      while index
+        index = string.index(char, index)
+        if index
+          indexes << index
+          index += 1
+        end
+      end
+      indexes
+    end
+
+    # Find each of the characters in the string, moving strictly left to right.
+    def find_end_of_match(string, chars, first_index)
+      last_index = first_index
+      chars.each do |this_char|
+        index = string.index(this_char, last_index + 1)
+        return nil unless index
+        last_index = index
+      end
+      last_index
+    end
   end
 end
 
@@ -344,17 +401,18 @@ class Screen
   end
 
   def write_text_object(line, column, text)
+    # Blank the line before drawing to it
+    ansi.setpos!(line, 0)
+    ansi.addstr!(" " * width)
+
     text.components.each do |component|
       if component.is_a? String
         ansi.setpos!(line, column)
         # Don't draw off the edge of the screen.
-        #   - (column + component.length) is the number of bytes we'd draw if
-        #     we just dumped the string out.
-        #   - Subtracting that from width gives the number of bytes we should
-        #     draw to avoid going off the edge of the screen.
-        #   - Subtracting 1 from that gives us the zero-indexed location of the
-        #     last character we should draw.
-        chars_to_draw = width - (column + component.length) - 1
+        #   - width - 1 is the last column we have (zero-indexed)
+        #   - subtract the current column from that to get the number of
+        #   columns we have left.
+        chars_to_draw = [0, width - 1 - column].max
         component = component[0..chars_to_draw]
         ansi.addstr!(component)
         column += component.length
@@ -371,8 +429,6 @@ class Screen
         ansi.color!(fg, bg)
       end
     end
-    remaining_cols = [width - column, 0].max
-    ansi.addstr!(" " * remaining_cols)
   end
 end
 
@@ -397,6 +453,8 @@ class Text
 end
 
 class ANSI
+  ESC = 27.chr
+
   attr_reader :file
 
   def initialize(file)
@@ -488,19 +546,7 @@ class TTY < Struct.new(:in_file, :out_file)
   end
 
   def get_char
-    char = in_file.getc
-    sequence = char
-    is_ansi_escape_code = char == ESC
-    if is_ansi_escape_code
-      char = in_file.getc
-      sequence += char
-      if char == '['
-        char = in_file.getc
-        sequence += char
-      end
-    end
-
-    sequence
+    in_file.getc
   end
 
   def puts
