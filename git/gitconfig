@@ -20,8 +20,8 @@
 	human = name-rev --name-only --refs=refs/heads/*
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = log --graph --decorate --oneline
-	pa = !sh -c 'git push $1 && git push --tags $1'
-	pd = !sh -c 'git push -n $1 && git push -n --tags $1'
+	pa = !git push && git push --tags
+	pd = !git push -n && git push -n --tags
 	pi = cherry-pick
 	pr = pull-request
 	rh = reset --hard
