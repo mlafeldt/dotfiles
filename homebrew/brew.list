@@ -18,9 +18,12 @@ libtool
 libyaml
 md5sha1sum
 openssl
+ossp-uuid
 pkg-config
+postgresql
 readline
 ruby-build
 tree
+vagrant-completion
 vim
 wget
