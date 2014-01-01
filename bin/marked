@@ -1,0 +1,3 @@
+#!/bin/sh
+# Open file with Marked.app
+exec open -a "/Applications/Marked.app" "$@"

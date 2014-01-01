@@ -132,6 +132,9 @@ nnoremap <leader>q gwip
 nnoremap <leader>1 yypVr=
 nnoremap <leader>2 yypVr-
 
+" open current file with Marked.app
+nnoremap <leader>m :!marked %<cr>
+
 " save file with sudo
 cmap w!! %!sudo tee > /dev/null %
 
