@@ -18,10 +18,10 @@ call vundle#rc()
 
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
-Bundle 'Jimdo/vim-spec-runner'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
+Bundle 'Jimdo/vim-spec-runner'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mileszs/ack.vim'
 Bundle 'mlafeldt/vim-puppet'
