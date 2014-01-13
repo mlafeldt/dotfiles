@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# Jekyll preprocessor for Marked App
+# Converts Jekyll posts to GitHub Markdown
+# See http://brettterpstra.com/2013/01/04/previewing-jekyll-posts-with-marked/
+
+content = STDIN.read
+
+if content.start_with?("---\n")
+  require "yaml"
+
+  sections = content.split("---")
+  frontmatter = YAML::load(sections[1])
+  content = sections[2]
+
+  content = "# #{frontmatter["title"]}" + content
+  content.gsub!(/\{% highlight (.*?) %\}/, "```\\1")
+  content.gsub!(/\{% endhighlight %\}/, "```")
+end
+
+puts content
