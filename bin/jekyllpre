@@ -20,5 +20,5 @@ begin
 
   puts content
 rescue => e
-  puts "error = #{e.message}"
+  puts "Preprocessor failed with error \"#{e.message}\""
 end
