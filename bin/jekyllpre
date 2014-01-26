@@ -3,22 +3,33 @@
 # Converts Jekyll posts to GitHub Markdown
 # See http://brettterpstra.com/2013/01/04/previewing-jekyll-posts-with-marked/
 
-begin
-  Encoding.default_external = Encoding::UTF_8
+SEPARATOR = "---"
 
-  content = STDIN.read
-  if content.start_with?("---")
+def process(content)
+  if content.start_with?(SEPARATOR)
     require "yaml"
 
-    sections = content.split("---")
+    sections = content.split(SEPARATOR)
     frontmatter = YAML::load(sections[1])
+    title = frontmatter["title"]
 
-    content = "# #{frontmatter["title"]}" + sections[2]
+    content = "# #{title}" + sections[2..-1].join(SEPARATOR)
+
+    # Convert Jekyll syntax highlighting to GitHub Markdown
     content.gsub!(/\{% highlight (.*?) %\}/, "```\\1")
     content.gsub!(/\{% endhighlight %\}/, "```")
-  end
 
-  puts content
+    # Expand Jekyll variables to their names as we don't know their values
+    content.gsub!(/\{\{\s+(.*?)\s+\}\}/, "\\1")
+  end
+  content
+end
+
+begin
+  Encoding.default_external = Encoding::UTF_8
+  puts process(STDIN.read)
 rescue => e
+  # Since Marked does not report any preprocessor errors inside the app, show
+  # them as rendered output.
   puts "Preprocessor failed with error \"#{e.message}\""
 end
