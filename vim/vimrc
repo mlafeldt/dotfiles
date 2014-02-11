@@ -92,6 +92,9 @@ set clipboard=unnamed
 " tweak keyword detection for search & completion
 let g:sh_noisk=1
 set iskeyword+=-
+" Insert only one space when joining lines that contain sentence-terminating
+" punctuation like `.`.
+set nojoinspaces
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
