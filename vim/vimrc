@@ -253,9 +253,6 @@ augroup vimrcEx
   " speed up Ruby syntax highlighting
   autocmd FileType ruby setlocal re=1 nocursorline
 
-  " run gofmt on save
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
 augroup END
