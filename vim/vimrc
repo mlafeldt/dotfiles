@@ -19,6 +19,7 @@ call vundle#rc()
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'dgryski/vim-godef'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'Jimdo/vim-spec-runner'
@@ -224,6 +225,12 @@ nmap <leader>b :CommandTBuffer<cr>
 let g:CommandTMaxHeight = 20
 
 let g:CommandTWildIgnore=&wildignore . ",vendor/**"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-GODEF PLUGIN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:godef_same_file_in_same_window = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
