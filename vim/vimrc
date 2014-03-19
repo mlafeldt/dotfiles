@@ -126,10 +126,6 @@ nnoremap <space> za
 " spell-check current file
 nnoremap <leader>S :!aspell --check --dont-backup %<cr>
 
-" git diff for current file (unstaged and staged)
-nnoremap <leader>d :!git diff %<cr>
-nnoremap <leader>D :!git diff<cr>
-
 " re-hardwrap paragraphs of text
 nnoremap <leader>q gwip
 
@@ -231,6 +227,16 @@ let g:CommandTWildIgnore=&wildignore . ",vendor/**"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:godef_same_file_in_same_window = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUGITIVE PLUGIN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>c :Gcommit --verbose %<cr>
+
+" git diff for current file and all files
+nnoremap <leader>d :!git diff %<cr>
+nnoremap <leader>D :!git diff<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
