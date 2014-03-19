@@ -233,8 +233,8 @@ let g:godef_same_file_in_same_window = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nnoremap <leader>c :Gcommit --verbose %<cr>
+nnoremap <leader>C :Gcommit --verbose --all<cr>
 
-" git diff for current file and all files
 nnoremap <leader>d :!git diff %<cr>
 nnoremap <leader>D :!git diff<cr>
 
