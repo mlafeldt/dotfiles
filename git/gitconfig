@@ -5,6 +5,7 @@
 	ui = true
 [alias]
 	aa = add --all :/
+	bc = !sh -c 'git branch --merged | grep -v \\* | xargs -n 1 git branch -d'
 	bl = branch -vva
 	bp = buildpackage
 	br = branch
