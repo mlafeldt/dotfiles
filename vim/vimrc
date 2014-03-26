@@ -19,11 +19,11 @@ call vundle#rc()
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'Blackrush/vim-gocode'
 Bundle 'dgryski/vim-godef'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'Jimdo/vim-spec-runner'
-Bundle 'jnwhiteh/vim-golang'
 Bundle 'mileszs/ack.vim'
 Bundle 'mlafeldt/vim-puppet'
 Bundle 'ngmy/vim-rubocop'
@@ -223,8 +223,10 @@ let g:CommandTMaxHeight = 20
 let g:CommandTWildIgnore=&wildignore . ",vendor/**"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-GODEF PLUGIN
+" GO PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:go_fmt_autofmt = 0
 
 let g:godef_same_file_in_same_window = 1
 
