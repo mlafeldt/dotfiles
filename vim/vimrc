@@ -98,6 +98,8 @@ set iskeyword+=-
 set nojoinspaces
 " do not wrap lines
 set nowrap
+" auto-reload files on changes
+set autoread
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
