@@ -96,6 +96,8 @@ set iskeyword+=-
 " Insert only one space when joining lines that contain sentence-terminating
 " punctuation like `.`.
 set nojoinspaces
+" do not wrap lines
+set nowrap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
