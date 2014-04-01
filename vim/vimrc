@@ -231,7 +231,7 @@ let g:CommandTWildIgnore=&wildignore . ",vendor/**"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:go_fmt_autofmt = 0
-
+let g:gofmt_command = "goimports"
 let g:godef_same_file_in_same_window = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
