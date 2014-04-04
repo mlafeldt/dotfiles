@@ -1,0 +1,3 @@
+#!/bin/sh
+# Open files with iA Writer
+exec open -a "/Applications/iA Writer.app" "$@"
