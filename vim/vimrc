@@ -29,10 +29,8 @@ Bundle 'mlafeldt/vim-puppet'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rake'
 " stop system vim from segfaulting
 if v:version >= 704
   Bundle 'wincent/Command-T'
