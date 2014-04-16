@@ -40,6 +40,11 @@ install_go_tools() {
     # vim-gocode
     go get -v -u github.com/nsf/gocode
     go get -v -u code.google.com/p/go.tools/cmd/goimports
+    # misc
+    go get -v -u code.google.com/p/go.tools/cmd/cover
+    go get -v -u code.google.com/p/go.tools/present
+    go get -v -u github.com/mitchellh/gox
+    go get -v -u github.com/pengwynn/flint
 }
 
 install_tools() {
