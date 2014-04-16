@@ -29,13 +29,17 @@ install_vim_plugins() {
         git clone https://github.com/gmarik/vundle.git "$VUNDLE_BUNDLE"
     }
 
-    # Install godef for vim-godef
-    command -v godef >/dev/null 2>/dev/null || {
-        go get -v code.google.com/p/rog-go/exp/cmd/godef
-        go install -v code.google.com/p/rog-go/exp/cmd/godef
-    }
-
     vim +BundleInstall +qall
+}
+
+install_go_tools() {
+    echo "+ Installing Go tools"
+
+    # vim-godef
+    go get -v -u code.google.com/p/rog-go/exp/cmd/godef
+    # vim-gocode
+    go get -v -u github.com/nsf/gocode
+    go get -v -u code.google.com/p/go.tools/cmd/goimports
 }
 
 install_tools() {
@@ -46,6 +50,7 @@ install_tools() {
 
 install_dotfiles
 install_vim_plugins
+install_go_tools
 install_tools
 
 :
