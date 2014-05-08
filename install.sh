@@ -24,10 +24,12 @@ install_vim_plugins() {
 
     # Install Vundle
     VUNDLE_BUNDLE="$HOME/.vim/bundle/vundle"
-    test -d "$VUNDLE_BUNDLE" || {
+    if test -d "$VUNDLE_BUNDLE"; then
+        (cd "$VUNDLE_BUNDLE"; git pull)
+    else
         mkdir -p "$VUNDLE_BUNDLE"
         git clone https://github.com/gmarik/vundle.git "$VUNDLE_BUNDLE"
-    }
+    fi
 
     vim +BundleInstall +qall
 }
