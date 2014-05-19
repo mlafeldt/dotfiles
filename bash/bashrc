@@ -30,9 +30,9 @@ if [ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]; then
 fi
 
 # chruby setup
-if [ -d "$HOMEBREW_PREFIX/opt/chruby" ]; then
-    . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
-    . "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
+if [ -d "/usr/local/share/chruby" ]; then
+    source /usr/local/share/chruby/chruby.sh
+    source /usr/local/share/chruby/auto.sh
 fi
 
 # pythonbrew setup
