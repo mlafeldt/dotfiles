@@ -3,6 +3,7 @@
 # Converts Jekyll posts to GitHub Markdown
 # See http://brettterpstra.com/2013/01/04/previewing-jekyll-posts-with-marked/
 
+BLOG_ROOT = File.expand_path("../..", ENV["MARKED_PATH"])
 SEPARATOR = "---"
 
 def process(content)
@@ -21,6 +22,9 @@ def process(content)
 
     # Expand Jekyll variables to their names as we don't know their values
     content.gsub!(/\{\{\s+(.*?)\s+\}\}/, "\\1")
+
+    # Fix image links
+    content.gsub!(/\/static\/images\//, "#{BLOG_ROOT}\\0")
   end
   content
 end
