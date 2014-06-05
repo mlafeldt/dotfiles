@@ -294,6 +294,9 @@ augroup vimrcEx
   " speed up Ruby syntax highlighting
   autocmd FileType ruby setlocal re=1 nocursorline
 
+  " auto-complete Ruby names up to ! and ?
+  autocmd FileType ruby setlocal iskeyword+=!,?
+
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
 augroup END
