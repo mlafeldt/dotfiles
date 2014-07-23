@@ -46,6 +46,8 @@ install_go_tools() {
     $GO_GET code.google.com/p/go.tools/cmd/goimports
     # misc
     $GO_GET code.google.com/p/go.tools/cmd/cover
+    $GO_GET code.google.com/p/go.tools/cmd/godoc
+    $GO_GET code.google.com/p/go.tools/cmd/vet
     $GO_GET code.google.com/p/go.tools/present
     $GO_GET github.com/mitchellh/gox
     $GO_GET github.com/pengwynn/flint
