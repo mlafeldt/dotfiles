@@ -36,15 +36,7 @@ install_vim_plugins() {
 
 install_go_tools() {
     echo "+ Installing Go tools"
-
     GO_GET="go get -v"
-
-    # vim-godef
-    $GO_GET code.google.com/p/rog-go/exp/cmd/godef
-    # vim-gocode
-    $GO_GET github.com/nsf/gocode
-    $GO_GET code.google.com/p/go.tools/cmd/goimports
-    # misc
     $GO_GET code.google.com/p/go.tools/cmd/cover
     $GO_GET code.google.com/p/go.tools/cmd/godoc
     $GO_GET code.google.com/p/go.tools/cmd/vet

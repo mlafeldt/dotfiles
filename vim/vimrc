@@ -19,9 +19,8 @@ call vundle#rc()
 " list of plugins installed by Vundle
 Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'dgryski/vim-godef'
 Bundle 'ervandew/supertab'
+Bundle 'fatih/vim-go'
 Bundle 'godlygeek/tabular'
 Bundle 'Jimdo/vim-spec-runner'
 Bundle 'mileszs/ack.vim'
@@ -235,15 +234,6 @@ nmap <leader>b :CommandTBuffer<cr>
 let g:CommandTMaxHeight = 20
 
 let g:CommandTWildIgnore=&wildignore . ",vendor/**"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GO PLUGINS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:go_fmt_autofmt = 0
-let g:gofmt_command = "goimports"
-let g:godef_same_file_in_same_window = 1
-let g:godef_split = 3
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUBOCOP PLUGIN
