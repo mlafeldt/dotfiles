@@ -294,6 +294,9 @@ augroup vimrcEx
   " auto-complete Ruby names up to ! and ?
   autocmd FileType ruby setlocal iskeyword+=!,?
 
+  " run Go tests
+  autocmd FileType go nnoremap <leader>t :w\|:!./script/test %<cr>
+
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
 augroup END
