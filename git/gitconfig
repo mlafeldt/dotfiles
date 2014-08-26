@@ -25,7 +25,7 @@
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -e $1 -i \"\"' -
 	st = status -sb
 [core]
-	whitespace = trailing-space,space-before-tab,indent-with-non-tab
+	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 [log]
 	decorate = true
