@@ -7,19 +7,15 @@
 	aa = add --all :/
 	bc = !sh -c 'git branch --merged | grep -v \\* | xargs -n 1 git branch -d'
 	bl = branch -vva
-	bp = buildpackage
 	br = branch
 	ci = commit -v
 	clobber = clean -ffdx
 	co = checkout
 	di = diff
 	dic = diff --cached
-	distclean = clean -ffdx
 	fe = fetch --all --prune
 	fixup = commit --amend -C HEAD
 	gn = goodness
-	human = name-rev --name-only --refs=refs/heads/*
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = log --graph --decorate --oneline
 	pa = !git push && git push --tags
 	pd = !git push -n && git push -n --tags
@@ -28,7 +24,6 @@
 	rh = reset --hard
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -e $1 -i \"\"' -
 	st = status -sb
-	visual = !gitk &
 [core]
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 	autocrlf = input
