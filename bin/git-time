@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+date=$1
+rev=$2
+
+git filter-branch -f --env-filter "export GIT_AUTHOR_DATE='$date'; export GIT_COMMITTER_DATE='$date'" "$rev"
