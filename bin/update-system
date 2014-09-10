@@ -23,7 +23,7 @@ update_vim_plugins() {
         echo "+ Cleaning up Vim plugins"
         vim +BundleClean! +qa
         echo "+ Updating Vim plugins"
-        vim +BundleUpdate +qa
+        vim +BundleUpdate +GoUpdateBinaries +qa
     fi
 }
 

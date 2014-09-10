@@ -31,7 +31,7 @@ install_vim_plugins() {
         git clone https://github.com/gmarik/vundle.git "$VUNDLE_BUNDLE"
     fi
 
-    vim +BundleInstall +qall
+    vim +BundleInstall +GoInstallBinaries +qa
 }
 
 install_go_tools() {
