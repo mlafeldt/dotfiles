@@ -35,9 +35,6 @@ if [ -d "/usr/local/share/chruby" ]; then
     source /usr/local/share/chruby/auto.sh
 fi
 
-# pythonbrew setup
-[ -s "$HOME/.pythonbrew/etc/bashrc" ] && . "$HOME/.pythonbrew/etc/bashrc"
-
 # Go paths setup
 if command -v go >/dev/null; then
     export GOPATH="$HOME/devel/go"
