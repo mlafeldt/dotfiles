@@ -11,8 +11,8 @@ alias ...='cd ../.. && pwd'
 command -v hub >/dev/null && alias git='hub'
 
 alias bx='bundle exec'
-alias bi='bundle install'
-alias bu='bundle update'
+alias bi='bundle install --jobs=3 --retry=3'
+alias bu='bundle update --jobs=3 --retry=3'
 
 alias vag='/usr/bin/vagrant'
 
