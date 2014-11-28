@@ -126,7 +126,7 @@ nnoremap <leader><leader> <c-^>
 nnoremap <space> za
 
 " spell-check current file
-nnoremap <leader>S :!aspell --check --dont-backup %<cr>
+nnoremap <leader>S :!aspell --check --dont-backup '%'<cr>
 
 " re-hardwrap paragraphs of text
 nnoremap <leader>q gwip
@@ -136,10 +136,10 @@ nnoremap <leader>1 yypVr=
 nnoremap <leader>2 yypVr-
 
 " open current file with Marked app
-nnoremap <leader>m :!marked %<cr><cr>
+nnoremap <leader>m :!marked '%'<cr><cr>
 
 " save file with sudo
-cmap w!! %!sudo tee > /dev/null %
+cmap w!! '%'!sudo tee > /dev/null '%'
 
 " rename current file
 function! RenameFile()
@@ -247,10 +247,10 @@ let g:vimrubocop_extra_args = "-D"
 " FUGITIVE PLUGIN AND OTHER GIT STUFF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap <leader>c :Gcommit --verbose %<cr>
+nnoremap <leader>c :Gcommit --verbose '%'<cr>
 nnoremap <leader>C :Gcommit --verbose --all<cr>
 
-nnoremap <leader>d :!git diff %<cr>
+nnoremap <leader>d :!git diff '%'<cr>
 nnoremap <leader>D :!git diff<cr>
 
 " open a split for each dirty file in git
