@@ -1,0 +1,3 @@
+#!/bin/sh
+# Open files with Byword
+exec open -a "/Applications/Byword.app" "$@"
