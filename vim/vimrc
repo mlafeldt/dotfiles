@@ -19,6 +19,7 @@ call vundle#begin()
 " list of plugins installed by Vundle
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
