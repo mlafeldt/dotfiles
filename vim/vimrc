@@ -11,32 +11,33 @@
 " enter vim mode
 set nocompatible
 
-" set up Vundle (https://github.com/gmarik/vundle)
+" set up Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " list of plugins installed by Vundle
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'ervandew/supertab'
-Bundle 'fatih/vim-go'
-Bundle 'godlygeek/tabular'
-Bundle 'Jimdo/vim-spec-runner'
-Bundle 'mileszs/ack.vim'
-Bundle 'mlafeldt/vim-puppet'
-Bundle 'ngmy/vim-rubocop'
-Bundle 'reedes/vim-wordy'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
+Plugin 'godlygeek/tabular'
+Plugin 'Jimdo/vim-spec-runner'
+Plugin 'mileszs/ack.vim'
+Plugin 'mlafeldt/vim-puppet'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'reedes/vim-wordy'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-markdown'
 " stop system vim from segfaulting
 if v:version >= 704
-  Bundle 'wincent/Command-T'
+  Plugin 'wincent/Command-T'
 end
 
 " end of Vundle setup
+call vundle#end()
 filetype plugin indent on
 
 set encoding=utf-8

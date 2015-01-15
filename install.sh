@@ -23,26 +23,25 @@ install_vim_plugins() {
     echo "+ Installing Vim plugins"
 
     # Install Vundle
-    VUNDLE_BUNDLE="$HOME/.vim/bundle/vundle"
+    VUNDLE_BUNDLE="$HOME/.vim/bundle/Vundle.vim"
     if test -d "$VUNDLE_BUNDLE"; then
         (cd "$VUNDLE_BUNDLE"; git pull)
     else
         mkdir -p "$VUNDLE_BUNDLE"
-        git clone https://github.com/gmarik/vundle.git "$VUNDLE_BUNDLE"
+        git clone https://github.com/gmarik/Vundle.vim.git "$VUNDLE_BUNDLE"
     fi
 
-    vim +BundleInstall +GoInstallBinaries +qa
+    vim +PluginInstall +GoInstallBinaries +qa
 }
 
 install_go_tools() {
     echo "+ Installing Go tools"
     GO_GET="go get -v"
-    $GO_GET code.google.com/p/go.tools/cmd/cover
-    $GO_GET code.google.com/p/go.tools/cmd/godoc
-    $GO_GET code.google.com/p/go.tools/cmd/vet
-    $GO_GET code.google.com/p/go.tools/present
+    $GO_GET golang.org/x/tools/cmd/cover
+    $GO_GET golang.org/x/tools/cmd/godoc
+    $GO_GET golang.org/x/tools/cmd/vet
+    $GO_GET golang.org/x/tools/cmd/present
     $GO_GET github.com/mitchellh/gox
-    $GO_GET github.com/pengwynn/flint
 }
 
 install_tools() {
