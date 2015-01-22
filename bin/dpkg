@@ -1,3 +1,0 @@
-#!/bin/sh
-# Run dpkg inside Ubuntu Docker container
-exec docker run -it --rm -v "$PWD:/data:ro" --workdir /data ubuntu dpkg "$@"
