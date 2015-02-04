@@ -18,6 +18,7 @@ alias vag='/usr/bin/vagrant'
 
 alias gti=git
 
-alias ubuntu='docker run -it --rm ubuntu:14.04'
+alias ubuntu='docker run -it --rm ubuntu:14.04 /bin/bash'
+alias centos='docker run -it --rm centos:7 /bin/bash'
 
 :
