@@ -25,9 +25,9 @@ Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'Jimdo/vim-spec-runner'
 Plugin 'mileszs/ack.vim'
-Plugin 'mlafeldt/vim-puppet'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'reedes/vim-wordy'
+Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-fugitive'
@@ -272,6 +272,12 @@ command! OpenChangedFiles :call OpenChangedFiles()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:go_fmt_command = "goimports"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-PUPPET PLUGIN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:puppet_align_hashes = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
