@@ -1,6 +1,6 @@
 # My dotfiles
 
-Run `./install.sh` to install them.
+Run `./script/install.sh` to install them.
 
 Contact
 -------
