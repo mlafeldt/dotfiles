@@ -312,6 +312,7 @@ augroup vimrcEx
 
   " run Go tests
   autocmd FileType go nnoremap <leader>t :w\|:!./script/test %<cr>
+  autocmd FileType go nnoremap <leader>T :w\|:GoTestFunc<cr>
 
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
