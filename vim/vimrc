@@ -316,7 +316,8 @@ augroup vimrcEx
   autocmd FileType go nnoremap <leader>T :w\|:GoTestFunc<cr>
 
   " run Rust tests
-  autocmd FileType rust nnoremap <leader>t :w\|:RustRun! --test<cr>
+  autocmd FileType rust nnoremap <leader>t :RustRun! --test<cr>
+  autocmd FileType rust nnoremap <leader>a :!cargo test -v<cr>
 
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
