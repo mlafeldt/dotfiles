@@ -24,6 +24,7 @@
 	rh = reset --hard
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -e $1 -i \"\"' -
 	st = status -sb
+	wd = diff --word-diff
 [core]
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
