@@ -1,0 +1,35 @@
+#!/bin/bash
+
+TOOLBOX_DOCKER_IMAGE=fedora
+TOOLBOX_DOCKER_TAG=latest
+TOOLBOX_USER=root
+TOOLBOX_DIRECTORY="/var/lib/toolbox"
+
+toolboxrc="${HOME}"/.toolboxrc
+
+if [ -f "${toolboxrc}" ]; then
+	source "${toolboxrc}"
+fi
+
+machinename=$(echo "${USER}-${TOOLBOX_DOCKER_IMAGE}-${TOOLBOX_DOCKER_TAG}" | sed -r 's/[^a-zA-Z0-9_.-]/_/g')
+machinepath="${TOOLBOX_DIRECTORY}/${machinename}"
+osrelease="${machinepath}/etc/os-release"
+if [ ! -f ${osrelease} ] || systemctl is-failed -q ${machinename} ; then
+	sudo mkdir -p "${machinepath}"
+	sudo chown ${USER}: "${machinepath}"
+
+	docker pull "${TOOLBOX_DOCKER_IMAGE}:${TOOLBOX_DOCKER_TAG}"
+	docker run --name=${machinename} "${TOOLBOX_DOCKER_IMAGE}:${TOOLBOX_DOCKER_TAG}" /bin/true
+	docker export ${machinename} | sudo tar -x -C "${machinepath}" -f -
+	docker rm ${machinename}
+	sudo touch ${osrelease}
+fi
+
+sudo systemd-nspawn \
+	--directory="${machinepath}" \
+	--capability=all \
+	--share-system \
+	--bind=/:/media/root \
+	--bind=/usr:/media/root/usr \
+	--bind=/run:/media/root/run \
+	--user="${TOOLBOX_USER}" "$@"
