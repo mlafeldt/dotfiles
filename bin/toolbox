@@ -7,6 +7,7 @@ set -o pipefail
 
 TOOLBOX_DOCKER_IMAGE=ubuntu
 TOOLBOX_DOCKER_TAG=latest
+TOOLBOX_SHELL=/bin/bash
 TOOLBOX_DIRECTORY=~/.toolbox
 
 toolboxrc=~/.toolboxrc
@@ -27,5 +28,5 @@ else
         -w /root \
         --name="$machinename" \
         --hostname="$machinename" \
-        "$TOOLBOX_DOCKER_IMAGE:$TOOLBOX_DOCKER_TAG" /bin/bash
+        "$TOOLBOX_DOCKER_IMAGE:$TOOLBOX_DOCKER_TAG" "$TOOLBOX_SHELL"
 fi
