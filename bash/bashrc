@@ -43,15 +43,10 @@ if command -v go >/dev/null; then
 fi
 
 # set prompt
-PS1="[\W]\$ "
-
-# set git prompt if installed
-if command -v git >/dev/null; then
-    [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1='[\W$(__git_ps1 " (%s)")]\$ '
-    PS1="$GIT_PS1"
-fi
+[ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
+GIT_PS1_SHOWDIRTYSTATE=1
+__jobs() { if test "$(jobs -p | wc -l | tr -d ' ')" != "0"; then echo "&"; fi }
+PS1='[\W$(__git_ps1 " (%s)")$(__jobs)]\$ '
 
 # include alias definitions
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
