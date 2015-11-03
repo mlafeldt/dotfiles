@@ -312,7 +312,7 @@ augroup vimrcEx
   autocmd FileType ruby setlocal iskeyword+=!,?
 
   " run Go tests
-  autocmd FileType go nnoremap <leader>t :w\|:!./script/test %<cr>
+  autocmd FileType go nnoremap <leader>t :w\|:GoTest<cr>
   autocmd FileType go nnoremap <leader>T :w\|:GoTestFunc<cr>
 
   " run Rust tests
