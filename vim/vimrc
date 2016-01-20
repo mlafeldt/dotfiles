@@ -232,7 +232,7 @@ endif
 
 nmap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 nmap <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-nmap <leader>b :CommandTBuffer<cr>
+nmap <leader>l :CommandTBuffer<cr>
 
 let g:CommandTMaxHeight = 20
 let g:CommandTAlwaysShowDotFiles = 1
@@ -320,6 +320,7 @@ augroup vimrcEx
   " run Go tests
   autocmd FileType go nnoremap <leader>t :w\|:GoTest<cr>
   autocmd FileType go nnoremap <leader>T :w\|:GoTestFunc<cr>
+  autocmd FileType go nnoremap <leader>b :w\|:GoBuild<cr>
 
   " run Rust tests
   autocmd FileType rust nnoremap <leader>t :RustRun! --test<cr>
