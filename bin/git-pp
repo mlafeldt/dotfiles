@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+branch=$(git symbolic-ref --short HEAD)
+if test "$branch" = master; then
+    echo "You don't want to do this in master, right?"
+    exit 1
+fi
+git push --set-upstream origin "$branch"
+hub pull-request
