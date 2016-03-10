@@ -8,4 +8,4 @@ if test "$branch" = master; then
     exit 1
 fi
 git push --set-upstream origin "$branch"
-hub pull-request
+hub pull-request --browse
