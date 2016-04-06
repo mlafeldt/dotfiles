@@ -1,6 +1,7 @@
 [user]
 	name = Mathias Lafeldt
 	email = mathias.lafeldt@gmail.com
+	signingkey = EC936D44
 [color]
 	ui = true
 [alias]
@@ -30,6 +31,8 @@
 [core]
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
+[commit]
+	gpgsign = true
 [log]
 	decorate = true
 [push]
