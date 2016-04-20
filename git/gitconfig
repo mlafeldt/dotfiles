@@ -27,7 +27,7 @@
 	st = status -sb
 	use-ssh = config url."git@github.com:".pushinsteadof https://github.com/
 	wd = diff --word-diff
-	wip = commit -amWIP
+	wip = commit -amWIP --no-gpg-sign
 [core]
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
