@@ -23,7 +23,7 @@
 	pi = cherry-pick
 	pr = pull-request
 	rh = reset --hard
-	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -e $1 -i \"\"' -
+	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -i -e $1' -
 	st = status -sb
 	use-ssh = config url."git@github.com:".pushinsteadof https://github.com/
 	wd = diff --word-diff
