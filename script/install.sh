@@ -39,7 +39,6 @@ install_go_tools() {
     GO_GET="go get -v"
     $GO_GET golang.org/x/tools/cmd/cover
     $GO_GET golang.org/x/tools/cmd/godoc
-    $GO_GET golang.org/x/tools/cmd/vet
     $GO_GET golang.org/x/tools/cmd/present
     $GO_GET github.com/mitchellh/gox
 }
