@@ -23,6 +23,7 @@ Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
+Plugin 'hashivim/vim-terraform'
 Plugin 'Jimdo/vim-spec-runner'
 Plugin 'mileszs/ack.vim'
 Plugin 'ngmy/vim-rubocop'
