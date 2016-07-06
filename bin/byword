@@ -5,6 +5,7 @@ set -e
 
 if test $# -gt 0; then
     mdfile=$1
+    touch "$mdfile"
 else
     mdfile=$(find * -name '*.md' | selecta)
 fi
