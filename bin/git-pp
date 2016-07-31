@@ -1,11 +1,29 @@
 #!/bin/bash
+# Helper script to quickly create GitHub pull requests.
 
 set -e
+set -o pipefail
 
-branch=$(git symbolic-ref --short HEAD)
-if test "$branch" = master; then
+# When BROWSER is set, the script has invoked itself in order to assign the PR
+# in addition to opening it in a browser. See end of script.
+if test -n "$BROWSER"; then
+    PRURL="$1"
+    open "$PRURL"
+    if test -n "$GITHUB_USER"; then
+        issue=$(echo "$PRURL" | awk -F/ '{print $NF}')
+        ghi assign "$issue" "$GITHUB_USER"
+    fi
+    exit
+fi
+
+# Push current branch to GitHub.
+BRANCH=$(git symbolic-ref --short HEAD)
+if test "$BRANCH" = master; then
     echo "You don't want to do this in master, right?"
     exit 1
 fi
-git push --set-upstream origin "$branch"
-hub pull-request --browse
+git push --set-upstream origin "$BRANCH"
+
+# Create the PR. Tell hub to "open" the created PR with this very script.
+export BROWSER="$0"
+exec hub pull-request --browse
