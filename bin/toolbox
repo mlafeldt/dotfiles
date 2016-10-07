@@ -1,0 +1,32 @@
+#!/bin/bash
+# Launch a Docker container to bring in your favorite debugging or admin tools
+# Based on https://github.com/coreos/toolbox
+
+set -e
+set -o pipefail
+
+TOOLBOX_DOCKER_IMAGE=ubuntu
+TOOLBOX_DOCKER_TAG=latest
+TOOLBOX_SHELL=/bin/bash
+TOOLBOX_DIRECTORY=~/.toolbox
+
+toolboxrc=~/.toolboxrc
+if [ -f "$toolboxrc" ]; then
+    source "$toolboxrc"
+fi
+
+machinename=$(echo "toolbox-${TOOLBOX_DOCKER_IMAGE}-${TOOLBOX_DOCKER_TAG}" | sed -r 's/[^a-zA-Z0-9_.-]/_/g')
+machinepath="$TOOLBOX_DIRECTORY/$machinename"
+
+if docker ps -a | grep -q "$machinename"; then
+    docker start -i -a "$machinename"
+else
+    docker pull "$TOOLBOX_DOCKER_IMAGE:$TOOLBOX_DOCKER_TAG"
+    docker run -it \
+        -v /:/media/root:ro \
+        -v "$machinepath/root:/root" \
+        -w /root \
+        --name="$machinename" \
+        --hostname="$machinename" \
+        "$TOOLBOX_DOCKER_IMAGE:$TOOLBOX_DOCKER_TAG" "$TOOLBOX_SHELL"
+fi
