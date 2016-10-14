@@ -237,7 +237,7 @@ nmap <leader>l :CommandTBuffer<cr>
 
 let g:CommandTMaxHeight = 20
 let g:CommandTAlwaysShowDotFiles = 1
-let g:CommandTWildIgnore = &wildignore . ",vendor/**,Godeps/_workspace/**"
+let g:CommandTWildIgnore = &wildignore . ",vendor/**,Godeps/_workspace/**,target/**"
 let g:CommandTTraverseSCM = "pwd"
 let g:CommandTMatchWindowReverse = 0
 
