@@ -34,15 +34,6 @@ install_vim_plugins() {
     vim +PluginInstall +GoInstallBinaries +qa
 }
 
-install_go_tools() {
-    echo "+ Installing Go tools"
-    GO_GET="go get -v"
-    $GO_GET golang.org/x/tools/cmd/cover
-    $GO_GET golang.org/x/tools/cmd/godoc
-    $GO_GET golang.org/x/tools/cmd/present
-    $GO_GET github.com/mitchellh/gox
-}
-
 install_tools() {
     echo "+ Installing tools to $BINDIR"
     mkdir -p "$BINDIR"
@@ -51,7 +42,6 @@ install_tools() {
 
 install_dotfiles
 install_vim_plugins
-install_go_tools
 install_tools
 
 :
