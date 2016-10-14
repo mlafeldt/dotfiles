@@ -279,7 +279,7 @@ let g:go_fmt_command = "goimports"
 " RUST.VIM PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-PUPPET PLUGIN
