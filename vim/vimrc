@@ -328,15 +328,16 @@ augroup vimrcEx
   " auto-complete Ruby names up to ! and ?
   autocmd FileType ruby setlocal iskeyword+=!,?
 
-  " run Go tests
+  " Go mappings
   autocmd FileType go nnoremap <leader>t :silent w\|:GoTest<cr>
   autocmd FileType go nnoremap <leader>T :silent w\|:GoTestFunc<cr>
   autocmd FileType go nnoremap <leader>b :silent w\|:GoBuild<cr>
 
-  " run Rust tests
-  autocmd FileType rust nnoremap <leader>t :RustRun! --test<cr>
-  autocmd FileType rust nnoremap <leader>a :!cargo test<cr>
-  autocmd FileType rust nnoremap <leader>r :!cargo run<cr>
+  " Rust mappings
+  autocmd FileType rust nnoremap <leader>t :silent w\|:RustRun! --test<cr>
+  autocmd FileType rust nnoremap <leader>a :silent w\|:!cargo test<cr>
+  autocmd FileType rust nnoremap <leader>r :silent w\|:!cargo run<cr>
+  autocmd FileType rust nnoremap <leader>b :silent w\|:!cargo build<cr>
 
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
