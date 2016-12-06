@@ -26,6 +26,7 @@ Plugin 'fatih/vim-go'
 Plugin 'fatih/vim-hclfmt'
 Plugin 'godlygeek/tabular'
 Plugin 'Jimdo/vim-spec-runner'
+Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'reedes/vim-wordy'
@@ -35,10 +36,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
-" stop system vim from segfaulting
-if v:version >= 704
-  Plugin 'wincent/Command-T'
-end
 
 " end of Vundle setup
 call vundle#end()
@@ -220,27 +217,17 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COMMAND-T PLUGIN
-" https://wincent.com/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux
+" CTRLP PLUGIN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set ttimeoutlen=50
+let g:ctrlp_map = '<leader>f'
+nmap <leader>F :CtrlP %%<cr>
+nmap <leader>l :CtrlPBuffer<cr>
 
-if &term =~ "xterm" || &term =~ "screen"
-  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
-  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
-  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
-endif
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20'
+let g:ctrlp_use_caching = 0
 
-nmap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-nmap <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-nmap <leader>l :CommandTBuffer<cr>
-
-let g:CommandTMaxHeight = 20
-let g:CommandTAlwaysShowDotFiles = 1
-let g:CommandTWildIgnore = &wildignore . ",vendor/**,Godeps/_workspace/**,target/**"
-let g:CommandTTraverseSCM = "pwd"
-let g:CommandTMatchWindowReverse = 0
+set wildignore+=*/vendor/*,*/Godeps/_workspace/*,*/target/*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUBOCOP PLUGIN
