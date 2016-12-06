@@ -28,8 +28,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'Jimdo/vim-spec-runner'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'reedes/vim-wordy'
 Plugin 'rodjek/vim-puppet'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-commentary'
@@ -228,12 +226,6 @@ let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20'
 let g:ctrlp_use_caching = 0
 
 set wildignore+=*/vendor/*,*/Godeps/_workspace/*,*/target/*
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUBOCOP PLUGIN
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:vimrubocop_extra_args = "-D"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUGITIVE PLUGIN AND OTHER GIT STUFF
