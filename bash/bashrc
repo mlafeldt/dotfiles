@@ -1,57 +1,82 @@
-# if not running interactively, don't do anything
+# If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history
+# Don't put duplicate lines in the history
 HISTCONTROL=ignoredups:ignorespace
 
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-# set history length
+# Set history length
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
+# Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 export CLICOLOR=1
 export EDITOR=vim
-export UBUNTU_MENUPROXY=
 export HOMEBREW_PREFIX=$(brew --prefix)
 export GITHUB_USER=mlafeldt
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# enable bash completion
+# Enable bash completion
 if [ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]; then
     . "$HOMEBREW_PREFIX/etc/bash_completion"
 fi
 
-# chruby setup
-if [ -d "/usr/local/share/chruby" ]; then
-    source /usr/local/share/chruby/chruby.sh
-    source /usr/local/share/chruby/auto.sh
-fi
-
-# Go paths setup
+# Go
 if command -v go >/dev/null; then
     export GOPATH="$HOME/devel/go"
     export GOROOT="$(go env GOROOT)"
     export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 fi
 
-# set prompt
+# Rust
+if command -v cargo >/dev/null; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# Ruby
+if [ -d "/usr/local/share/chruby" ]; then
+    source /usr/local/share/chruby/chruby.sh
+    source /usr/local/share/chruby/auto.sh
+fi
+
+# Python
+export PIP_REQUIRE_VIRTUALENV=true
+
+# Docker
+eval "$(docker-machine env 2>/dev/null)"
+if test -n "$DOCKER_HOST"; then
+    export DOCKER_HOST_IP=$(docker-machine ip)
+fi
+
+# Use GNU sed
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# Set up gpg agent for use with git
+[ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
+if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+  export GPG_AGENT_INFO
+else
+  eval $(gpg-agent --daemon --write-env-file ~/.gpg-agent-info)
+fi
+export GPG_TTY=$(tty)
+
+# Set prompt
 [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
 GIT_PS1_SHOWDIRTYSTATE=1
 __jobs() { if test "$(jobs -p | wc -l | tr -d ' ')" != "0"; then echo "&"; fi }
 PS1='[\W$(__git_ps1 " (%s)")$(__jobs)]\$ '
 
-# include alias definitions
+# Include alias definitions
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
-# source local settings if present
+# Source local settings if present
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
 :

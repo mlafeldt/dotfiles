@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -5,18 +7,17 @@ alias l='ls -CF'
 alias t='tree'
 alias ta='tree -a'
 
-alias ..='cd .. && pwd'
-alias ...='cd ../.. && pwd'
-
-command -v hub >/dev/null && alias git='hub'
-
 alias bx='bundle exec'
 alias bi='bundle install --jobs=3 --retry=3'
 alias bu='bundle update --jobs=3 --retry=3'
 
 alias vag='/usr/bin/vagrant'
 
+command -v hub >/dev/null && alias git='hub'
 alias gti=git
+
+alias got=go
+alias gopath="cd $GOPATH/src/github.com"
 
 alias ubuntu='docker run -it --rm ubuntu:14.04 /bin/bash'
 alias debian='docker run -it --rm debian:jessie /bin/bash'
