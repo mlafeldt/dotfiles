@@ -57,8 +57,9 @@ if command -v docker-machine >/dev/null; then
     fi
 fi
 
-# Use GNU sed
+# Use GNU utils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
 # Set up gpg agent for use with git
 [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
