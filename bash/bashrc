@@ -50,9 +50,11 @@ fi
 export PIP_REQUIRE_VIRTUALENV=true
 
 # Docker
-eval "$(docker-machine env 2>/dev/null)"
-if test -n "$DOCKER_HOST"; then
-    export DOCKER_HOST_IP=$(docker-machine ip)
+if command -v docker-machine >/dev/null; then
+    eval "$(docker-machine env 2>/dev/null)"
+    if test -n "$DOCKER_HOST"; then
+        export DOCKER_HOST_IP=$(docker-machine ip)
+    fi
 fi
 
 # Use GNU sed
