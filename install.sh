@@ -8,6 +8,10 @@ set -e
 DOTFILES="bash git ruby vim"
 BINDIR="$HOME/bin"
 
+install_brew_tools() {
+    (cd homebrew && brew bundle)
+}
+
 install_dotfiles() {
     echo "+ Installing dotfiles"
 
@@ -40,6 +44,7 @@ install_tools() {
     cp -av bin/* "$BINDIR"
 }
 
+install_brew_tools
 install_dotfiles
 install_vim_plugins
 install_tools
