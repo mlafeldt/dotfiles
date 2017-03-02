@@ -38,6 +38,8 @@ fi
 # Rust
 if command -v cargo >/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
+    export OPENSSL_INCLUDE_DIR=$(brew --prefix openssl)/include
+    export OPENSSL_LIB_DIR=$(brew --prefix openssl)/lib
 fi
 
 # Ruby
