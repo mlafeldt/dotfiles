@@ -59,6 +59,27 @@ if command -v docker-machine >/dev/null; then
     fi
 fi
 
+# AWS
+if command -v awsenv >/dev/null; then
+    awsunlock() {
+        awsenv unlock --timeout=0
+    }
+
+    awsconsole() {
+        url="$(awsenv console "$1")"
+        if test $? = 0; then
+            open "$url"
+        fi
+    }
+
+    awsshell() {
+        vars="$(awsenv shell "$1")"
+        if test $? = 0; then
+            eval "$vars"
+        fi
+    }
+fi
+
 # Use GNU utils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
