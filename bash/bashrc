@@ -38,8 +38,8 @@ fi
 # Rust
 if command -v cargo >/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
-    export OPENSSL_INCLUDE_DIR=$(brew --prefix openssl)/include
-    export OPENSSL_LIB_DIR=$(brew --prefix openssl)/lib
+    export OPENSSL_INCLUDE_DIR="$HOMEBREW_PREFIX/opt/openssl/include"
+    export OPENSSL_LIB_DIR="$HOMEBREW_PREFIX/opt/openssl/lib"
 fi
 
 # Ruby
@@ -55,7 +55,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 if command -v docker-machine >/dev/null; then
     eval "$(docker-machine env 2>/dev/null)"
     if test -n "$DOCKER_HOST"; then
-        export DOCKER_HOST_IP=$(docker-machine ip)
+        export DOCKER_HOST_IP=$(echo $DOCKER_HOST | cut -d/ -f3 | cut -d: -f1)
     fi
 fi
 
