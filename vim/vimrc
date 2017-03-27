@@ -225,7 +225,7 @@ nmap <leader>l :CtrlPBuffer<cr>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20'
 let g:ctrlp_use_caching = 0
 
-set wildignore+=*/vendor/*,*/Godeps/_workspace/*,*/target/*,*/tmp/*,*/node_modules/*
+set wildignore+=*/vendor/*,*/Godeps/_workspace/*,*/target/*,*/tmp/*,*/node_modules/*,*.class
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUGITIVE PLUGIN AND OTHER GIT STUFF
