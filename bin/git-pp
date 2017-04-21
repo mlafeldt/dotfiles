@@ -1,16 +1,28 @@
 #!/bin/bash
-# Helper script to quickly create GitHub pull requests.
+# Helper script to quickly create pull requests on GitHub or Bitbucket.
 
 set -e
 set -o pipefail
 
-# Push current branch to GitHub.
-BRANCH=$(git symbolic-ref --short HEAD)
-if test "$BRANCH" = master; then
+BASE_BRANCH=${1:-master}
+
+# Push current branch.
+HEAD_BRANCH=$(git symbolic-ref --short HEAD)
+if test "$HEAD_BRANCH" = master; then
     echo "You don't want to do this in master, right?"
     exit 1
 fi
-git push --set-upstream origin "$BRANCH"
+git push --set-upstream origin "$HEAD_BRANCH"
 
-# Create the PR and assign myself.
-exec hub pull-request --browse --assign="$GITHUB_USER"
+# Create PR on GitHub or Bitbucket.
+ORIGIN_URL=$(git config remote.origin.url)
+case "$ORIGIN_URL" in
+*github.com*)
+    exec hub pull-request --base="$BASE_BRANCH" --assign="$GITHUB_USER" --browse ;;
+*bitbucket.org*)
+    BITBUCKET_URL=$(echo $ORIGIN_URL | sed -e 's!^.*\(bitbucket.org.*\).git$!\1!;s!:!/!')
+    exec open "https://$BITBUCKET_URL/pull-requests/new?source=$HEAD_BRANCH&dest=$BASE_BRANCH" ;;
+*)
+    echo "Unsupported origin: $ORIGIN_URL"
+    exit 1 ;;
+esac
