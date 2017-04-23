@@ -13,6 +13,8 @@ alias bu='bundle update --jobs=3 --retry=3'
 
 alias vag='/usr/bin/vagrant'
 
+alias hd='hexdump -C'
+
 command -v hub >/dev/null && alias git='hub'
 alias gti=git
 
