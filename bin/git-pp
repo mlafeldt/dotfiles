@@ -1,5 +1,9 @@
 #!/bin/bash
 # Helper script to quickly create pull requests on GitHub or Bitbucket.
+#
+# Create a branch as usual, e.g. `git checkout -b my-branch`. After adding some
+# commits, run `git pp` to create a PR against master or `git pp target` to
+# target another branch.
 
 set -e
 set -o pipefail
