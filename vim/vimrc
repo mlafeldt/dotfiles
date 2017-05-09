@@ -34,6 +34,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-rhubarb'
 
 " end of Vundle setup
 call vundle#end()
