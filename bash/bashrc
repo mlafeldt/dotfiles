@@ -85,13 +85,10 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
 # Set up gpg agent for use with git
-[ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
-if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gpg-agent-info)
+if command -v gpg-agent >/dev/null; then
+    gpg-agent --daemon 2>/dev/null
+    export GPG_TTY=$(tty)
 fi
-export GPG_TTY=$(tty)
 
 # Set prompt
 [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
