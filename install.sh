@@ -44,9 +44,9 @@ install_tools() {
     cp -av bin/* "$BINDIR"
 }
 
-install_brew_tools
 install_dotfiles
 install_vim_plugins
+install_brew_tools
 install_tools
 
 :
