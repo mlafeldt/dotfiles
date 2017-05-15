@@ -12,8 +12,8 @@ BASE_BRANCH=${1:-master}
 
 # Push current branch.
 HEAD_BRANCH=$(git symbolic-ref --short HEAD)
-if test "$HEAD_BRANCH" = master; then
-    echo "You don't want to do this in master, right?"
+if test "$HEAD_BRANCH" = "$BASE_BRANCH"; then
+    echo "You don't want to do this in '$BASE_BRANCH', right?"
     exit 1
 fi
 git push --set-upstream origin "$HEAD_BRANCH"
