@@ -21,9 +21,9 @@ alias gti=git
 alias got=go
 alias gopath="cd $GOPATH/src/github.com"
 
-alias ubuntu='docker run -it --rm ubuntu:14.04 /bin/bash'
-alias debian='docker run -it --rm debian:jessie /bin/bash'
-alias centos='docker run -it --rm centos:7 /bin/bash'
-alias alpine='docker run -it --rm alpine /bin/sh'
+alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:14.04 /bin/bash'
+alias debian='docker run -it --rm -v $(PWD):/data -w /data debian:jessie /bin/bash'
+alias centos='docker run -it --rm -v $(PWD):/data -w /data centos:7 /bin/bash'
+alias alpine='docker run -it --rm -v $(PWD):/data -w /data alpine /bin/sh'
 
 :
