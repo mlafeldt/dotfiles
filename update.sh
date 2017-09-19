@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
+set -o pipefail
 
 cd homebrew
 brew bundle dump --file=- | sort > Brewfile
