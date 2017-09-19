@@ -20,14 +20,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'cespare/vim-toml'
-Plugin 'moby/moby', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'fatih/vim-hclfmt'
 Plugin 'godlygeek/tabular'
 Plugin 'Jimdo/vim-spec-runner'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'mileszs/ack.vim'
+Plugin 'moby/moby', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'rodjek/vim-puppet'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-commentary'
