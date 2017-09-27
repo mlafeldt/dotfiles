@@ -29,10 +29,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'mileszs/ack.vim'
 Plugin 'moby/moby', {'rtp': '/contrib/syntax/vim/'}
-Plugin 'rodjek/vim-puppet'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rhubarb'
@@ -262,12 +260,6 @@ let g:go_fmt_command = "goimports"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:rustfmt_autosave = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-PUPPET PLUGIN
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:puppet_align_hashes = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-COMMENTARY
