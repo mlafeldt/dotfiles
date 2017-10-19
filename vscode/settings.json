@@ -1,0 +1,29 @@
+{
+  "editor.fontFamily": "Source Code Pro",
+  "editor.fontSize": 14,
+  "editor.rulers": [
+    80
+  ],
+  "editor.autoClosingBrackets": false,
+  "editor.minimap.enabled": false,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+  "terminal.integrated.lineHeight": 1.4,
+  "window.openFilesInNewWindow": "on",
+  "workbench.colorTheme": "Solarized Dark",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/target": true,
+    "**/tmp": true
+  },
+  "files.insertFinalNewline": true,
+  "git.path": "/usr/local/bin/git",
+  "rust.rustLangSrcPath": "/usr/local/share/rust/rust_src",
+  "rust.mode": "legacy",
+  "rust.actionOnSave": "check"
+}
