@@ -24,7 +24,7 @@ case "$ORIGIN_URL" in
 *github.com*)
     exec hub pull-request --base="$BASE_BRANCH" --assign="$GITHUB_USER" --browse ;;
 *bitbucket.org*)
-    BITBUCKET_URL=$(echo $ORIGIN_URL | sed -e 's!^.*\(bitbucket.org.*\).git$!\1!;s!:!/!')
+    BITBUCKET_URL=$(echo $ORIGIN_URL | sed 's!^.*://!!;s!.git$!!;s!:!/!')
     exec open "https://$BITBUCKET_URL/pull-requests/new?source=$HEAD_BRANCH&dest=$BASE_BRANCH" ;;
 *)
     echo "Unsupported origin: $ORIGIN_URL"
