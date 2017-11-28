@@ -27,4 +27,7 @@ alias debian='docker run -it --rm -v $(PWD):/data -w /data debian:jessie /bin/ba
 alias centos='docker run -it --rm -v $(PWD):/data -w /data centos:7 /bin/bash'
 alias alpine='docker run -it --rm -v $(PWD):/data -w /data alpine /bin/sh'
 
+alias fix-docker-machine='docker-machine ssh default "date; sudo ntpd -p ntp.ubuntu.com; sleep 1; date"'
+alias fix-spotlight='sudo mdutil -i on /'
+
 :
