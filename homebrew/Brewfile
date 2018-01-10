@@ -45,7 +45,7 @@ brew "readline"
 brew "rpm"
 brew "rsync"
 brew "ruby"
-brew "rust", args: ["with-racer"]
+brew "rust"
 brew "selecta"
 brew "srecord"
 brew "terraform"
