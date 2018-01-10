@@ -45,8 +45,8 @@ install_tools() {
 }
 
 install_dotfiles
-install_vim_plugins
 install_brew_tools
 install_tools
+install_vim_plugins
 
 :
