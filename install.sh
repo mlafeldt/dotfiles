@@ -9,7 +9,7 @@ DOTFILES="bash git ruby vim"
 BINDIR="$HOME/bin"
 
 install_brew_tools() {
-    (cd homebrew && brew bundle)
+    (cd homebrew && brew bundle --verbose)
 }
 
 install_dotfiles() {
