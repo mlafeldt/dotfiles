@@ -1,15 +1,18 @@
-#!/bin/sh
-# Install dotfiles to $HOME
-# Usage: ./install.sh
-# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
+#!/bin/bash
 
 set -e
+set -o pipefail
 
 DOTFILES="bash git ruby vim"
 BINDIR="$HOME/bin"
 
 install_brew_tools() {
-    (cd homebrew && brew bundle --verbose)
+    (
+        cd homebrew &&
+        brew bundle --verbose &&
+        brew bundle cleanup --force --verbose &&
+        brew cleanup
+    )
 }
 
 install_dotfiles() {
