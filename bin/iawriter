@@ -1,3 +1,13 @@
 #!/bin/sh
-# Open files with iA Writer
-exec open -a "/Applications/iA Writer.app" "$@"
+# Open file with iA Writer
+
+set -e
+
+if test $# -gt 0; then
+    mdfile=$1
+    touch "$mdfile"
+else
+    mdfile=$(find * -name '*.md' | selecta)
+fi
+
+exec open -a "/Applications/iA Writer Classic.app" "$mdfile"
