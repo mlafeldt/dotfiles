@@ -305,6 +305,7 @@ augroup vimrcEx
   " Go mappings
   autocmd FileType go nnoremap <leader>t :silent w\|:GoTest<cr>
   autocmd FileType go nnoremap <leader>T :silent w\|:GoTestFunc<cr>
+  autocmd FileType go nnoremap <leader>a :silent w\|:!go test -v -cover ./...<cr>
   autocmd FileType go nnoremap <leader>b :silent w\|:GoBuild<cr>
 
   " Rust mappings
