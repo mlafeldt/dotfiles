@@ -10,7 +10,6 @@ install_brew_tools() {
     (
         cd homebrew &&
         brew bundle --verbose &&
-        brew bundle cleanup --force --verbose &&
         brew cleanup
     )
 }
