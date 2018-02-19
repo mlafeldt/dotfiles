@@ -16,6 +16,8 @@ alias tf=terraform
 
 alias hd='hexdump -C'
 
+alias vsc='open -a "$HOME/Applications/Visual Studio Code.app"'
+
 command -v hub >/dev/null && alias git='hub'
 alias gti=git
 
