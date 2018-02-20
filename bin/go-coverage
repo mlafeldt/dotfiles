@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+trap "rm -f cover.out" EXIT
+go test -v -coverprofile cover.out ${1:-./...}
+go tool cover -html=cover.out
