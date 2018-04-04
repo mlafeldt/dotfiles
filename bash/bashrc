@@ -42,9 +42,6 @@ if command -v cargo >/dev/null; then
     export OPENSSL_LIB_DIR="$HOMEBREW_PREFIX/opt/openssl/lib"
 fi
 
-# Python
-export PIP_REQUIRE_VIRTUALENV=true
-
 # Docker
 if command -v docker-machine >/dev/null; then
     eval "$(docker-machine env 2>/dev/null)"
