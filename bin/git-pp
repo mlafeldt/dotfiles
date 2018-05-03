@@ -26,10 +26,11 @@ case "$ORIGIN_URL" in
 *bitbucket.org*)
     BITBUCKET_URL=$(echo $ORIGIN_URL | sed 's!^.*://!!;s!.git$!!;s!:!/!')
     exec open "https://$BITBUCKET_URL/pull-requests/new?source=$HEAD_BRANCH&dest=$BASE_BRANCH" ;;
-*bitbucket.collins.kg*)
+*bitbucket.*)
+    DOMAIN=$(echo $ORIGIN_URL | awk -F[/:] '{print $4}' | sed 's!git@!!')
     PROJECT=$(echo $ORIGIN_URL | awk -F/ '{print $(NF-1)}')
     REPO=$(echo $ORIGIN_URL | awk -F/ '{print $NF}' | sed 's/.git$//')
-    exec open "https://bitbucket.collins.kg/projects/$PROJECT/repos/$REPO/compare/commits?sourceBranch=$HEAD_BRANCH&targetBranch=$BASE_BRANCH" ;;
+    exec open "https://$DOMAIN/projects/$PROJECT/repos/$REPO/compare/commits?sourceBranch=$HEAD_BRANCH&targetBranch=$BASE_BRANCH" ;;
 *)
     echo "Unsupported origin: $ORIGIN_URL"
     exit 1 ;;
