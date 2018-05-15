@@ -33,6 +33,14 @@ if command -v go >/dev/null; then
     export GOPATH="$HOME/devel/go"
     export GOROOT="$(go env GOROOT)"
     export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+
+    gopath() {
+        dir=$(
+            cd "$GOPATH/src"
+            cd "$(ls -d */*/* | selecta -s "$GITHUB_USER")"
+            pwd
+        ) && cd "$dir"
+    }
 fi
 
 # Rust

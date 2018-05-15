@@ -22,7 +22,6 @@ command -v hub >/dev/null && alias git='hub'
 alias gti=git
 
 alias got=go
-alias gopath="cd $GOPATH/src/github.com/$GITHUB_USER"
 
 alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:14.04 /bin/bash'
 alias debian='docker run -it --rm -v $(PWD):/data -w /data debian:jessie /bin/bash'
