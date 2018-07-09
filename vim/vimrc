@@ -271,6 +271,13 @@ nmap \\\ <Plug>CommentaryLine
 nmap \\u <Plug>CommentaryUndo
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-TERRAFORM
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:terraform_align = 1
+let g:terraform_fold_sections = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -288,7 +295,7 @@ augroup vimrcEx
   " language-dependent indenting
   autocmd FileType text,markdown,present setlocal ts=4 sw=4 et si tw=80
   autocmd FileType sh,perl,awk,python,dockerfile setlocal ts=4 sw=4 et si
-  autocmd FileType ruby,cucumber,yaml,vim,terraform setlocal ts=2 sw=2 et si
+  autocmd FileType ruby,cucumber,yaml,vim setlocal ts=2 sw=2 et si
   autocmd FileType c,h,cpp setlocal ts=8 sw=8 noet cindent
   autocmd FileType make setlocal ts=8 sw=8 noet
   autocmd FileType asm setlocal ts=8 sw=8 noet
@@ -314,6 +321,9 @@ augroup vimrcEx
   autocmd FileType rust nnoremap <leader>a :silent w\|:!cargo test<cr>
   autocmd FileType rust nnoremap <leader>r :silent w\|:!cargo run<cr>
   autocmd FileType rust nnoremap <leader>b :silent w\|:!cargo build<cr>
+
+  " Terraform
+  autocmd FileType terraform setlocal commentstring=#%s
 
   " enable spell-checking
   autocmd FileType text,markdown,gitcommit,present setlocal spell spelllang=en_us
