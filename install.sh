@@ -4,7 +4,6 @@ set -e
 set -o pipefail
 
 DOTFILES="bash git ruby vim"
-BINDIR="$HOME/bin"
 
 install_brew_tools() {
     (
@@ -40,15 +39,8 @@ install_vim_plugins() {
     vim +PluginInstall +GoInstallBinaries +qa
 }
 
-install_tools() {
-    echo "+ Installing tools to $BINDIR"
-    mkdir -p "$BINDIR"
-    cp -av bin/* "$BINDIR"
-}
-
 install_dotfiles
 install_brew_tools
-install_tools
 install_vim_plugins
 
 :
