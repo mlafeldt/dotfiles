@@ -6,6 +6,7 @@
   ],
   "editor.autoClosingBrackets": false,
   "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.shell.osx": "/usr/local/bin/bash",
@@ -23,7 +24,11 @@
   },
   "files.insertFinalNewline": true,
   "git.path": "/usr/local/bin/git",
+  "git.enabled": false,
   "rust.rustLangSrcPath": "/usr/local/share/rust/rust_src",
   "rust.mode": "legacy",
-  "rust.actionOnSave": "check"
+  "rust.actionOnSave": "check",
+  "explorer.confirmDelete": false,
+  "terraform.path": "/usr/local/bin/terraform",
+  "terraform.lintPath": "/usr/local/bin/tflint"
 }
