@@ -65,14 +65,14 @@ if command -v awsenv >/dev/null; then
     }
 
     awsconsole() {
-        url="$(awsenv console "$1")"
+        url="$(awsenv console "${1:-mlafeldt}")"
         if test $? = 0; then
             open "$url"
         fi
     }
 
     awsshell() {
-        vars="$(awsenv shell "$1")"
+        vars="$(awsenv shell "${1:-mlafeldt}")"
         if test $? = 0; then
             eval "$vars"
         fi
