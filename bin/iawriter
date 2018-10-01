@@ -10,4 +10,4 @@ else
     mdfile=$(find * -name '*.md' | selecta)
 fi
 
-exec open -a "/Applications/iA Writer Classic.app" "$mdfile"
+exec open -a "/Applications/iA Writer.app" "$mdfile"
