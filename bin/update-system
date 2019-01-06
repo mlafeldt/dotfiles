@@ -1,30 +1,31 @@
-#!/bin/sh
+#!/bin/bash
 # Update system software
-# Usage: update-system
-# Written by Mathias Lafeldt <mathias.lafeldt@gmail.com>
 
 set -e
+set -o pipefail
 
 # Use system Ruby and Python
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH
 
 update_homebrew() {
-    if command -V brew >/dev/null 2>/dev/null; then
-        echo "+ Updating homebrew"
-        brew update
-        brew upgrade
-        brew cleanup
-    fi
+    command -V brew >/dev/null 2>/dev/null || return 0
+    echo "+ Updating homebrew"
+    brew update
+    outdated=$(brew outdated)
+    test -n "$outdated" || return 0
+    brew fetch --retry --force-bottle $outdated
+    brew upgrade
+    brew cleanup
 }
 
 update_vim_plugins() {
-    if command -V vim >/dev/null 2>/dev/null; then
-        echo "+ Cleaning up Vim plugins"
-        vim +PluginClean! +qa
-        echo "+ Updating Vim plugins"
-        vim +PluginUpdate +GoUpdateBinaries +qa
-    fi
+    hash -r
+    command -V vim >/dev/null 2>/dev/null || return 0
+    echo "+ Cleaning up Vim plugins"
+    vim +PluginClean! +qa
+    echo "+ Updating Vim plugins"
+    vim +PluginUpdate +GoUpdateBinaries +qa
 }
 
 update_homebrew
