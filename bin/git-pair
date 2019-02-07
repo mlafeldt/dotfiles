@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require "yaml"
+
+TEMPLATE_FILE = File.expand_path("~/.gitmessage")
+CONFIG_FILE = File.expand_path("~/.git-pair.yaml")
+
+if ARGV.empty?
+  template = File.read(TEMPLATE_FILE).strip
+  if template.empty?
+    puts "You are on your own."
+  else
+    puts template
+  end
+  exit
+end
+
+user = ARGV.first
+config = YAML.load(File.read(CONFIG_FILE))
+name_and_email = config["users"][user]
+
+abort "error: user not found in #{CONFIG_FILE}" if name_and_email.nil?
+
+co_authored_by = "Co-authored-by: #{name_and_email}"
+
+File.open(TEMPLATE_FILE, "w") do |f|
+  puts co_authored_by
+  f.puts "\n\n#{co_authored_by}"
+end

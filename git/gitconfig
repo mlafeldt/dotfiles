@@ -33,6 +33,7 @@
 	autocrlf = input
 [commit]
 	gpgsign = true
+	template = ~/.gitmessage
 [log]
 	decorate = true
 [push]

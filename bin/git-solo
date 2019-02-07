@@ -1,0 +1,5 @@
+#!/bin/sh
+
+> ~/.gitmessage
+
+echo "You are on your own."
