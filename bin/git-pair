@@ -8,7 +8,7 @@ CONFIG_FILE = File.expand_path("~/.git-pair.yaml")
 if ARGV.empty?
   template = File.read(TEMPLATE_FILE).strip
   if template.empty?
-    puts "You are on your own."
+    puts "You are on your own. Run `git-pair USER` for some company."
   else
     puts template
   end
