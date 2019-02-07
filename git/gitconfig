@@ -18,10 +18,7 @@
 	fixup = commit --amend -C HEAD
 	gn = goodness
 	lol = log --graph --decorate --oneline
-	pa = !git push && git push --tags
-	pd = !git push -n && git push -n --tags
 	pi = cherry-pick
-	pr = pull-request
 	rh = reset --hard
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -i -e $1' -
 	st = status -sb
