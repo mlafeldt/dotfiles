@@ -1,12 +1,14 @@
-#!/usr/bin/env ruby
+#!/bin/bash
 
-co_author = `selecta < #{File.expand_path("~/.gitauthors")}`
+set -e
 
-abort "error: selecta failed" unless $?.success?
+co_author="$(selecta < "$HOME/.gitauthors")"
 
-co_authored_by = "Co-authored-by: #{co_author}"
+cat > "$HOME/.gitmessage" <<EOF
 
-File.open(File.expand_path("~/.gitmessage"), "w") do |f|
-  puts co_authored_by
-  f.puts "\n\n#{co_authored_by}"
-end
+
+Co-authored-by: $co_author
+EOF
+
+echo "You are now pairing with:"
+echo "$co_author"
