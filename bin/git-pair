@@ -1,29 +1,12 @@
 #!/usr/bin/env ruby
 
-require "yaml"
+co_author = `selecta < #{File.expand_path("~/.gitauthors")}`
 
-TEMPLATE_FILE = File.expand_path("~/.gitmessage")
-CONFIG_FILE = File.expand_path("~/.git-pair.yaml")
+abort "error: selecta failed" unless $?.success?
 
-if ARGV.empty?
-  template = File.read(TEMPLATE_FILE).strip
-  if template.empty?
-    puts "You are on your own. Run `git-pair USER` for some company."
-  else
-    puts template
-  end
-  exit
-end
+co_authored_by = "Co-authored-by: #{co_author}"
 
-user = ARGV.first
-config = YAML.load(File.read(CONFIG_FILE))
-name_and_email = config["users"][user]
-
-abort "error: user not found in #{CONFIG_FILE}" if name_and_email.nil?
-
-co_authored_by = "Co-authored-by: #{name_and_email}"
-
-File.open(TEMPLATE_FILE, "w") do |f|
+File.open(File.expand_path("~/.gitmessage"), "w") do |f|
   puts co_authored_by
   f.puts "\n\n#{co_authored_by}"
 end
