@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+set -o pipefail
+
+git log --format=format:"%aN <%ae>" | sort --ignore-case | uniq -i
