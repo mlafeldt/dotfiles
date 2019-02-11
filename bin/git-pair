@@ -1,4 +1,15 @@
 #!/bin/bash
+# Tool to quickly set the git co-author when pair programming, see
+# https://help.github.com/articles/creating-a-commit-with-multiple-authors/
+#
+# For this to work, you need to do 3 things:
+#
+# 1) Run: git config commit.template '~/.gitmessage'
+# 2) You may use git-authors to create ~/.gitauthors
+# 3) Install selecta
+#
+# Use git-solo to unset the co-author again.
+#
 
 set -e
 

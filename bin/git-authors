@@ -1,4 +1,5 @@
 #!/bin/sh
+# To be used together with git-pair to create a list of git authors.
 
 set -e
 set -o pipefail

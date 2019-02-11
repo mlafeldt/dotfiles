@@ -1,4 +1,5 @@
 #!/bin/bash
+# To be used together with git-pair to end a pairing session.
 
 set -e
 
