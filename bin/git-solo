@@ -5,4 +5,4 @@ set -e
 
 > ~/.gitmessage
 
-echo "You are on your own."
+echo "You are on your own now."
