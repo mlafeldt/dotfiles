@@ -13,13 +13,14 @@
 
 set -e
 
-co_author="$(selecta < "$HOME/.gitauthors")"
+coauthor="$(selecta < "$HOME/.gitauthors")"
+template="$(git config --path commit.template)"
 
-cat > "$HOME/.gitmessage" <<EOF
+cat > "$template" <<EOF
 
 
-Co-authored-by: $co_author
+Co-authored-by: $coauthor
 EOF
 
 echo "You are now pairing with:"
-echo "$co_author"
+echo "$coauthor"
