@@ -1,12 +1,12 @@
 #!/bin/bash
-# Tool to quickly set the git co-author when pair programming, see
+# Tool to quickly set one or more git co-authors when pair programming, see
 # https://help.github.com/articles/creating-a-commit-with-multiple-authors/
 #
 # For this to work, you need to do 3 things:
 #
 #   1) Run: git config commit.template '~/.gitmessage'
 #   2) Create ~/.gitauthors using git-authors or some other mechanism
-#   3) Install fzf or selecta
+#   3) Install https://github.com/junegunn/fzf
 #
 # Run `git-solo` to unset the co-author again.
 #
@@ -14,17 +14,9 @@
 set -e
 set -o pipefail
 
-finder=$(command -v fzf || command -v selecta) ||
-    { echo "error: install fzf or selecta"; exit 1; }
-
-coauthor="$("$finder" < "$HOME/.gitauthors")"
 template="$(git config --path commit.template)"
+coauthors="$(fzf -m < "$HOME/.gitauthors")"
 
-cat > "$template" <<EOF
+{ printf "\n\n"; echo "$coauthors" | sed 's/^/Co-authored-by: /'; } > "$template"
 
-
-Co-authored-by: $coauthor
-EOF
-
-echo "You are now pairing with:"
-echo "$coauthor"
+printf "You are now pairing with:\n${coauthors}\n"
