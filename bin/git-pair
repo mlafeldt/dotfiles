@@ -5,15 +5,19 @@
 # For this to work, you need to do 3 things:
 #
 #   1) Run: git config commit.template '~/.gitmessage'
-#   2) You may use git-authors to create ~/.gitauthors
-#   3) Install selecta
+#   2) Create ~/.gitauthors using git-authors or some other mechanism
+#   3) Install fzf or selecta
 #
 # Run `git-solo` to unset the co-author again.
 #
 
 set -e
+set -o pipefail
 
-coauthor="$(selecta < "$HOME/.gitauthors")"
+finder=$(command -v fzf || command -v selecta) ||
+    { echo "error: install fzf or selecta"; exit 1; }
+
+coauthor="$("$finder" < "$HOME/.gitauthors")"
 template="$(git config --path commit.template)"
 
 cat > "$template" <<EOF
