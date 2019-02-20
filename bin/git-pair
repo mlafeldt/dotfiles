@@ -8,7 +8,9 @@
 #   2) Create ~/.gitauthors using git-authors or some other mechanism
 #   3) Install https://github.com/junegunn/fzf
 #
-# Run `git-solo` to unset the co-author again.
+# Use `git-pair` to start a pairing session and `git-solo` to end it.
+#
+# Note that fzf allows you to select multiple authors with tab/shift-tab.
 #
 
 set -e
