@@ -11,7 +11,7 @@ alias bx='bundle exec'
 alias bi='bundle install --jobs=3 --retry=3'
 alias bu='bundle update --jobs=3 --retry=3'
 
-alias kc=kubectl; complete -o default -F __start_kubectl kc
+complete -o default -F __start_kubectl kc
 alias kn=kubens;  complete -F _kube_namespaces kn
 alias kx=kubectx; complete -F _kube_contexts kx
 
