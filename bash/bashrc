@@ -81,10 +81,12 @@ if command -v gpg-agent >/dev/null; then
     export GPG_TTY=$(tty)
 fi
 
+[ -f "$HOMEBREW_PREFIX/share/autojump/autojump.bash" ] && . "$HOMEBREW_PREFIX/share/autojump/autojump.bash"
+
 # Set prompt
 [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
 GIT_PS1_SHOWDIRTYSTATE=1
-__jobs() { if test "$(jobs -p | wc -l | tr -d ' ')" != "0"; then echo "&"; fi }
+__jobs() { test -n "$(jobs -l | grep -v autojump)" && echo "&"; }
 PS1='[\W$(__git_ps1 " (%s)")$(__jobs)]\$ '
 
 # Include alias definitions
