@@ -5,14 +5,6 @@ set -o pipefail
 
 DOTFILES="bash git ruby vim"
 
-install_brew_tools() {
-    (
-        cd homebrew &&
-        brew bundle --verbose &&
-        brew cleanup
-    )
-}
-
 install_dotfiles() {
     echo "+ Installing dotfiles"
 
@@ -40,7 +32,6 @@ install_vim_plugins() {
 }
 
 install_dotfiles
-install_brew_tools
 install_vim_plugins
 
 :
