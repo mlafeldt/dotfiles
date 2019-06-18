@@ -24,8 +24,7 @@ alias gti=git
 
 alias got=go
 
-alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:14.04 /bin/bash'
-alias debian='docker run -it --rm -v $(PWD):/data -w /data debian:jessie /bin/bash'
+alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:18.04 /bin/bash'
 alias centos='docker run -it --rm -v $(PWD):/data -w /data centos:7 /bin/bash'
 alias alpine='docker run -it --rm -v $(PWD):/data -w /data alpine /bin/sh'
 
