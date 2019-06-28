@@ -17,6 +17,8 @@ alias kx=kubectx; complete -F _kube_contexts kx
 
 alias tf=terraform
 
+alias av=aws-vault
+
 alias hd='hexdump -C'
 
 command -v hub >/dev/null && alias git='hub'
