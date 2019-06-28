@@ -54,25 +54,18 @@ if command -v cargo >/dev/null; then
 fi
 
 # AWS
-if command -v awsenv >/dev/null; then
-    awsunlock() {
-        awsenv unlock --timeout=0
-    }
+awsconsole() {
+    aws-vault login "${1:-mlafeldt}"
+}
 
-    awsconsole() {
-        url="$(awsenv console "${1:-mlafeldt}")"
-        if test $? = 0; then
-            open "$url"
-        fi
+awsshell() {
+    output="$(aws-vault exec "${1:-mlafeldt}" -- env)" || {
+        # aws-vault won't write errors to stderr
+        echo "$output" >&2
+        return 1
     }
-
-    awsshell() {
-        vars="$(awsenv shell "${1:-mlafeldt}")"
-        if test $? = 0; then
-            eval "$vars"
-        fi
-    }
-fi
+    eval "$(echo "$output" | awk '/^AWS_/ {print "export " $1}')"
+}
 
 # Use GNU utils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
