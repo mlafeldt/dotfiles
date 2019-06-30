@@ -65,6 +65,7 @@ awsshell() {
         return 1
     }
     eval "$(echo "$output" | awk '/^AWS_/ {print "export " $1}')"
+    aws sts get-caller-identity
 }
 
 # Use GNU utils
