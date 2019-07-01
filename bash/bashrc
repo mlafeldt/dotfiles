@@ -54,6 +54,10 @@ if command -v cargo >/dev/null; then
 fi
 
 # AWS
+export AWS_ASSUME_ROLE_TTL=1h
+export AWS_SESSION_TTL=12h
+export AWS_FEDERATION_TOKEN_TTL=12h
+
 awsconsole() {
     aws-vault login "${1:-mlafeldt}"
 }
