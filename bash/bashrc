@@ -7,9 +7,15 @@ HISTCONTROL=ignoredups:ignorespace
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
+# Use one command per line
+shopt -s cmdhist
+
 # Set history length
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=1000000
+HISTFILESIZE=1000000
+
+# Store history immediately
+PROMPT_COMMAND='history -a'
 
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
