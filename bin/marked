@@ -6,7 +6,7 @@ set -e
 if test $# -gt 0; then
     mdfile=$1
 else
-    mdfile=$(find * -name '*.md' | selecta)
+    mdfile=$(find * -name '*.md' | fzf)
 fi
 
 exec open -a "/Applications/Marked 2.app" "$mdfile"

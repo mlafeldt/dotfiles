@@ -7,7 +7,7 @@ if test $# -gt 0; then
     mdfile=$1
     touch "$mdfile"
 else
-    mdfile=$(find * -name '*.md' | selecta)
+    mdfile=$(find * -name '*.md' | fzf)
 fi
 
 exec open -a "/Applications/Byword.app" "$mdfile"
