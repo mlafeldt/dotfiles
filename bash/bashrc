@@ -26,9 +26,6 @@ export EDITOR=vim
 export HOMEBREW_PREFIX=$(brew --prefix)
 export GITHUB_USER=mlafeldt
 
-export AWS_REGION=eu-central-1
-export AWS_DEFAULT_REGION="$AWS_REGION"
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
