@@ -19,6 +19,7 @@ alias tf=terraform
 
 alias av='aws-vault'
 alias ax='aws-vault exec'
+alias al='aws-vault login'
 
 alias hd='hexdump -C'
 
