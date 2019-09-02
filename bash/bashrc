@@ -61,20 +61,6 @@ export AWS_ASSUME_ROLE_TTL=1h
 export AWS_SESSION_TTL=12h
 export AWS_FEDERATION_TOKEN_TTL=12h
 
-awsconsole() {
-    aws-vault login "${1:-mlafeldt}"
-}
-
-awsshell() {
-    output="$(aws-vault exec "${1:-mlafeldt}" -- env)" || {
-        # aws-vault won't write errors to stderr
-        echo "$output" >&2
-        return 1
-    }
-    eval "$(echo "$output" | awk '/^AWS_/ {print "export " $1}')"
-    aws sts get-caller-identity
-}
-
 # Use GNU utils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
