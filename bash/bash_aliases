@@ -15,8 +15,6 @@ complete -o default -F __start_kubectl kc
 alias kn=kubens;  complete -F _kube_namespaces kn
 alias kx=kubectx; complete -F _kube_contexts kx
 
-alias tf=terraform
-
 alias av='aws-vault'
 alias ax='aws-vault exec'
 alias al='aws-vault login'
