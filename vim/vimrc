@@ -289,8 +289,9 @@ augroup vimrcEx
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   autocmd BufReadPost COMMIT_EDITMSG,PULLREQ_EDITMSG exe "normal! gg"
 
-  " detect present files
+  " assign file types
   autocmd BufNewFile,BufRead *.slide set filetype=present
+  autocmd BufNewFile,BufRead *.template set filetype=yaml
 
   " language-dependent indenting
   autocmd FileType text,markdown,present setlocal ts=4 sw=4 et si tw=80
