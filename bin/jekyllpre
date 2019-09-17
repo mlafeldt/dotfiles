@@ -24,7 +24,7 @@ def process(content)
     content.gsub!(/\{\{\s+(.*?)\s+\}\}/, "\\1")
 
     # Fix image links
-    content.gsub!(/\/static\/images\//, "#{BLOG_ROOT}\\0")
+    content.gsub!(/\/(static|assets)\/images\//, "#{BLOG_ROOT}\\0")
   end
   content
 end
