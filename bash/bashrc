@@ -77,7 +77,8 @@ fi
 [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
 GIT_PS1_SHOWDIRTYSTATE=1
 __jobs() { test -n "$(jobs -l | grep -v autojump)" && echo "&"; }
-PS1='[\W$(__git_ps1 " (%s)")$(__jobs)]\$ '
+__awsvault() { test -n "$AWS_VAULT" && echo " 🔒"; }
+PS1='[\W$(__git_ps1 " (%s)$(__awsvault)")$(__jobs)]\$ '
 
 # Include alias definitions
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
