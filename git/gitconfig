@@ -48,6 +48,7 @@
 	renames = copies
 	algorithm = patience
 	compactionHeuristic = true
+	noprefix = true
 [pager]
 	log = diff-highlight | less
 	show = diff-highlight | less
