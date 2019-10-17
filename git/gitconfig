@@ -28,6 +28,7 @@
 [core]
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
+	excludesfile = ~/.gitignore_global
 [commit]
 	gpgsign = true
 	template = ~/.gitmessage
