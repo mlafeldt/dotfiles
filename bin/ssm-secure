@@ -1,0 +1,18 @@
+#!/bin/bash
+# Convenience wrapper for managing secrets in AWS Parameter Store.
+
+set -e
+
+KEY="$1"
+VALUE="$2"
+
+case "$VALUE" in
+"") ;; # get parameter(s)
+*)  exec aws ssm put-parameter --name "$KEY" --value "$VALUE" --type SecureString --overwrite ;;
+esac
+
+case "$KEY" in
+"") echo "error: key missing"; exit 1 ;;
+*/) exec aws ssm get-parameters-by-path --path "$KEY" --recursive --with-decryption ;;
+*)  exec aws ssm get-parameter --name "$KEY" --with-decryption ;;
+esac
