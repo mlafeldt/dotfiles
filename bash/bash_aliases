@@ -21,7 +21,7 @@ _awsvault() {
     shift
     if test $# -eq 0; then
         profile=$(aws-vault list --profiles | fzf) || return 1
-        echo "$profile"
+        echo "$profile" >&2
         aws-vault "$cmd" "$profile"
     else
         aws-vault "$cmd" "$@"
