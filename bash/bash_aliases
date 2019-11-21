@@ -14,6 +14,7 @@ alias bu='bundle update --jobs=3 --retry=3'
 complete -o default -F __start_kubectl kc
 alias kn=kubens;  complete -F _kube_namespaces kn
 alias kx=kubectx; complete -F _kube_contexts kx
+alias kw='watch "kubectl get pods -A | grep -vE \"(Completed|Running)\""'
 
 alias av='aws-vault'
 _awsvault() {
