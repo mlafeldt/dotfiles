@@ -23,15 +23,18 @@ shopt -s checkwinsize
 
 export CLICOLOR=1
 export EDITOR=vim
-export HOMEBREW_PREFIX=$(brew --prefix)
-export GITHUB_USER=mlafeldt
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export HOMEBREW_PREFIX=$(brew --prefix)
+export GITHUB_USER=mlafeldt
+command -v hub >/dev/null && alias git='hub'
+
 # Enable bash completion
-if [ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]; then
-    . "$HOMEBREW_PREFIX/etc/bash_completion"
+export BASH_COMPLETION_COMPAT_DIR="$HOMEBREW_PREFIX/etc/bash_completion.d"
+if [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
+    . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
 
 # Go

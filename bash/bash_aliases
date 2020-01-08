@@ -33,7 +33,6 @@ al() { _awsvault login "$@"; }
 
 alias hd='hexdump -C'
 
-command -v hub >/dev/null && alias git='hub'
 alias gti=git
 
 alias got=go
