@@ -1,0 +1,58 @@
+#!/bin/bash
+# This script will request and set temporary credentials in your shell env for a
+# given Alibaba Cloud RAM role. It can be used as a wrapper for any program
+# requiring session credentials, e.g. Terragrunt.
+#
+# Usage:
+#   1) Set credentials of user who's allowed to assume the role
+#      export ALICLOUD_REGION=eu-central-1
+#      export ALICLOUD_ACCESS_KEY=...
+#      export ALICLOUD_SECRET_KEY=...
+#
+#   2) Set the name of the role to assume
+#      export ALICLOUD_ASSUME_ROLE_ARN=acs:ram::0123456789012345:role/SomeRole
+#
+#   3) Run a command with session credentials for the given role
+#      alicloud-assume-role [cmd...]
+
+set -e
+set -o pipefail
+
+check_env() {
+    : ${ALICLOUD_REGION:?"env var not set"}
+    : ${ALICLOUD_ACCESS_KEY:?"env var not set"}
+    : ${ALICLOUD_SECRET_KEY:?"env var not set"}
+}
+
+assume_role() {
+    aliyun sts AssumeRole \
+        --region "$ALICLOUD_REGION" \
+        --endpoint "sts.$ALICLOUD_REGION.aliyuncs.com" \
+        --access-key-id "$ALICLOUD_ACCESS_KEY" \
+        --access-key-secret "$ALICLOUD_SECRET_KEY" \
+        --RoleArn "$ALICLOUD_ASSUME_ROLE_ARN" \
+        --RoleSessionName cloud-infrastructure \
+        --DurationSeconds 3600
+}
+
+get_session_credentials() {
+    jq -r '.Credentials | {ALICLOUD_ACCESS_KEY: .AccessKeyId, ALICLOUD_SECRET_KEY: .AccessKeySecret, ALICLOUD_SECURITY_TOKEN: .SecurityToken} | to_entries | .[] | "export " + .key + "=" + .value'
+}
+
+if test -n "$ALICLOUD_ASSUME_ROLE_ARN"; then
+    check_env
+
+    # aliyun-cli doesn't write errors to stderr
+    output=$(assume_role) || { echo -n "$output" >&2; exit 1; }
+    creds=$(echo "$output" | get_session_credentials)
+
+    # Output credentials and exit if no command was provided
+    if test $# -eq 0; then
+        echo "$creds"
+        exit 0
+    fi
+
+    eval "$creds"
+fi
+
+exec "$@"

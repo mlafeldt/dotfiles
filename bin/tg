@@ -1,2 +1,13 @@
 #!/bin/bash
+# Convenience wrapper for Terragrunt with some Alibaba Cloud support.
+
+set -e
+
+if test -n "$ALICLOUD_ASSUME_ROLE_ARN"; then
+    echo "Assuming role $ALICLOUD_ASSUME_ROLE_ARN ..."
+    bindir="$(cd -P -- $(dirname -- "$0") && pwd)"
+    creds=$("$bindir/alicloud-assume-role")
+    eval "$creds"
+fi
+
 exec terragrunt "$@"
