@@ -1,0 +1,11 @@
+#!/bin/bash
+# Convenience wrapper for invoking Lambda functions.
+# Usage: lambda-invoke <function> [--payload <payload>]
+
+set -e
+set -o pipefail
+
+outfile=$(mktemp)
+trap "rm -f $outfile" EXIT
+aws lambda invoke --function-name "$@" "$outfile" >/dev/null
+jq < "$outfile"
