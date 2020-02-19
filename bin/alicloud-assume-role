@@ -31,7 +31,7 @@ assume_role() {
         --access-key-id "$ALICLOUD_ACCESS_KEY" \
         --access-key-secret "$ALICLOUD_SECRET_KEY" \
         --RoleArn "$ALICLOUD_ASSUME_ROLE_ARN" \
-        --RoleSessionName cloud-infrastructure \
+        --RoleSessionName alicloud-assume-role \
         --DurationSeconds 3600
 }
 
