@@ -45,10 +45,6 @@ complete -o default -F _awsvault_compl ax al
 
 alias hd='hexdump -C'
 
-alias gti=git
-
-alias got=go
-
 alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:18.04 /bin/bash'
 alias centos='docker run -it --rm -v $(PWD):/data -w /data centos:7 /bin/bash'
 alias alpine='docker run -it --rm -v $(PWD):/data -w /data alpine /bin/sh'
@@ -56,6 +52,9 @@ alias alpine='docker run -it --rm -v $(PWD):/data -w /data alpine /bin/sh'
 alias fix-spotlight='sudo mdutil -i on /'
 alias fix-dns='sudo killall -HUP mDNSResponder'
 
-alias did="vim +'normal Go' +'r!date' ~/Dropbox/Documents/did.txt"
+# fat fingers...
+alias gti=git
+alias got=go
+alias bim=vim
 
 :
