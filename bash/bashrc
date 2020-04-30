@@ -56,7 +56,7 @@ if command -v go >/dev/null; then
 fi
 
 # Rust
-if command -v cargo >/dev/null; then
+if test -x "$HOME/.cargo/bin/cargo" >/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
     export OPENSSL_INCLUDE_DIR="$HOMEBREW_PREFIX/opt/openssl/include"
     export OPENSSL_LIB_DIR="$HOMEBREW_PREFIX/opt/openssl/lib"
