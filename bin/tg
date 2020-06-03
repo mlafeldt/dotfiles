@@ -4,7 +4,7 @@
 set -e
 
 if test -n "$ALICLOUD_ASSUME_ROLE_ARN"; then
-    echo "Assuming role $ALICLOUD_ASSUME_ROLE_ARN ..."
+    echo "Assuming role $ALICLOUD_ASSUME_ROLE_ARN ..." >&2
     bindir="$(cd -P -- $(dirname -- "$0") && pwd)"
     creds=$("$bindir/alicloud-assume-role")
     eval "$creds"
