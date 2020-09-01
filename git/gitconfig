@@ -9,7 +9,7 @@
 	bc = !sh -c 'git branch --merged | grep -v \\* | xargs -n 1 git branch -d'
 	bl = branch -vva
 	br = branch
-	ci = commit -v
+	ci = commit -v --no-verify
 	clobber = clean -ffdx
 	co = checkout
 	di = diff
