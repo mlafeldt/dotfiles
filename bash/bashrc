@@ -38,9 +38,6 @@ if [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
 fi
 
 # Go
-if command -v goenv >/dev/null; then
-    eval "$(goenv init -)"
-fi
 if command -v go >/dev/null; then
     export GOPATH="$HOME/devel/go"
     export GOROOT="$(go env GOROOT)"
@@ -53,6 +50,9 @@ if command -v go >/dev/null; then
             pwd
         ) && cd "$dir"
     }
+fi
+if command -v goenv >/dev/null; then
+    eval "$(goenv init -)"
 fi
 
 # Rust
