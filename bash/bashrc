@@ -63,6 +63,8 @@ if test -x "$HOME/.cargo/bin/cargo" >/dev/null; then
 fi
 
 # AWS
+export AWS_REGION=eu-central-1
+export AWS_DEFAULT_REGION=$AWS_REGION
 export AWS_ASSUME_ROLE_TTL=1h
 export AWS_SESSION_TTL=12h
 export AWS_FEDERATION_TOKEN_TTL=12h
