@@ -8,7 +8,7 @@ alias t='tree'
 alias ta='tree -a'
 
 alias bx='bundle exec'
-alias bi='bundle install --jobs=3 --retry=3 --path vendor/bundle'
+alias bi='bundle install --jobs=3 --retry=3'
 alias bu='bundle update --jobs=3 --retry=3'
 
 complete -o default -F __start_kubectl kc
