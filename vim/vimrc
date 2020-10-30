@@ -27,6 +27,7 @@ Plugin 'fatih/vim-hclfmt'
 Plugin 'godlygeek/tabular'
 Plugin 'hashivim/vim-terraform'
 Plugin 'Jimdo/vim-spec-runner'
+Plugin 'jparise/vim-graphql'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'mileszs/ack.vim'
 Plugin 'moby/moby', {'rtp': '/contrib/syntax/vim/'}
