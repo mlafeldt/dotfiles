@@ -235,9 +235,6 @@ set wildignore+=*/vendor/*,*/Godeps/_workspace/*,*/target/*,*/tmp/*,*/node_modul
 " FUGITIVE PLUGIN AND OTHER GIT STUFF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap <leader>c :Gcommit --verbose '%'<cr>
-nnoremap <leader>C :Gcommit --verbose --all<cr>
-
 nnoremap <leader>d :!git diff '%'<cr>
 nnoremap <leader>D :!git diff<cr>
 
