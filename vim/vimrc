@@ -37,7 +37,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'unkiwii/vim-nerdtree-sync'
 
 " end of Vundle setup
 call vundle#end()
@@ -298,8 +297,6 @@ let g:terraform_fmt_on_save = 1
 let g:NERDTreeDirArrowExpandable = ""
 let g:NERDTreeDirArrowCollapsible = ""
 
-let g:nerdtree_sync_cursorline = 1
-
 nnoremap <leader>N :NERDTreeToggleVCS<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -309,10 +306,6 @@ nnoremap <leader>N :NERDTreeToggleVCS<cr>
 augroup vimrcEx
   " clear all autocmds in this group
   autocmd!
-
-  " open NERDTree when vim starts up if no files were specified
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
   " close vim if the only window left open is NERDTree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
