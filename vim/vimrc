@@ -37,6 +37,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'unkiwii/vim-nerdtree-sync'
 
 " end of Vundle setup
 call vundle#end()
@@ -296,6 +297,8 @@ let g:terraform_fmt_on_save = 1
 
 let g:NERDTreeDirArrowExpandable = ""
 let g:NERDTreeDirArrowCollapsible = ""
+
+let g:nerdtree_sync_cursorline = 1
 
 nnoremap <leader>N :NERDTreeToggleVCS<cr>
 
