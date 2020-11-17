@@ -43,13 +43,8 @@ if command -v go >/dev/null; then
     export GOROOT="$(go env GOROOT)"
     export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 
-    gopath() {
-        dir=$(
-            cd "$GOPATH/src"
-            cd "$(ls -d */*/* | selecta -s "$GITHUB_USER")"
-            pwd
-        ) && cd "$dir"
-    }
+    export GOTEST_PALETTE="red,blue"
+    export GOTEST_SKIPNOTESTS="true"
 fi
 if command -v goenv >/dev/null; then
     eval "$(goenv init -)"
