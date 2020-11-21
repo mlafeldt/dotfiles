@@ -30,6 +30,8 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
+[init]
+	defaultBranch = main
 [commit]
 	gpgsign = true
 	template = ~/.gitmessage
