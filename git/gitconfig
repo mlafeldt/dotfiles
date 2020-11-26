@@ -18,7 +18,6 @@
 	fixup = commit --amend -C HEAD
 	gn = goodness
 	lol = log --graph --decorate --oneline
-	master = !sh -c 'git checkout master && git fetch --all --prune && git reset --hard origin/master'
 	pi = cherry-pick
 	rh = reset --hard
 	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -i -e $1' -
