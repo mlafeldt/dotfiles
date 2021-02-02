@@ -7,4 +7,4 @@ template="$(git config --path commit.template)"
 
 > "$template"
 
-echo "You are on your own now."
+echo "You are on your own now. ✌️"

@@ -21,4 +21,5 @@ coauthors="$(fzf -m < "$HOME/.gitauthors")"
 
 { printf "\n\n"; echo "$coauthors" | sed 's/^/Co-authored-by: /'; } > "$template"
 
-printf "You are now pairing with:\n${coauthors}\n"
+echo "You are now pairing with:"
+echo "$coauthors" | sed 's/^/💪 /'
