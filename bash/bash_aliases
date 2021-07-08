@@ -16,33 +16,6 @@ alias kn=kubens;  complete -F _kube_namespaces kn
 alias kx=kubectx; complete -F _kube_contexts kx
 alias kw='watch "kubectl get pods -A | grep -vE \"(Completed|Running)\""'
 
-_awsvault() {
-    local profile
-    local cmd="$1"
-    shift
-    if test $# -eq 0; then
-        profile=$(aws-vault list --profiles | fzf) || return 1
-        echo "$profile" >&2
-        aws-vault "$cmd" "$profile"
-    else
-        aws-vault "$cmd" "$@"
-    fi
-}
-ax() { _awsvault exec  "$@"; }
-al() { _awsvault login "$@"; }
-
-_awsvault_compl() {
-    local cur profiles
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    if test $COMP_CWORD -eq 1; then
-        profiles=$(aws-vault list --profiles) || return 1
-        COMPREPLY=( $(compgen -W "$profiles" -- $cur) )
-        return 0
-    fi
-}
-complete -o default -F _awsvault_compl ax al
-
 alias hd='hexdump -C'
 
 alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:18.04 /bin/bash'

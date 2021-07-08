@@ -27,6 +27,8 @@ export EDITOR=vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 export HOMEBREW_PREFIX=$(brew --prefix)
 export GITHUB_USER=mlafeldt
 command -v hub >/dev/null && alias git='hub'
@@ -61,8 +63,27 @@ fi
 export AWS_REGION=eu-central-1
 export AWS_DEFAULT_REGION=$AWS_REGION
 export AWS_ASSUME_ROLE_TTL=1h
-export AWS_SESSION_TTL=12h
+export AWS_SESSION_TOKEN_TTL=12h
 export AWS_FEDERATION_TOKEN_TTL=12h
+
+if command -v aws-vault >/dev/null; then
+    _awsvault() {
+        local profile
+        local cmd="$1"
+        shift
+        if test $# -eq 0; then
+            profile=$(aws-vault list --profiles | fzf) || return 1
+            echo "$profile" >&2
+            aws-vault "$cmd" "$profile"
+        else
+            aws-vault "$cmd" "$@"
+        fi
+    }
+    ax() { _awsvault exec  "$@"; }
+    al() { _awsvault login "$@"; }
+
+    eval "$(aws-vault --completion-script-bash | sed 's/^complete.*/& al ax/')"
+fi
 
 # Use GNU utils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -80,8 +101,7 @@ fi
 [ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
 GIT_PS1_SHOWDIRTYSTATE=1
 __jobs() { test -n "$(jobs -l | grep -v autojump)" && echo "&"; }
-__awsvault() { test -n "$AWS_VAULT" && echo " 🔒"; }
-PS1='[\W$(__git_ps1 " (%s)$(__awsvault)")$(__jobs)]\$ '
+PS1='[\W$(__git_ps1 " (%s)")$(__jobs)]\$ '
 
 # Include alias definitions
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
