@@ -67,7 +67,7 @@ export AWS_SESSION_TOKEN_TTL=12h
 export AWS_FEDERATION_TOKEN_TTL=12h
 
 if command -v aws-vault >/dev/null; then
-    _awsvault() {
+    _fuzzy_awsvault() {
         local profile
         local cmd="$1"
         shift
@@ -79,10 +79,10 @@ if command -v aws-vault >/dev/null; then
             aws-vault "$cmd" "$@"
         fi
     }
-    ax() { _awsvault exec  "$@"; }
-    al() { _awsvault login "$@"; }
+    ax() { _fuzzy_awsvault exec  "$@"; }
+    al() { _fuzzy_awsvault login "$@"; }
 
-    eval "$(aws-vault --completion-script-bash | sed 's/^complete.*/& al ax/')"
+    eval "$(aws-vault --completion-script-bash | sed 's/^complete .*/& al ax/')"
 fi
 
 # Use GNU utils
