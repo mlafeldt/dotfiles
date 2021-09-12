@@ -29,6 +29,7 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
+	pager = diff-highlight | less
 [init]
 	defaultBranch = main
 [commit]
@@ -52,10 +53,6 @@
 	algorithm = patience
 	compactionHeuristic = true
 	noprefix = true
-[pager]
-	log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
 [interactive]
 	diffFilter = diff-highlight
 [diff "gem"]
