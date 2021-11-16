@@ -99,11 +99,9 @@ fi
 
 [ -f "$HOMEBREW_PREFIX/share/autojump/autojump.bash" ] && . "$HOMEBREW_PREFIX/share/autojump/autojump.bash"
 
-# Set prompt
-[ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
-GIT_PS1_SHOWDIRTYSTATE=1
-__jobs() { test -n "$(jobs -l | grep -v autojump)" && echo "&"; }
-PS1='[\W$(__git_ps1 " (%s)")$(__jobs)]\$ '
+if command -v starship >/dev/null; then
+    eval "$(starship init bash)"
+fi
 
 # Include alias definitions
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
