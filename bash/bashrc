@@ -61,6 +61,21 @@ if test -x "$HOME/.cargo/bin/cargo" >/dev/null; then
     . $(rustc --print sysroot)/etc/bash_completion.d/cargo
 fi
 
+#
+# macOS cross compiler toolchains
+# https://github.com/messense/homebrew-macos-cross-toolchains
+#
+# x86_64-unknown-linux-gnu
+export CC_x86_64_unknown_linux_gnu=x86_64-unknown-linux-gnu-gcc
+export CXX_x86_64_unknown_linux_gnu=x86_64-unknown-linux-gnu-g++
+export AR_x86_64_unknown_linux_gnu=x86_64-unknown-linux-gnu-ar
+export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc
+# aarch64-unknown-linux-gnu
+export CC_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnu-gcc
+export CXX_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnu-g++
+export AR_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnu-ar
+export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-unknown-linux-gnu-gcc
+
 # AWS
 export AWS_REGION=eu-central-1
 export AWS_DEFAULT_REGION=$AWS_REGION
