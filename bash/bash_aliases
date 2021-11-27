@@ -18,8 +18,8 @@ alias kw='watch "kubectl get pods -A | grep -vE \"(Completed|Running)\""'
 
 alias hd='hexdump -C'
 
-alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu:18.04 /bin/bash'
-alias centos='docker run -it --rm -v $(PWD):/data -w /data centos:7 /bin/bash'
+alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu /bin/bash'
+alias centos='docker run -it --rm -v $(PWD):/data -w /data centos /bin/bash'
 alias alpine='docker run -it --rm -v $(PWD):/data -w /data alpine /bin/sh'
 
 alias fix-spotlight='sudo mdutil -i on /'
