@@ -31,7 +31,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export HOMEBREW_PREFIX=$(brew --prefix)
 export GITHUB_USER=mlafeldt
-command -v hub >/dev/null && alias git='hub'
+alias git=hub
 
 # Enable bash completion
 export BASH_COMPLETION_COMPAT_DIR="$HOMEBREW_PREFIX/etc/bash_completion.d"
@@ -47,9 +47,6 @@ if command -v go >/dev/null; then
 
     export GOTEST_PALETTE="red,blue"
     export GOTEST_SKIPNOTESTS="true"
-fi
-if command -v goenv >/dev/null; then
-    eval "$(goenv init -)"
 fi
 
 # Rust
