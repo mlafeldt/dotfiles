@@ -1,3 +1,0 @@
-#!/bin/bash
-# Print latest version of AWS CDK
-exec curl -sI https://github.com/aws/aws-cdk/releases/latest | awk -F/v '/^location:/ {print $2}'
