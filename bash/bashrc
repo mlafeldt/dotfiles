@@ -72,6 +72,10 @@ export CC_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnu-gcc
 export CXX_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnu-g++
 export AR_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnu-ar
 export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-unknown-linux-gnu-gcc
+# wasm32-unknown-unknown (brew install llvm)
+export CC_wasm32_unknown_unknown=llvm-gcc
+export CXX_wasm32_unknown_unknown=llvm-g++
+export AR_wasm32_unknown_unknown=$HOMEBREW_PREFIX/opt/llvm/bin/llvm-ar
 
 # AWS
 export AWS_REGION=eu-central-1
