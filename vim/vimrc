@@ -29,17 +29,18 @@ Plugin 'godlygeek/tabular'
 Plugin 'hashivim/vim-terraform'
 Plugin 'Jimdo/vim-spec-runner'
 Plugin 'jparise/vim-graphql'
+Plugin 'lepture/vim-velocity'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'moby/moby', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'preservim/nerdtree'
 Plugin 'rking/ag.vim'
+Plugin 'romainl/vim-cool'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'unkiwii/vim-nerdtree-sync'
-Plugin 'romainl/vim-cool'
 
 " end of Vundle setup
 call vundle#end()
@@ -322,11 +323,12 @@ augroup vimrcEx
   " assign file types
   autocmd BufNewFile,BufRead *.slide set filetype=present
   autocmd BufNewFile,BufRead *.template set filetype=yaml
+  autocmd BufNewFile,BufRead *.vtl set filetype=velocity
 
   " language-dependent indenting
   autocmd FileType text,markdown,present setlocal ts=4 sw=4 et si tw=80
   autocmd FileType sh,perl,awk,python,dockerfile setlocal ts=4 sw=4 et si
-  autocmd FileType ruby,cucumber,yaml,vim,gitcommit setlocal ts=2 sw=2 et si
+  autocmd FileType ruby,cucumber,yaml,vim,gitcommit,velocity setlocal ts=2 sw=2 et si
   autocmd FileType c,h,cpp setlocal ts=8 sw=8 noet cindent
   autocmd FileType make setlocal ts=8 sw=8 noet
   autocmd FileType asm setlocal ts=8 sw=8 noet
