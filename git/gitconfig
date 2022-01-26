@@ -43,6 +43,7 @@
 	rebase = true
 [merge]
 	tool = vimdiff
+	conflictstyle = zdiff3
 [rebase]
 	autosquash = true
 	autoStash = true
