@@ -267,7 +267,8 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 " VIM-GO
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:go_fmt_command = "gofumports"
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
 let g:go_gopls_complete_unimported = 1
 let g:go_code_completion_icase = 1
 let g:go_fold_enable = []
