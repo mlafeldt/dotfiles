@@ -1,5 +1,4 @@
 .DS_Store
 .envrc
 .idea
-.vscode
 __pycache__
