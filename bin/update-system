@@ -31,4 +31,6 @@ update_vim_plugins() {
 update_homebrew
 update_vim_plugins
 
+brew link --overwrite --force node@16
+
 :
