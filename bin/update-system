@@ -5,8 +5,6 @@ set -e
 set -o pipefail
 
 # Use system Ruby and Python
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH
 
 update_homebrew() {
     command -V brew >/dev/null 2>/dev/null || return 0

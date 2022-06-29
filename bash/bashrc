@@ -110,8 +110,10 @@ if command -v aws-vault >/dev/null; then
 fi
 
 # Use GNU utils
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
+
+PATH="$HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight:$PATH"
 
 # Set up gpg agent for use with git
 if command -v gpg-agent >/dev/null; then
