@@ -115,6 +115,8 @@ PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 
 PATH="$HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight:$PATH"
 
+PATH="$HOME/.deno/bin:$PATH"
+
 # Set up gpg agent for use with git
 if command -v gpg-agent >/dev/null; then
     gpg-agent --daemon 2>/dev/null
