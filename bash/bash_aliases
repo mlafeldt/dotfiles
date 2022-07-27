@@ -17,6 +17,7 @@ alias kx=kubectx; complete -F _kube_contexts kx
 alias kw='watch "kubectl get pods -A | grep -vE \"(Completed|Running)\""'
 
 alias dyl='dy --region local --port 8000'
+alias DynamoDBLocal='docker run -it --rm -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb'
 
 alias hd='hexdump -C'
 
