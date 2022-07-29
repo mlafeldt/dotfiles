@@ -83,6 +83,8 @@ export CC_wasm32_unknown_unknown=$HOMEBREW_PREFIX/opt/llvm/bin/clang
 export CXX_wasm32_unknown_unknown=$HOMEBREW_PREFIX/opt/llvm/bin/clang++
 export AR_wasm32_unknown_unknown=$HOMEBREW_PREFIX/opt/llvm/bin/llvm-ar
 
+PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
+
 # AWS
 export AWS_REGION=eu-central-1
 export AWS_DEFAULT_REGION=$AWS_REGION
