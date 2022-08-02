@@ -32,6 +32,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export HOMEBREW_PREFIX=$(brew --prefix)
 export GITHUB_USER=mlafeldt
 alias git=hub
+alias pr='hub pr show'
 
 # Enable bash completion
 export BASH_COMPLETION_COMPAT_DIR="$HOMEBREW_PREFIX/etc/bash_completion.d"
