@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Update system software
 
 set -e
 set -o pipefail
-
-# Use system Ruby and Python
 
 update_homebrew() {
     command -V brew >/dev/null 2>/dev/null || return 0
@@ -17,8 +15,12 @@ update_homebrew() {
     brew cleanup
 }
 
+update_rust() {
+    echo "+ Updating Rust"
+    rustup update
+}
+
 update_vim_plugins() {
-    hash -r
     command -V vim >/dev/null 2>/dev/null || return 0
     echo "+ Cleaning up Vim plugins"
     vim +PluginClean! +qa
@@ -27,6 +29,7 @@ update_vim_plugins() {
 }
 
 update_homebrew
+update_rust
 update_vim_plugins
 
 brew link --overwrite --force node@16
