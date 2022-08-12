@@ -53,8 +53,6 @@ fi
 # Rust
 if test -x "$HOME/.cargo/bin/cargo" >/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
-    export OPENSSL_INCLUDE_DIR="$HOMEBREW_PREFIX/opt/openssl/include"
-    export OPENSSL_LIB_DIR="$HOMEBREW_PREFIX/opt/openssl/lib"
 
     . $(rustc --print sysroot)/etc/bash_completion.d/cargo
 fi
