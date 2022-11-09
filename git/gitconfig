@@ -8,6 +8,7 @@
 	aa = add --all :/
 	bc = !sh -c 'git branch --merged | grep -v \\* | xargs -n 1 git branch -d'
 	bl = branch -v --sort=-committerdate
+	br = branch
 	ci = commit -v --no-verify
 	clobber = clean -ffdx --exclude .env*
 	co = checkout
