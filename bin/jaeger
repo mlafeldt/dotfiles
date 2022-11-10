@@ -2,11 +2,15 @@
 
 set -e
 
+IMAGE=jaegertracing/all-in-one
+
+test "$1" = "--update" && exec docker pull "$IMAGE"
+
 ( sleep 2; open --url http://localhost:16686 ) &
 
-exec docker run -it --rm --pull always \
+exec docker run -it --rm \
     -p6831:6831/udp \
     -p6832:6832/udp \
     -p16686:16686 \
     -p14268:14268 \
-    jaegertracing/all-in-one:latest
+    "$IMAGE:latest"
