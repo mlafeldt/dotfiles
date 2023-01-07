@@ -110,6 +110,10 @@ if command -v aws-vault >/dev/null; then
     eval "$(aws-vault --completion-script-bash | sed 's/^complete .*/& al ax/')"
 fi
 
+if command -v deno >/dev/null; then
+    eval "$(deno completions bash)"
+fi
+
 # Use GNU utils
 PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
