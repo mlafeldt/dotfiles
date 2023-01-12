@@ -7,7 +7,7 @@ alias l='ls -CF'
 alias t='tree'
 alias ta='tree -a'
 
-alias cat='bat --theme="Solarized (dark)"'
+alias cat='bat --style=plain --theme="Solarized (dark)"'
 
 alias bx='bundle exec'
 alias bi='bundle install --jobs=3 --retry=3'
