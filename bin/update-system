@@ -15,11 +15,6 @@ update_homebrew() {
     brew cleanup
 }
 
-update_rust() {
-    echo "+ Updating Rust"
-    rustup update
-}
-
 update_vim_plugins() {
     command -V vim >/dev/null 2>/dev/null || return 0
     echo "+ Cleaning up Vim plugins"
@@ -29,8 +24,10 @@ update_vim_plugins() {
 }
 
 update_homebrew
-update_rust
 update_vim_plugins
+
+rustup update
+deno upgrade
 
 brew link --overwrite --force node@16
 
