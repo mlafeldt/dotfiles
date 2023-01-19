@@ -110,17 +110,20 @@ if command -v aws-vault >/dev/null; then
     eval "$(aws-vault --completion-script-bash | sed 's/^complete .*/& al ax/')"
 fi
 
+# Deno
+PATH="$HOME/.deno/bin:$PATH"
 if command -v deno >/dev/null; then
     eval "$(deno completions bash)"
 fi
+
+# Bun
+PATH="$HOME/.bun/bin:$PATH"
 
 # Use GNU utils
 PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 
 PATH="$HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight:$PATH"
-
-PATH="$HOME/.deno/bin:$PATH"
 
 # Set up gpg agent for use with git
 if command -v gpg-agent >/dev/null; then
