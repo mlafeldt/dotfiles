@@ -6,6 +6,7 @@
 	ui = true
 [alias]
 	aa = add --all :/
+	actions = ci-status --verbose --color=always
 	bc = !sh -c 'git branch --merged | grep -v \\* | xargs -n 1 git branch -d'
 	bl = branch -v --sort=-committerdate
 	br = branch
