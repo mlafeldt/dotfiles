@@ -29,6 +29,6 @@ update_vim_plugins
 rustup update
 deno upgrade
 
-brew link --overwrite --force node@16
+brew link --overwrite --force node@18
 
 :
