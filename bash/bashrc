@@ -111,7 +111,7 @@ if command -v aws-vault >/dev/null; then
 fi
 
 # Deno
-PATH="$HOME/.deno/bin:$PATH"
+PATH="$HOME/.deno/bin:$HOME/.dvm/bin:$PATH"
 if command -v deno >/dev/null; then
     eval "$(deno completions bash)"
 fi
