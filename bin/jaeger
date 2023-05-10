@@ -3,10 +3,14 @@
 set -e
 
 IMAGE=jaegertracing/all-in-one
+PARAMS=
 
-test "$1" = "--update" && exec docker pull "$IMAGE"
+case "$1" in
+-u | --update) exec docker pull "$IMAGE" ;;
+-s | --service) PARAMS="search?service=$2" ;;
+esac
 
-( sleep 2; open --url http://localhost:16686 ) &
+( sleep 2; open --url "http://localhost:16686/$PARAMS" ) &
 
 exec docker run -it --rm \
     -p6831:6831/udp \
