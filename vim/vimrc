@@ -351,10 +351,10 @@ augroup vimrcEx
   autocmd FileType go nnoremap <leader>b :silent w\|:GoBuild<cr>
 
   " Rust mappings
-  autocmd FileType rust nnoremap <leader>t :silent w\|:!cargo test -- %:t:r<cr>
-  autocmd FileType rust nnoremap <leader>a :silent w\|:!cargo test<cr>
-  autocmd FileType rust nnoremap <leader>r :silent w\|:!cargo run<cr>
-  autocmd FileType rust nnoremap <leader>b :silent w\|:!cargo build<cr>
+  autocmd FileType rust nnoremap <leader>t :silent w\|:RustTest<cr>
+  autocmd FileType rust nnoremap <leader>a :silent w\|:RustTest!<cr>
+  autocmd FileType rust nnoremap <leader>r :silent w\|:Crun<cr>
+  autocmd FileType rust nnoremap <leader>b :silent w\|:Cbuild<cr>
 
   " Terraform
   autocmd FileType terraform setlocal commentstring=#%s
