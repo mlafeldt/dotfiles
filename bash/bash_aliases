@@ -4,7 +4,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias t='tree'
+alias t='tree --gitignore'
 alias ta='tree -a'
 
 alias cat='bat --style=plain --theme="Solarized (dark)"'
