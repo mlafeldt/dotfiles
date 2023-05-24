@@ -41,6 +41,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'unkiwii/vim-nerdtree-sync'
+Plugin 'ziglang/zig.vim'
 
 " end of Vundle setup
 call vundle#end()
