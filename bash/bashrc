@@ -54,7 +54,7 @@ fi
 if test -x "$HOME/.cargo/bin/cargo" >/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
 
-    . $(rustc --print sysroot)/etc/bash_completion.d/cargo
+    . $(rustc --print sysroot)/src/etc/bash_completion.d/cargo
 fi
 
 #
