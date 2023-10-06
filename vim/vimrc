@@ -30,7 +30,6 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'Jimdo/vim-spec-runner'
 Plugin 'jparise/vim-graphql'
 Plugin 'lepture/vim-velocity'
-Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'moby/moby', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'preservim/nerdtree'
 Plugin 'rking/ag.vim'
