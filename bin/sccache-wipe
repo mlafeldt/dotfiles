@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+sccache --stop-server || true
+rm -rf "$HOME/Library/Caches/Mozilla.sccache"
+sccache --start-server
+sccache --show-stats
