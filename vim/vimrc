@@ -356,6 +356,11 @@ augroup vimrcEx
   autocmd FileType rust nnoremap <leader>r :silent w\|:Crun<cr>
   autocmd FileType rust nnoremap <leader>b :silent w\|:Cbuild<cr>
 
+  " Zig mappings
+  autocmd FileType zig nnoremap <leader>t :silent w\|:!zig test %<cr>
+  autocmd FileType zig nnoremap <leader>r :silent w\|:!zig run %<cr>
+  autocmd FileType zig nnoremap <leader>b :silent w\|:!zig build-exe %<cr>
+
   " Terraform
   autocmd FileType terraform setlocal commentstring=#%s
 
