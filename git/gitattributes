@@ -1,0 +1,2 @@
+*.db     diff=sqlite3
+*.sqlite diff=sqlite3

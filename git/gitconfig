@@ -60,6 +60,9 @@
 	diffFilter = diff-highlight
 [diff "gem"]
 	textconv = gem spec
+[diff "sqlite3"]
+	binary = true
+	textconv = "echo .dump | sqlite3"
 [credential]
 	helper = cache --timeout=3600
 [include]
