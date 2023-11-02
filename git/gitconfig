@@ -30,6 +30,7 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes_global
 	pager = diff-highlight | less
 [init]
 	defaultBranch = main
@@ -58,6 +59,9 @@
 	noprefix = true
 [interactive]
 	diffFilter = diff-highlight
+[diff "lockb"]
+	binary = true
+	textconv = bun
 [diff "gem"]
 	textconv = gem spec
 [diff "sqlite3"]
