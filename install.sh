@@ -3,7 +3,14 @@
 set -e
 set -o pipefail
 
-DOTFILES="bash git ruby terraform vim"
+DOTFILES="
+bash
+duckdb
+git
+ruby
+terraform
+vim
+"
 
 install_dotfiles() {
     echo "+ Installing dotfiles"
