@@ -1,0 +1,14 @@
+#!/bin/bash
+# Show today's changes in current git branch
+
+set -e -o pipefail
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+COMMIT=$(git rev-list --since=12am $BRANCH | tail -n1)
+
+if test -z "$COMMIT"; then
+    echo "No commits on branch $BRANCH today"
+    exit 0
+fi
+
+exec git diff "$COMMIT"^ "$@"
