@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# From https://github.com/garybernhardt/dotfiles/blob/master/bin/git-goodness
-
-git diff $* | gn
-

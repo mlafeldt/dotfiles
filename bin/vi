@@ -1,3 +1,0 @@
-#!/bin/sh
-# vi = vim
-exec vim "$@"
