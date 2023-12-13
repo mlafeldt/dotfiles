@@ -1,7 +1,9 @@
-!.github
 .DS_Store
 .boa_history
 .env
 .envrc
 .idea
 __pycache__
+
+# Make ripgrep search these
+!.github
