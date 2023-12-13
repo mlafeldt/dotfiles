@@ -1,5 +1,11 @@
 # vim: ft=sh
 
+alias ag=rg
+alias cat=bat
+alias hd='hexdump -C'
+
+alias dyl='dy --region local --port 8000'
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -7,18 +13,10 @@ alias l='ls -CF'
 alias t='tree --gitignore'
 alias ta='tree -a'
 
-alias cat='bat --style=plain --theme="Solarized (dark)"'
-
-alias ag=rg
-
 complete -o default -F __start_kubectl kc
 alias kn=kubens;  complete -F _kube_namespaces kn
 alias kx=kubectx; complete -F _kube_contexts kx
 alias kw='watch "kubectl get pods -A | grep -vE \"(Completed|Running)\""'
-
-alias dyl='dy --region local --port 8000'
-
-alias hd='hexdump -C'
 
 alias ubuntu='docker run -it --rm -v $(PWD):/data -w /data ubuntu /bin/bash'
 alias centos='docker run -it --rm -v $(PWD):/data -w /data centos /bin/bash'
