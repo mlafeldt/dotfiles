@@ -5,7 +5,8 @@
 #
 #   git today           # show diff with git-diff
 #   git today --stat    # pass args to git-diff
-#   git today --github  # open diff on GitHub
+#   git today --github  # open diff on GitHub (requires hub)
+#   git today --churn   # show today's churn
 
 set -e -o pipefail
 
@@ -17,8 +18,16 @@ if test -z "$COMMIT"; then
     exit 0
 fi
 
-if test "$1" = "--github"; then
-    exec hub compare -b "$COMMIT"^
-fi
-
-exec git diff "$COMMIT"^ "$@"
+case "$1" in
+--github)
+    exec hub compare -b ${COMMIT}^
+    ;;
+--churn)
+    shift
+    # Based on git-churn by Gary Bernhardt
+    exec git log -M -C --name-only --format='format:' --since=12am "$BRANCH" "$@" | sort | grep -v '^$' | uniq -c | sort -n
+    ;;
+*)
+    exec git diff ${COMMIT}^ "$@"
+    ;;
+esac
