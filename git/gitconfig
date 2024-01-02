@@ -57,6 +57,8 @@
 	algorithm = patience
 	compactionHeuristic = true
 	noprefix = true
+	colormoved = default
+	colormovedws = allow-indentation-change
 [interactive]
 	diffFilter = diff-highlight
 [diff "lockb"]
