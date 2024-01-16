@@ -30,6 +30,4 @@ bun upgrade
 deno upgrade
 rustup update
 
-brew link --overwrite --force node@18
-
 :
