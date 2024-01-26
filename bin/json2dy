@@ -1,13 +1,17 @@
 #!/usr/bin/env bun
 // Convert JSON to newline-delimited DynamoDB JSON
-// Usage: cat file.json | json2dy
-// vim: ft=javascript
+// Examples:
+//   json2dy file.json
+//   json2dy https://.../file.json
+//   cat file.json | json2dy
 
 import { Database } from "duckdb-async";
 import { marshall } from "@aws-sdk/util-dynamodb";
 
+const input = Bun.argv[2] || "/dev/stdin";
+
 const db = await Database.create(":memory:");
-const rows = await db.all(`FROM read_json_objects_auto('/dev/stdin')`);
+const rows = await db.all("FROM read_json_objects_auto(?1)", input);
 
 for (const row of rows) {
   const parsed = JSON.parse(row.json);
@@ -15,4 +19,6 @@ for (const row of rows) {
   console.log(JSON.stringify(item));
 }
 
-process.exit(0); // Workaround for hanging process
+process.exit(0); // Workaround for hanging query
+
+// vim: ft=javascript
