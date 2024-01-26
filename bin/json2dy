@@ -1,0 +1,23 @@
+#!/usr/bin/env bun -i
+// Convert JSON to DynamoDB JSON (requires DuckDB to be installed)
+// Usage: cat file.json | json2dy
+// vim: ft=javascript
+
+import { $ } from "bun";
+import { marshall } from "@aws-sdk/util-dynamodb";
+
+// FIXME: Using .text() will swallow any DuckDB error, but not using it and
+// reading .stdout will show DuckDB's output, which is not what we want either.
+const output =
+  await $`duckdb -c "COPY (FROM read_json_objects_auto('/dev/stdin')) TO '/dev/stdout' WITH (FORMAT JSON)"`
+    .text();
+
+output
+  .split(/\r?\n/)
+  .filter((line) => line)
+  .map((line) => {
+    const parsed = JSON.parse(line);
+    const item = marshall(parsed.json);
+    return JSON.stringify(item);
+  })
+  .forEach((item) => console.log(item));
