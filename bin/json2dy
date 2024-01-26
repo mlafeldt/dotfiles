@@ -1,21 +1,18 @@
-#!/usr/bin/env bun -i
-// Convert JSON to newline-delimited DynamoDB JSON (requires DuckDB to be installed)
+#!/usr/bin/env bun
+// Convert JSON to newline-delimited DynamoDB JSON
 // Usage: cat file.json | json2dy
 // vim: ft=javascript
 
-import { $ } from "bun";
+import { Database } from "duckdb-async";
 import { marshall } from "@aws-sdk/util-dynamodb";
 
-// FIXME: Using .text() will swallow any DuckDB error, but not using it and
-// reading .stdout will show DuckDB's output, which isn't what we want either.
-$`duckdb -c "COPY (FROM read_json_objects_auto('/dev/stdin')) TO '/dev/stdout' WITH (FORMAT JSON)"`
-  .text().then((output) =>
-    output
-      .split("\n")
-      .filter((line) => line)
-      .map((line) => {
-        const parsed = JSON.parse(line);
-        return marshall(parsed.json);
-      })
-      .forEach((item) => console.log(JSON.stringify(item)))
-  );
+const db = await Database.create(":memory:");
+const rows = await db.all(`FROM read_json_objects_auto('/dev/stdin')`);
+
+for (const row of rows) {
+  const parsed = JSON.parse(row.json);
+  const item = marshall(parsed);
+  console.log(JSON.stringify(item));
+}
+
+process.exit(0); // Workaround for hanging process
