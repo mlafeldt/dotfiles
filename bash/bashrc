@@ -137,11 +137,7 @@ fi
 
 [ -f "$HOMEBREW_PREFIX/share/autojump/autojump.bash" ] && . "$HOMEBREW_PREFIX/share/autojump/autojump.bash"
 
-# Atuin
-[ -f "$HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh" ] && . "$HOMEBREW_PREFIX/etc/profile.d/bash-preexec.sh"
-if command -v atuin >/dev/null; then
-    eval "$(atuin init bash --disable-up-arrow)"
-fi
+[ -f "$HOME/.fzf.bash" ] && . "$HOME/.fzf.bash"
 
 if command -v starship >/dev/null; then
     eval "$(starship init bash)"
