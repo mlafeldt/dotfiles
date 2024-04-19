@@ -4,6 +4,9 @@ alias ag=rg
 alias cat=bat
 alias hd='hexdump -C'
 
+alias python=python3
+alias pip=pip3
+
 alias dyl='dy --region local --port 8000'
 
 alias ll='ls -alF'
