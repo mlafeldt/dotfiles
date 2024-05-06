@@ -10,19 +10,25 @@
 //   deno_core = "=0.278.0"
 //   deno_runtime = "=0.157.0"
 
+import wretch from "npm:wretch"
 import { parse } from "jsr:@std/toml"
 
 const version = Deno.args[0] || await getLatestVersion()
-
-const toml = await fetch(`https://raw.githubusercontent.com/denoland/deno/${version}/Cargo.toml`)
-  .then((resp) => resp.text())
-  .then(parse)
-const dependencies = (toml.workspace as any).dependencies
+const deps = await getDeps(version)
 
 console.log(`# Deno ${version}`)
-printDep("deno_ast", dependencies)
-printDep("deno_core", dependencies)
-printDep("deno_runtime", dependencies)
+printDep("deno_ast", deps)
+printDep("deno_core", deps)
+printDep("deno_runtime", deps)
+
+function getLatestVersion() {
+  return wretch("https://api.github.com/repos/denoland/deno/releases/latest").get().json((release) => release.tag_name)
+}
+
+async function getDeps(version: string) {
+  const toml = await wretch(`https://raw.githubusercontent.com/denoland/deno/${version}/Cargo.toml`).get().text(parse)
+  return (toml.workspace as any).dependencies
+}
 
 function printDep(name: string, deps: Record<string, any>) {
   const version = deps[name].version.replace("=", "")
@@ -33,9 +39,4 @@ function printDep(name: string, deps: Record<string, any>) {
   } else {
     console.log(`${name} = "=${version}"`)
   }
-}
-
-async function getLatestVersion() {
-  const release = await fetch("https://api.github.com/repos/denoland/deno/releases/latest").then((resp) => resp.json())
-  return release.tag_name
 }
