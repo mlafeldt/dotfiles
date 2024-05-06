@@ -1,0 +1,11 @@
+{
+  "fmt": {
+    "lineWidth": 120,
+    "semiColons": false
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  }
+}
