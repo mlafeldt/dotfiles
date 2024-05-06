@@ -1,0 +1,41 @@
+#!/usr/bin/env deno run --ext=ts --allow-net=raw.githubusercontent.com,api.github.com
+// Output dependencies for a specific Deno version that you can paste into your Cargo.toml
+//
+// Usage: deno-cargo-deps [<deno version>]
+//
+// Example output:
+//
+//   # Deno v1.43.1
+//   deno_ast = { version = "=0.38.1", features = ["transpiling"] }
+//   deno_core = "=0.278.0"
+//   deno_runtime = "=0.157.0"
+
+import { parse } from "jsr:@std/toml"
+
+const version = Deno.args[0] || await getLatestVersion()
+
+const toml = await fetch(`https://raw.githubusercontent.com/denoland/deno/${version}/Cargo.toml`)
+  .then((resp) => resp.text())
+  .then(parse)
+const dependencies = (toml.workspace as any).dependencies
+
+console.log(`# Deno ${version}`)
+printDep("deno_ast", dependencies)
+printDep("deno_core", dependencies)
+printDep("deno_runtime", dependencies)
+
+function printDep(name: string, deps: Record<string, any>) {
+  const version = deps[name].version.replace("=", "")
+  const features = deps[name].features
+
+  if (features) {
+    console.log(`${name} = { version = "=${version}", features = ${JSON.stringify(features)} }`)
+  } else {
+    console.log(`${name} = "=${version}"`)
+  }
+}
+
+async function getLatestVersion() {
+  const release = await fetch("https://api.github.com/repos/denoland/deno/releases/latest").then((resp) => resp.json())
+  return release.tag_name
+}
