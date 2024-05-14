@@ -1,4 +1,4 @@
-#!/usr/bin/env deno run --ext=ts --allow-net=raw.githubusercontent.com,api.github.com
+#!/usr/bin/env deno run --ext=ts --allow-net=raw.githubusercontent.com,api.github.com --allow-env=GITHUB_TOKEN
 // Output dependencies for a specific Deno version that you can paste into your Cargo.toml
 //
 // Usage: deno-cargo-deps [<deno version>]
@@ -22,7 +22,15 @@ printDep("deno_core", deps)
 printDep("deno_runtime", deps)
 
 function getLatestVersion() {
-  return wretch("https://api.github.com/repos/denoland/deno/releases/latest").get().json((release) => release.tag_name)
+  const token = Deno.env.get("GITHUB_TOKEN")
+  const headers = new Headers()
+  if (token) {
+    headers.set("authorization", `token ${token}`)
+  }
+  return wretch("https://api.github.com/repos/denoland/deno/releases/latest")
+    .headers(headers)
+    .get()
+    .json((release) => release.tag_name)
 }
 
 async function getDeps(version: string) {
