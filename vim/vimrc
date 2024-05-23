@@ -334,6 +334,7 @@ augroup vimrcEx
   autocmd FileType javascript,typescript,ruby,cucumber,yaml,vim,gitcommit,velocity setlocal ts=2 sw=2 et si
   autocmd FileType c,h,cpp setlocal ts=8 sw=8 noet cindent
   autocmd FileType make setlocal ts=8 sw=8 noet
+  autocmd FileType cmake setlocal ts=4 sw=4 et
   autocmd FileType asm setlocal ts=8 sw=8 noet
 
   " auto-complete file names when committing
