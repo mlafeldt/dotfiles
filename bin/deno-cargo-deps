@@ -1,7 +1,7 @@
 #!/usr/bin/env deno run --ext=ts --allow-net=raw.githubusercontent.com,api.github.com --allow-env=GITHUB_TOKEN
 // Output dependencies for a specific Deno version that you can paste into your Cargo.toml
 //
-// Usage: deno-cargo-deps [<deno version>]
+// Usage: deno-cargo-deps [<deno git ref>]
 //
 // Example output:
 //
@@ -13,15 +13,16 @@
 import wretch from "npm:wretch"
 import { parse } from "jsr:@std/toml"
 
-const version = Deno.args[0] || await getLatestVersion()
-const deps = await getDeps(version)
+const ref = Deno.args[0] || await getLatestTag()
+const deps = await getWorkspaceDeps(ref)
+const version = await getCliVersion(ref)
 
-console.log(`# Deno ${version}`)
+console.log(`# Deno v${version}`)
 printDep("deno_ast", deps)
 printDep("deno_core", deps)
 printDep("deno_runtime", deps)
 
-function getLatestVersion() {
+function getLatestTag() {
   const token = Deno.env.get("GITHUB_TOKEN")
   const headers = new Headers()
   if (token) {
@@ -33,9 +34,14 @@ function getLatestVersion() {
     .json((release) => release.tag_name)
 }
 
-async function getDeps(version: string) {
-  const toml = await wretch(`https://raw.githubusercontent.com/denoland/deno/${version}/Cargo.toml`).get().text(parse)
+async function getWorkspaceDeps(ref: string) {
+  const toml = await wretch(`https://raw.githubusercontent.com/denoland/deno/${ref}/Cargo.toml`).get().text(parse)
   return (toml.workspace as any).dependencies
+}
+
+async function getCliVersion(ref: string) {
+  const toml = await wretch(`https://raw.githubusercontent.com/denoland/deno/${ref}/cli/Cargo.toml`).get().text(parse)
+  return (toml.package as any).version
 }
 
 function printDep(name: string, deps: Record<string, any>) {
