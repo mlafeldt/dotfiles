@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 # Re-sign a (Rust) binary to allow debuggers like Instruments to attach to it.
+# Use it like this: cargo build && codesign-for-instruments target/debug/hello && target/debug/hello
 # Source: https://cocoaphony.micro.blog/2022/10/29/solving-required-kernel.html
 
 BIN=$1
