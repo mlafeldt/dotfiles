@@ -5,7 +5,6 @@ set -e
 set -o pipefail
 
 update_homebrew() {
-    command -V brew >/dev/null 2>/dev/null || return 0
     echo "+ Updating homebrew"
     brew update
     outdated=$(brew outdated)
@@ -15,8 +14,15 @@ update_homebrew() {
     brew cleanup
 }
 
+update_tools() {
+    echo "+ Updating tools"
+    bun upgrade
+    deno upgrade
+    rustup update
+    sst upgrade
+}
+
 update_vim_plugins() {
-    command -V vim >/dev/null 2>/dev/null || return 0
     echo "+ Cleaning up Vim plugins"
     vim +PluginClean! +qa
     echo "+ Updating Vim plugins"
@@ -24,10 +30,7 @@ update_vim_plugins() {
 }
 
 update_homebrew
+update_tools
 update_vim_plugins
-
-bun upgrade
-deno upgrade
-rustup update
 
 :
