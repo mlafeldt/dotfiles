@@ -126,6 +126,9 @@ PATH="$HOME/.bun/bin:$PATH"
 # pipx
 PATH="$HOME/.local/bin:$PATH"
 
+# sst
+PATH="$HOME/.sst/bin:$PATH"
+
 # Use GNU utils
 PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
