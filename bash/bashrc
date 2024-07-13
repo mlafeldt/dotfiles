@@ -29,14 +29,14 @@ export LANG=en_US.UTF-8
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export HOMEBREW_PREFIX=$(brew --prefix)
+export HOMEBREW_PREFIX=/opt/homebrew
 export GITHUB_USER=mlafeldt
 alias git=hub
 alias pr='hub pr show'
 
 # Enable bash completion
 export BASH_COMPLETION_COMPAT_DIR="$HOMEBREW_PREFIX/etc/bash_completion.d"
-if [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
+if [ -f "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
     . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
 
@@ -53,12 +53,9 @@ fi
 # Rust
 if test -x "$HOME/.cargo/bin/cargo" >/dev/null; then
     export PATH="$HOME/.cargo/bin:$PATH"
-
-    if test -d "$(rustc --print sysroot)/etc"; then
-        . "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
-    else
-        . "$(rustc --print sysroot)/src/etc/bash_completion.d/cargo"
-    fi
+fi
+if [ -f "$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/etc/bash_completion.d/cargo" ]; then
+    . "$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/etc/bash_completion.d/cargo"
 fi
 
 #
@@ -111,14 +108,20 @@ if command -v aws-vault >/dev/null; then
     ax() { _fuzzy_awsvault exec  "$@"; }
     al() { _fuzzy_awsvault login "$@"; }
 
-    eval "$(aws-vault --completion-script-bash | sed 's/^complete .*/& al ax/')"
+    # aws-vault --completion-script-bash
+    _aws-vault_bash_autocomplete() {
+        local cur prev opts base
+        COMPREPLY=()
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        opts=$( ${COMP_WORDS[0]} --completion-bash "${COMP_WORDS[@]:1:$COMP_CWORD}" )
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    }
+    complete -F _aws-vault_bash_autocomplete -o default aws-vault al ax
 fi
 
 # Deno
-PATH="$HOME/.deno/bin:$HOME/.dvm/bin:$PATH"
-if command -v deno >/dev/null; then
-    eval "$(deno completions bash)"
-fi
+PATH="$HOME/.deno/bin:$PATH"
 
 # Bun
 PATH="$HOME/.bun/bin:$PATH"
@@ -146,7 +149,7 @@ fi
 [ -f "$HOME/.fzf.bash" ] && . "$HOME/.fzf.bash"
 
 if command -v starship >/dev/null; then
-    eval "$(starship init bash)"
+    eval "$(starship init bash --print-full-init)"
 fi
 
 # Include alias definitions
@@ -156,7 +159,21 @@ fi
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
 if command -v direnv >/dev/null; then
-    eval "$(direnv hook bash)"
+    # direnv hook bash
+    _direnv_hook() {
+      local previous_exit_status=$?;
+      trap -- '' SIGINT;
+      eval "$("$HOMEBREW_PREFIX/bin/direnv" export bash)";
+      trap - SIGINT;
+      return $previous_exit_status;
+    };
+    if [[ ";${PROMPT_COMMAND[*]:-};" != *";_direnv_hook;"* ]]; then
+      if [[ "$(declare -p PROMPT_COMMAND 2>&1)" == "declare -a"* ]]; then
+        PROMPT_COMMAND=(_direnv_hook "${PROMPT_COMMAND[@]}")
+      else
+        PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+      fi
+    fi
 fi
 
 :
