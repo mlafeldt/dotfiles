@@ -18,3 +18,9 @@ defaults write com.apple.dock autohide-delay -int 0
 defaults write com.apple.dock autohide-time-modifier -float 0.4
 killall Dock
 ```
+
+[How fast is your shell?](https://registerspill.thorstenball.com/p/how-fast-is-your-shell)
+
+```
+for i in $(seq 1 10); do time bash -i -c exit; done
+```
