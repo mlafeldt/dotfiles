@@ -40,6 +40,18 @@ if [ -f "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
     . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
 
+# Deno
+PATH="$HOME/.deno/bin:$PATH"
+
+# Bun
+PATH="$HOME/.bun/bin:$PATH"
+
+# pipx
+PATH="$HOME/.local/bin:$PATH"
+
+# sst
+PATH="$HOME/.sst/bin:$PATH"
+
 # Go
 if command -v go >/dev/null; then
     export GOPATH="$HOME/devel/go"
@@ -119,18 +131,6 @@ if command -v aws-vault >/dev/null; then
     }
     complete -F _aws-vault_bash_autocomplete -o default aws-vault al ax
 fi
-
-# Deno
-PATH="$HOME/.deno/bin:$PATH"
-
-# Bun
-PATH="$HOME/.bun/bin:$PATH"
-
-# pipx
-PATH="$HOME/.local/bin:$PATH"
-
-# sst
-PATH="$HOME/.sst/bin:$PATH"
 
 # Use GNU utils
 PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
