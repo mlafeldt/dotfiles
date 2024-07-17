@@ -24,7 +24,7 @@ import wretch from "npm:wretch"
 import { parse, stringify } from "jsr:@std/toml"
 
 const [ref, ...crates] = Deno.args
-const refOrTag = ref || await getLatestTag()
+const refOrTag = !ref || ref === "latest" ? await getLatestTag() : ref
 const deps = await getWorkspaceDeps(refOrTag)
 const version = await getCliVersion(refOrTag)
 
@@ -63,6 +63,9 @@ async function getCliVersion(ref: string) {
 
 function printDep(name: string, deps: Record<string, any>) {
   const spec = deps[name]
+  if (!spec) {
+    throw new Error(`${name} not found in Cargo.toml`)
+  }
   delete spec.path
 
   if (Object.keys(spec).length === 1) {
