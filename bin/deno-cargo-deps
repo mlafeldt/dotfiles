@@ -1,26 +1,43 @@
 #!/usr/bin/env deno run --ext=ts --allow-net=raw.githubusercontent.com,api.github.com --allow-env=GITHUB_TOKEN
 // Output dependencies for a specific Deno version that you can paste into your Cargo.toml
 //
-// Usage: deno-cargo-deps [<deno git ref>]
+// Usage: deno-cargo-deps [<deno git ref>] [<crate>...]
 //
-// Example output:
+// Examples:
 //
-//   # Deno v1.43.1
-//   deno_ast = { version = "=0.38.1", features = ["transpiling"] }
-//   deno_core = "=0.278.0"
-//   deno_runtime = "=0.157.0"
+//   ❯ deno-cargo-deps
+//   # Deno v1.45.2
+//   deno_core = "0.293.0"
+//   deno_runtime = "0.169.0"
+//
+//   ❯ deno-cargo-deps v1.44
+//   # Deno v1.44.4
+//   deno_core = "0.290.0"
+//   deno_runtime = "0.166.0"
+//
+//   ❯ deno-cargo-deps main deno_ast deno_core
+//   # Deno v1.45.2
+//   deno_ast = { version = "=0.40.0", features = ["transpiling"] }
+//   deno_core = "0.294.0"
 
 import wretch from "npm:wretch"
-import { parse } from "jsr:@std/toml"
+import { parse, stringify } from "jsr:@std/toml"
 
-const ref = Deno.args[0] || await getLatestTag()
-const deps = await getWorkspaceDeps(ref)
-const version = await getCliVersion(ref)
+const [ref, ...crates] = Deno.args
+const refOrTag = ref || await getLatestTag()
+const deps = await getWorkspaceDeps(refOrTag)
+const version = await getCliVersion(refOrTag)
 
 console.log(`# Deno v${version}`)
-printDep("deno_ast", deps)
-printDep("deno_core", deps)
-printDep("deno_runtime", deps)
+
+if (crates.length > 0) {
+  for (const crate of crates) {
+    printDep(crate, deps)
+  }
+} else {
+  printDep("deno_core", deps)
+  printDep("deno_runtime", deps)
+}
 
 function getLatestTag() {
   const token = Deno.env.get("GITHUB_TOKEN")
@@ -31,7 +48,7 @@ function getLatestTag() {
   return wretch("https://api.github.com/repos/denoland/deno/releases/latest")
     .headers(headers)
     .get()
-    .json((release) => release.tag_name)
+    .json((release: { tag_name: string }) => release.tag_name)
 }
 
 async function getWorkspaceDeps(ref: string) {
@@ -45,12 +62,16 @@ async function getCliVersion(ref: string) {
 }
 
 function printDep(name: string, deps: Record<string, any>) {
-  const version = deps[name].version.replace("=", "")
-  const features = deps[name].features
+  const spec = deps[name]
+  delete spec.path
 
-  if (features) {
-    console.log(`${name} = { version = "=${version}", features = ${JSON.stringify(features)} }`)
+  if (Object.keys(spec).length === 1) {
+    console.log(`${name} = "${spec.version}"`)
   } else {
-    console.log(`${name} = "=${version}"`)
+    const parts = stringify(spec).split('\n');
+    const csv = parts.slice(0, -1).join(', ') + parts.slice(-1);
+    console.log(`${name} = { ${csv} }`)
   }
 }
+
+// vim: ft=typescript
