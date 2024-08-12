@@ -11,7 +11,7 @@
 	bl = branch -v --sort=-committerdate
 	br = branch
 	ci = commit -v --no-verify
-	clobber = clean -ffdx --exclude .env*
+	clobber = clean -ffdx --exclude .env* --exclude .dev.vars
 	co = checkout
 	di = diff
 	dic = diff --cached
