@@ -20,11 +20,11 @@
 //   deno_ast = { version = "=0.40.0", features = ["transpiling"] }
 //   deno_core = "0.294.0"
 
-import wretch from "npm:wretch"
-import { parse, stringify } from "jsr:@std/toml"
+import wretch from 'npm:wretch'
+import { parse, stringify } from 'jsr:@std/toml'
 
 const [ref, ...crates] = Deno.args
-const refOrTag = !ref || ref === "latest" ? await getLatestTag() : ref
+const refOrTag = !ref || ref === 'latest' ? await getLatestTag() : ref
 const deps = await getWorkspaceDeps(refOrTag)
 const version = await getCliVersion(refOrTag)
 
@@ -35,17 +35,17 @@ if (crates.length > 0) {
     printDep(crate, deps)
   }
 } else {
-  printDep("deno_core", deps)
-  printDep("deno_runtime", deps)
+  printDep('deno_core', deps)
+  printDep('deno_runtime', deps)
 }
 
 function getLatestTag() {
-  const token = Deno.env.get("GITHUB_TOKEN")
+  const token = Deno.env.get('GITHUB_TOKEN')
   const headers = new Headers()
   if (token) {
-    headers.set("authorization", `token ${token}`)
+    headers.set('authorization', `token ${token}`)
   }
-  return wretch("https://api.github.com/repos/denoland/deno/releases/latest")
+  return wretch('https://api.github.com/repos/denoland/deno/releases/latest')
     .headers(headers)
     .get()
     .json((release: { tag_name: string }) => release.tag_name)
@@ -71,8 +71,8 @@ function printDep(name: string, deps: Record<string, any>) {
   if (Object.keys(spec).length === 1) {
     console.log(`${name} = "${spec.version}"`)
   } else {
-    const parts = stringify(spec).split('\n');
-    const csv = parts.slice(0, -1).join(', ') + parts.slice(-1);
+    const parts = stringify(spec).split('\n')
+    const csv = parts.slice(0, -1).join(', ') + parts.slice(-1)
     console.log(`${name} = { ${csv} }`)
   }
 }

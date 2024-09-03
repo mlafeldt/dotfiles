@@ -5,18 +5,18 @@
 //   json2dy https://.../file.json
 //   cat file.json | json2dy
 
-import { Database } from "duckdb-async";
-import { marshall } from "@aws-sdk/util-dynamodb";
+import { marshall } from '@aws-sdk/util-dynamodb'
+import { Database } from 'duckdb-async'
 
-const input = Bun.argv[2] || "/dev/stdin";
+const input = Bun.argv[2] || '/dev/stdin'
 
-const db = await Database.create(":memory:");
-const rows = await db.all("FROM read_json_objects_auto(?1)", input);
+const db = await Database.create(':memory:')
+const rows = await db.all('FROM read_json_objects_auto(?1)', input)
 
 for (const row of rows) {
-  const parsed = JSON.parse(row.json);
-  const item = marshall(parsed);
-  console.log(JSON.stringify(item));
+  const parsed = JSON.parse(row.json)
+  const item = marshall(parsed)
+  console.log(JSON.stringify(item))
 }
 
 // vim: ft=javascript
