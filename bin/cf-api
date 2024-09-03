@@ -1,0 +1,26 @@
+#!/usr/bin/env bun
+// Make an authenticated HTTP request to the Cloudflare API and print the response.
+// Inspired by `gh api`.
+
+const apiToken = process.env.CLOUDFLARE_API_TOKEN
+const accountId = process.env.CLOUDFLARE_ACCOUNT_ID
+const zoneId = process.env.CLOUDFLARE_ZONE_ID
+
+const endpoint =
+  Bun.argv[2]?.replace(/{account}|{account_id}/g, accountId)?.replace(/{zone}|{zone_id}/g, zoneId) || 'accounts'
+
+const data = await fetch(`https://api.cloudflare.com/client/v4/${endpoint}`, {
+  headers: {
+    Authorization: `Bearer ${apiToken}`,
+    'Content-Type': 'application/json',
+  },
+}).then((resp) => resp.json())
+
+if (!data.success) {
+  console.error(data.errors.map((e) => `${e.message} [code: ${e.code}]`).join('\n'))
+  process.exit(1)
+}
+
+console.log(JSON.stringify(data.result, null, 2))
+
+// vim: ft=javascript
