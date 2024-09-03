@@ -19,6 +19,4 @@ for (const row of rows) {
   console.log(JSON.stringify(item));
 }
 
-process.exit(0); // Workaround for hanging query
-
 // vim: ft=javascript
