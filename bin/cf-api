@@ -2,19 +2,27 @@
 // Make an authenticated HTTP request to the Cloudflare API and print the response.
 // Inspired by `gh api`.
 //
-// Usage: cf-api <endpoint>
+// Usage: cf-api <endpoint> [<body>]
 //
-// Placeholder values `{account}` and `{zone}` in the endpoint argument will get
-// replaced with values from the environment variables CLOUDFLARE_ACCOUNT_ID and
-// CLOUDFLARE_ZONE_ID, respectively.
+// Placeholder values `{name}` in the endpoint argument will get replaced with
+// values from these environment variables:
 //
-// Example: cf-api /accounts/{account}/d1/database
+//   CLOUDFLARE_ACCOUNT_ID: {account} or {account_id}
+//   CLOUDFLARE_ZONE_ID: {zone} or {zone_id}
+//   CLOUDFLARE_DATABASE_ID: {database} or {database_id}
+//
+// Examples:
+//
+//   cf-api /accounts/{account}/d1/database
+//   cf-api /zones/{zone}/purge_cache '{"purge_everything": true}'
+//   cf-api /accounts/{account}/d1/database/{database}/query '{"sql": "select * from users"}'
 
 import wretch from 'wretch'
 
 const apiToken = process.env.CLOUDFLARE_API_TOKEN
 const accountId = process.env.CLOUDFLARE_ACCOUNT_ID
 const zoneId = process.env.CLOUDFLARE_ZONE_ID
+const databaseId = process.env.CLOUDFLARE_DATABASE_ID
 
 if (!apiToken) {
   console.error('CLOUDFLARE_API_TOKEN must be set')
@@ -22,17 +30,25 @@ if (!apiToken) {
 }
 
 const endpoint =
-  Bun.argv[2]?.replace(/{account}|{account_id}/g, accountId)?.replace(/{zone}|{zone_id}/g, zoneId) || 'accounts'
+  Bun.argv[2]
+    ?.replace(/{account}|{account_id}/g, accountId)
+    ?.replace(/{zone}|{zone_id}/g, zoneId)
+    ?.replace(/{database}|{database_id}/g, databaseId) || 'accounts'
 
-wretch(`https://api.cloudflare.com/client/v4/${endpoint}`)
+const body = Bun.argv[3]
+
+const api = wretch(`https://api.cloudflare.com/client/v4/${endpoint}`)
   .auth(`Bearer ${apiToken}`)
-  .get()
-  .json()
+  .resolve((r) => r.json())
+
+const request = body ? api.post(body) : api.get()
+
+request
   .catch((error) => {
-    const message =
+    const msg =
       error.json?.errors?.map((e) => `${e.message} [code: ${e.code}]`).join('\n') ||
       `${error.message} [status: ${error.status}]`
-    console.error(message)
+    console.error('error:', msg)
     process.exit(1)
   })
   .then((data) => console.log(JSON.stringify(data.result, null, 2)))
