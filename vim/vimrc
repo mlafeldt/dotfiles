@@ -323,7 +323,7 @@ augroup vimrcEx
   autocmd BufReadPost COMMIT_EDITMSG,PULLREQ_EDITMSG exe "normal! gg"
 
   " assign file types
-  autocmd BufNewFile,BufRead *.envrc set filetype=sh
+  autocmd BufNewFile,BufRead *.envrc* set filetype=sh
   autocmd BufNewFile,BufRead *.slide set filetype=present
   autocmd BufNewFile,BufRead *.template set filetype=yaml
   autocmd BufNewFile,BufRead *.vtl set filetype=velocity
