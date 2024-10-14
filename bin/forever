@@ -1,0 +1,3 @@
+#!/bin/bash
+# Run a command forever, e.g. to restart a crashing server
+while true; do "$@" || sleep 1; done
