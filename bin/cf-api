@@ -51,6 +51,6 @@ request
     console.error('error:', msg)
     process.exit(1)
   })
-  .then((data) => console.log(JSON.stringify(data.result, null, 2)))
+  .then((data) => console.log(JSON.stringify(data.result ?? data, null, 2)))
 
 // vim: ft=javascript
