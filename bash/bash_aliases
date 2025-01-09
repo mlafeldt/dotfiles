@@ -16,6 +16,7 @@ alias l='ls -CF'
 
 alias t='tree --gitignore'
 alias ta='tree -a'
+alias ts='tree -ash'
 
 complete -o default -F __start_kubectl kc
 alias kn=kubens;  complete -F _kube_namespaces kn
