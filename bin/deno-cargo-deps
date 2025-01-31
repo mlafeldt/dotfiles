@@ -68,7 +68,9 @@ function printDep(name: string, deps: Record<string, any>) {
   }
   delete spec.path
 
-  if (Object.keys(spec).length === 1) {
+  if (typeof spec === "string") {
+    console.log(`${name} = "${spec}"`)
+  } else if (Object.keys(spec).length === 1) {
     console.log(`${name} = "${spec.version}"`)
   } else {
     const parts = stringify(spec).split('\n')
