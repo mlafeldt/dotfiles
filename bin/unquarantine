@@ -1,2 +1,5 @@
 #!/bin/bash
-exec xattr -d com.apple.quarantine "$@"
+for file in "$@"; do
+    xattr -d com.apple.quarantine "$file"
+    chmod +x "$file"
+done
