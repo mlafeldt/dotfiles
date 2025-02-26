@@ -5,9 +5,9 @@ alias rga='rg --no-ignore'
 alias cat=bat
 alias hd='hexdump -C'
 
-alias zb='zig build'
-alias zt='zig build test'
-alias zc='zig build check'
+alias zb='zig build --summary new'
+alias zt='zig build test --summary new'
+alias zc='zig build check --summary new'
 
 alias python=python3
 alias pip=pip3
