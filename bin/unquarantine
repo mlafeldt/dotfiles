@@ -1,5 +1,5 @@
 #!/bin/bash
-for file in "$@"; do
-    xattr -d com.apple.quarantine "$file"
-    chmod +x "$file"
-done
+# Remove the quarantine bit from a downloaded binary and make it executable
+set -e
+xattr -d com.apple.quarantine "$1"
+chmod +x "$1"
