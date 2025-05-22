@@ -1,7 +1,7 @@
 [user]
 	name = Mathias Lafeldt
 	email = mathias.lafeldt@gmail.com
-	signingkey = 0A780B98B0224701
+	signingkey = ECB164AC027DA2ED
 [color]
 	ui = true
 [alias]
