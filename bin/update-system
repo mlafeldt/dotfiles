@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Update system software
 
-set -e
-set -o pipefail
+set -e -o pipefail
 
 update_homebrew() {
     echo "+ Updating homebrew"
@@ -19,7 +18,6 @@ update_tools() {
     bun upgrade
     deno upgrade
     rustup update
-    sst upgrade
 }
 
 update_vim_plugins() {
