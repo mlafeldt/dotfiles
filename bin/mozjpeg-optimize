@@ -1,0 +1,110 @@
+#!/usr/bin/env ruby
+# Source: https://brandur.org/fragments/optimizing-jpegs-for-archival
+
+require 'shellwords'
+
+# Percent smaller the new file has to be to bother keeping it. The logic here
+# is that in case it's already been optimized we can skip optimizing again
+# given that it may have already been added to the Git repository and the new
+# version will slightly different, therefore doubling up on file size.
+SIZE_THRESHOLD = 0.05
+
+#
+# ---
+#
+
+CACHED_HOMEBREW_PATHS = {}
+def get_homebrew_path(package)
+  CACHED_HOMEBREW_PATHS[package] ||= begin
+    brew_path = run_command("brew --prefix #{package}", abort: false)
+    if !brew_path
+      abort("Homebrew package #{package} may be unavailable; try `brew install #{package}`")
+    end
+    brew_path
+  end
+end
+
+SIZE_ORDERS = {
+  'B'  => 1024,
+  'kB' => 1024 * 1024,
+  'MB' => 1024 * 1024 * 1024,
+  'GB' => 1024 * 1024 * 1024 * 1024,
+  'TB' => 1024 * 1024 * 1024 * 1024 * 1024
+}
+
+def human_file_size(size)
+  SIZE_ORDERS.each do |unit, s|
+    return "#{(size.to_f / (s / 1024)).round(2)}#{unit}" if size < s
+  end
+end
+
+def run_command(command, abort: true)
+  ret = `#{command}`
+  if $? != 0
+    if abort
+      abort("command failed: #{command}")
+    else
+      return false
+    end
+  end
+  ret.strip
+end
+
+#
+# ---
+#
+
+def main
+  mozjpeg_path = if ENV["MOZJPEG_BIN"]
+    File.dirname(File.dirname(ENV["MOZJPEG_BIN"]))
+  else
+    mozjpeg_path = get_homebrew_path("mozjpeg")
+
+    mozjpeg_path
+  end
+
+  abort("need at least one file as argument") if ARGV.empty?
+  ARGV.each do |filename|
+    if File.directory?(filename)
+      $stderr.puts("should not be a directory: #{filename} (skipping)")
+      next
+    end
+
+    file_ext = File.extname(filename).downcase
+    if file_ext != ".jpg" && file_ext != ".jpeg"
+      $stderr.puts("should be a jpg: #{filename} (skipping)")
+      next
+    end
+
+    dir = File.dirname(filename)
+
+    temp_filename = "#{dir}/#{File.basename(filename, ".*")}.temp.jpg"
+    target_filename = "#{dir}/#{File.basename(filename, ".*")}.jpg"
+
+    # DO NOT use cpjeg to pipe. It will strip EXIF.
+    run_command("#{mozjpeg_path}/bin/cjpeg -outfile #{Shellwords.escape(temp_filename)} -optimize -progressive #{Shellwords.escape(filename)}")
+
+    size = File.size(filename)
+    temp_size = File.size(temp_filename)
+
+    if temp_size < size - size * SIZE_THRESHOLD
+      saved_size = size - temp_size
+      saved_percent = 100 - (temp_size.to_f / size * 100).round
+
+      # copy created/modified timestamps from the original file
+      run_command("touch -r #{Shellwords.escape(filename)} #{Shellwords.escape(temp_filename)}")
+
+      run_command("mv #{Shellwords.escape(temp_filename)} #{Shellwords.escape(target_filename)}")
+      puts "created: #{target_filename} (#{human_file_size(size)} -> #{human_file_size(temp_size)} / saved #{saved_percent}%)"
+    else
+      run_command("rm #{Shellwords.escape(temp_filename)}")
+      puts "new file within #{SIZE_THRESHOLD * 100}% of original; discarding"
+    end
+  end
+end
+
+#
+# ---
+#
+
+main
