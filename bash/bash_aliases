@@ -39,4 +39,6 @@ alias gti=git
 alias got=go
 alias bim=vim
 
+alias claude="$HOME/.claude/local/claude"
+
 :
