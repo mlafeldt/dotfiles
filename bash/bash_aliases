@@ -39,7 +39,7 @@ alias gti=git
 alias got=go
 alias bim=vim
 
-alias claude="$HOME/.claude/local/claude"
+alias claude="CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1 $HOME/.bun/bin/claude"
 alias claude-yolo="claude --dangerously-skip-permissions"
 
 :
