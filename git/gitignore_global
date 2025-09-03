@@ -4,6 +4,7 @@
 .env
 .envrc
 .idea
+CLAUDE.local.md
 __pycache__
 
 # Make ripgrep search these
