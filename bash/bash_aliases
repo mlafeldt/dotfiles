@@ -9,6 +9,10 @@ alias zb='zig build --summary new'
 alias zt='zig build test --summary new'
 alias zc='zig build check --summary new'
 
+alias gb='go build'
+alias gt='gotest'
+alias gl='golangci-lint run'
+
 alias python=python3
 alias pip=pip3
 
