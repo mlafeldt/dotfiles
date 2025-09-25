@@ -43,7 +43,11 @@ alias gti=git
 alias got=go
 alias bim=vim
 
+# bun install -g @anthropic-ai/claude-code
 alias claude="CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1 $HOME/.bun/bin/claude"
 alias claude-yolo="claude --dangerously-skip-permissions"
+
+# bun install -g @google/gemini-cli
+alias gemini-yolo="$HOME/.bun/bin/gemini --yolo"
 
 :
