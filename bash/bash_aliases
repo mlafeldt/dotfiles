@@ -8,6 +8,7 @@ alias hd='hexdump -C'
 alias zb='zig build --summary new'
 alias zt='zig build test --summary new'
 alias zc='zig build check --summary new'
+alias zl=zlint
 
 alias gb='go build'
 alias gt='gotest'
