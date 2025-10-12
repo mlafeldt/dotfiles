@@ -4,6 +4,7 @@
 .env
 .envrc
 .idea
+.worktrees
 CLAUDE.local.md
 __pycache__
 

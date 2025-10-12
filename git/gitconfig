@@ -11,7 +11,7 @@
 	bl = branch -v --sort=-committerdate
 	br = branch
 	ci = commit -v --no-verify
-	clobber = clean -ffdx --exclude .env* --exclude .dev.vars
+	clobber = clean -ffdx --exclude .env* --exclude .dev.vars --exclude .worktrees
 	co = checkout
 	di = diff
 	dic = diff --cached
@@ -27,6 +27,7 @@
 	use-ssh = config url."git@github.com:".pushinsteadof https://github.com/
 	wd = diff --word-diff
 	wip = commit -amWIP --no-gpg-sign
+	wt = worktree
 [core]
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
