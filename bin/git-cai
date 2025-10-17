@@ -1,0 +1,28 @@
+#!/bin/bash
+# Commit with AI
+# Usage: git cai [<additional instructions>]
+
+set -e -o pipefail
+
+if git diff --cached --quiet >/dev/null; then
+  echo "error: no staged changes to commit"
+  exit 1
+fi
+
+# Fix terminal clobbering from Ctrl+C interrupts
+trap "tput sgr0 2>/dev/null; stty sane 2>/dev/null" EXIT INT TERM
+
+: ${MODEL:=haiku}
+
+PROMPT="Generate 3 commit messages for the staged changes. Match recent style. Focus on intent over implementation.
+Output EXACTLY in this format with NO other text:
+<msg>message 1</msg>
+<msg>message 2</msg>
+<msg>message 3</msg>
+$*"
+
+FOOTER="Hallucinating commit messages... (Ctrl-R to reroll)"
+
+MSG=$(claude --model "$MODEL" -p "$PROMPT" | awk -F'<msg>|</msg>' '{for(i=2;i<=NF;i+=2)print $i}' | fzf --no-sort --height 10 --footer "$FOOTER" --bind "ctrl-r:reload(claude --model $MODEL -p \"$PROMPT\" | awk -F'<msg>|</msg>' '{for(i=2;i<=NF;i+=2)print \$i}')")
+
+exec git commit -e -m "$MSG" -v
