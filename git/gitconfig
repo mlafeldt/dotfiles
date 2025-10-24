@@ -22,7 +22,7 @@
 	lol = log --graph --decorate --oneline
 	pi = cherry-pick
 	rh = reset --hard
-	sed = !sh -c 'git ls-files -z $2 | xargs -0 sed -i -e $1' -
+	sd = !sh -c 'git ls-files -z -- "${@:3}" | xargs -0 sd "$1" "$2"' -
 	st = status -sb
 	use-ssh = config url."git@github.com:".pushinsteadof https://github.com/
 	wd = diff --word-diff
