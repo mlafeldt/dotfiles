@@ -3,31 +3,75 @@
 #
 # Examples:
 #
-#   git today           # show diff with git-diff
-#   git today --stat    # pass args to git-diff
-#   git today --github  # open diff on GitHub (requires hub)
-#   git today --churn   # show today's churn
+#   git today                   # show diff with git-diff
+#   git today --stat            # pass args to git-diff
+#   git today --github          # open diff on GitHub (requires hub)
+#   git today --churn           # show today's churn
+#   git today --date 2025-01-01 # show stats for a specific day
 
 set -e -o pipefail
 
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-COMMIT=$(git rev-list --since=12am $BRANCH | tail -n1)
+DATE_ARG=""
+ARGS=()
 
-if test -z "$COMMIT"; then
-    echo "No commits on branch $BRANCH today"
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    --date)
+        DATE_ARG="$2"
+        shift 2
+        ;;
+    --date=*)
+        DATE_ARG="${1#--date=}"
+        shift
+        ;;
+    *)
+        ARGS+=("$1")
+        shift
+        ;;
+    esac
+done
+
+set -- "${ARGS[@]}"
+
+if [[ -n "$DATE_ARG" ]]; then
+    SINCE="$DATE_ARG 00:00"
+    UNTIL="$DATE_ARG 23:59:59"
+else
+    SINCE="12am"
+    UNTIL=""
+fi
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+REV_ARGS=(--since="$SINCE")
+if [[ -n "$UNTIL" ]]; then
+    REV_ARGS+=(--until="$UNTIL")
+fi
+
+COMMITS=$(git rev-list "${REV_ARGS[@]}" "$BRANCH")
+FIRST_COMMIT=$(printf '%s\n' "$COMMITS" | tail -n1)
+
+if test -z "$FIRST_COMMIT"; then
+    TARGET=${DATE_ARG:-today}
+    echo "No commits on branch $BRANCH for $TARGET"
     exit 0
 fi
 
-case "$1" in
+LAST_COMMIT=$(printf '%s\n' "$COMMITS" | head -n1)
+
+case "${1:-}" in
 --github)
-    exec hub compare -b ${COMMIT}^
+    exec hub compare "${FIRST_COMMIT}^...${LAST_COMMIT}"
     ;;
 --churn)
     shift
+    LOG_ARGS=(--since="$SINCE")
+    if [[ -n "$UNTIL" ]]; then
+        LOG_ARGS+=(--until="$UNTIL")
+    fi
     # Based on git-churn by Gary Bernhardt
-    exec git log -M -C --name-only --format='format:' --since=12am "$BRANCH" "$@" | sort | grep -v '^$' | uniq -c | sort -n
+    exec git log -M -C --name-only --format='format:' "${LOG_ARGS[@]}" "$BRANCH" "$@" | sort | grep -v '^$' | uniq -c | sort -n
     ;;
 *)
-    exec git diff ${COMMIT}^ "$@"
+    exec git diff "${FIRST_COMMIT}^" "$LAST_COMMIT" "$@"
     ;;
 esac
