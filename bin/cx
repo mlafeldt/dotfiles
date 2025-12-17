@@ -1,0 +1,14 @@
+#!/bin/bash
+# Codex wrapper that activates YOLO mode and auto-updates the CLI every 4 hours.
+
+set -e -o pipefail
+
+CODEX_BIN="$HOME/.bun/bin/codex"
+UPDATE_CHK="$HOME/.codex/last_update_check"
+
+if [ ! -f "$CODEX_BIN" ] || [ ! -f "$UPDATE_CHK" ] || [ "$(find "$UPDATE_CHK" -mmin +240 2>/dev/null)" ]; then
+    bun install -g @openai/codex
+    touch "$UPDATE_CHK"
+fi
+
+exec "$CODEX_BIN" --yolo "$@"
