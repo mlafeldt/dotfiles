@@ -9,9 +9,6 @@ if git diff --cached --quiet >/dev/null; then
   exit 1
 fi
 
-# Fix terminal clobbering from Ctrl+C interrupts
-trap "tput sgr0 2>/dev/null; stty sane 2>/dev/null" EXIT INT TERM
-
 : ${MODEL:=haiku}
 
 PROMPT="Generate 3 commit messages for the staged changes. Match recent style. Focus on intent over implementation.
