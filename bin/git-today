@@ -47,7 +47,7 @@ if [[ -n "$UNTIL" ]]; then
     REV_ARGS+=(--until="$UNTIL")
 fi
 
-COMMITS=$(git rev-list "${REV_ARGS[@]}" "$BRANCH")
+COMMITS=$(git rev-list "${REV_ARGS[@]}" "$BRANCH" --)
 FIRST_COMMIT=$(printf '%s\n' "$COMMITS" | tail -n1)
 
 if test -z "$FIRST_COMMIT"; then
