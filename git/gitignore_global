@@ -1,3 +1,4 @@
+*.local.md
 .DS_Store
 .boa_history
 .deno
@@ -5,7 +6,6 @@
 .envrc
 .idea
 .worktrees
-CLAUDE.local.md
 __pycache__
 
 # Make ripgrep search these
