@@ -11,6 +11,9 @@ if [ ! -f "$CLAUDE_BIN" ] || [ ! -f "$UPDATE_CHK" ] || [ "$(find "$UPDATE_CHK" -
     touch "$UPDATE_CHK"
 fi
 
+# Reset to project directory after each command
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
+# Hide email in UI
+export IS_DEMO=1
 
 exec "$CLAUDE_BIN" --dangerously-skip-permissions "$@"
