@@ -1,15 +1,9 @@
 #!/bin/bash
-# Claude Code wrapper that activates YOLO mode and auto-updates the CLI every 4 hours.
+# Claude Code wrapper that activates YOLO mode
 
 set -e -o pipefail
 
-CLAUDE_BIN="$HOME/.bun/bin/claude"
-UPDATE_CHK="$HOME/.claude/last_update_check"
-
-if [ ! -f "$CLAUDE_BIN" ] || [ ! -f "$UPDATE_CHK" ] || [ "$(find "$UPDATE_CHK" -mmin +240 2>/dev/null)" ]; then
-    bun install -g @anthropic-ai/claude-code
-    touch "$UPDATE_CHK"
-fi
+CLAUDE_BIN="$HOME/.local/bin/claude"
 
 # Reset to project directory after each command
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
