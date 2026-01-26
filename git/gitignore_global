@@ -9,4 +9,6 @@
 __pycache__
 
 # Make ripgrep search these
+!.claude
+!.codex
 !.github
