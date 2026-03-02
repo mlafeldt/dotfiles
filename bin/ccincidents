@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Print today's unresolved Claude incidents and their updates.
+# Print unresolved Claude incidents and their updates.
 
 import datetime
 import json
@@ -104,15 +104,10 @@ def main() -> int:
         )
         return 1
 
-    today_utc = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
     incidents = payload.get("incidents") or []
     formatted_incidents = []
 
     for incident in incidents:
-        created_at = incident.get("created_at") or ""
-        if created_at[:10] != today_utc:
-            continue
-
         formatted_incident = format_incident(incident)
         if formatted_incident:
             formatted_incidents.append(formatted_incident)
