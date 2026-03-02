@@ -1,9 +1,10 @@
 #!/bin/bash
-# Claude Code wrapper that activates YOLO mode
+# Claude Code wrapper that activates YOLO mode and shows open incidents before launch
 
 set -e -o pipefail
 
 CLAUDE_BIN="$HOME/.local/bin/claude"
+STATUS_RSS_URL="https://status.claude.com/history.rss"
 
 # Reset to project directory after each command
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
@@ -11,5 +12,60 @@ export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 # Hide email in UI
 export IS_DEMO=1
+
+rss="$(curl -fsSL "$STATUS_RSS_URL" 2>/dev/null || true)"
+if [ -z "$rss" ]; then
+  echo "Unable to fetch Claude status RSS feed: $STATUS_RSS_URL" >&2
+  exit 1
+fi
+
+today="$(date '+%d %b %Y')"
+incidents="$(
+  printf '%s' "$rss" |
+    awk -v today="$today" '
+      BEGIN { RS="</item>" }
+      index($0, today) {
+        title = $0
+        description = $0
+        link = $0
+        status = ""
+
+        if (!sub(/.*<title>/, "", title)) next
+        sub(/<\/title>.*/, "", title)
+
+        if (!sub(/.*<description>[[:space:]]*/, "", description)) next
+        sub(/<\/description>.*/, "", description)
+
+        status = description
+        if (sub(/.*&lt;strong&gt;/, "", status)) {
+          sub(/&lt;\/strong&gt;.*/, "", status)
+        }
+
+        gsub(/^[[:space:]]+|[[:space:]]+$/, "", status)
+        if (status == "Resolved") next
+
+        if (!sub(/.*<link>/, "", link)) next
+        sub(/<\/link>.*/, "", link)
+
+        print title " - " link
+      }
+    '
+)"
+
+if [ -n "$incidents" ]; then
+  if [ -t 1 ] && [ -z "${NO_COLOR:-}" ]; then
+    red=$'\033[1;31m'
+    reset=$'\033[0m'
+  else
+    red=''
+    reset=''
+  fi
+
+  echo "${red}Ongoing Claude incidents:${reset}"
+  while IFS= read -r incident; do
+    echo "${red}${incident}${reset}"
+  done <<< "$incidents"
+  echo
+fi
 
 exec "$CLAUDE_BIN" --dangerously-skip-permissions "$@"
