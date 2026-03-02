@@ -12,6 +12,6 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 # Hide email in UI
 export IS_DEMO=1
 
-ccincidents || true
+claude-status || true
 
 exec "$CLAUDE_BIN" --dangerously-skip-permissions "$@"
