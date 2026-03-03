@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Print unresolved Claude incidents and their updates.
+# Show unresolved Claude incidents from https://status.claude.com
 
 import datetime
 import json
@@ -21,7 +21,7 @@ def collapse_whitespace(value: str) -> str:
     return " ".join(value.split())
 
 
-def parse_hhmm_utc(value: str) -> str:
+def format_timestamp(value: str) -> str:
     if not value:
         return ""
 
@@ -29,10 +29,10 @@ def parse_hhmm_utc(value: str) -> str:
         dt = datetime.datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
         if len(value) >= 16 and value[10] == "T":
-            return value[11:16]
+            return value[11:16] + " UTC"
         return ""
 
-    return dt.strftime("%H:%M")
+    return dt.strftime("%b %d %H:%M UTC")
 
 
 def incident_link(incident: dict) -> str:
@@ -64,15 +64,11 @@ def format_incident(incident: dict) -> str:
     lines = [header]
     for update in updates:
         body = collapse_whitespace(update.get("body") or "")
-        hhmm = parse_hhmm_utc(
+        timestamp = format_timestamp(
             update.get("display_at") or update.get("created_at") or ""
         )
 
-        if body:
-            if hhmm:
-                lines.append(f"  - {hhmm} UTC: {body}")
-            else:
-                lines.append(f"  - {body}")
+        lines.append(f"  [{timestamp}] {body}")
 
     return "\n".join(lines)
 
