@@ -1,6 +1,8 @@
 *.local.md
 .DS_Store
 .boa_history
+.claude/scheduled_tasks.json
+.claude/scheduled_tasks.lock
 .deno
 .env
 .envrc
