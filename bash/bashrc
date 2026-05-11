@@ -54,10 +54,7 @@ PATH="$HOME/.sst/bin:$PATH"
 
 # Go
 if command -v go >/dev/null; then
-    export GOPATH="$HOME/devel/go"
-    export GOROOT="$(go env GOROOT)"
-    export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-
+    export PATH="$HOME/go/bin:$GOROOT/bin:$PATH"
     export GOTEST_PALETTE="red,blue"
     export GOTEST_SKIPNOTESTS="true"
 fi
