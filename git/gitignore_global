@@ -3,6 +3,7 @@
 .boa_history
 .claude/scheduled_tasks.json
 .claude/scheduled_tasks.lock
+.claude/worktrees
 .deno
 .env
 .envrc
