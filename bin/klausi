@@ -7,10 +7,10 @@ CLAUDE_BIN="$HOME/.local/bin/claude"
 
 # Reset to project directory after each command
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
-# Enable agent teams
-export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 # Hide email in UI
 export IS_DEMO=1
+# Disable token-hungry workflows for /code-review, etc.
+export CLAUDE_CODE_DISABLE_WORKFLOWS=1
 
 claude-status || true
 echo
