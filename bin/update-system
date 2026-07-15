@@ -9,7 +9,7 @@ update_homebrew() {
     outdated=$(brew outdated)
     test -n "$outdated" || return 0
     brew fetch --retry --force-bottle $outdated
-    brew upgrade
+    brew upgrade --yes
     brew cleanup
 }
 
