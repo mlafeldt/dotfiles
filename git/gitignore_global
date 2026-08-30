@@ -13,6 +13,7 @@ __pycache__
 agents/counselors
 
 # Make ripgrep search these
+!.agents
 !.claude
 !.codex
 !.github
