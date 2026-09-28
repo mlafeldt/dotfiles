@@ -1,8 +1,3 @@
 #!/bin/bash
 # Codex wrapper that activates YOLO mode
-
-set -e -o pipefail
-
-CODEX_BIN=/Applications/ChatGPT.app/Contents/Resources/codex
-
-exec "$CODEX_BIN" --yolo "$@"
+exec "$HOME/.local/bin/codex" --yolo "$@"
